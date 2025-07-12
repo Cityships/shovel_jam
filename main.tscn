@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmmudt8agidyk"]
+
+[ext_resource type="PackedScene" uid="uid://ou2lx56q26sn" path="res://PvZ/map/default_map.tscn" id="1_ig7tw"]
+
+[node name="Main" type="Node"]
+
+[node name="DefaultMap" parent="." instance=ExtResource("1_ig7tw")]

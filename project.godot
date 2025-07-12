@@ -17,3 +17,7 @@ config/icon="uid://c8v7yjmtjfbi1"
 [dotnet]
 
 project/assembly_name="Shovel_jam"
+
+[layer_names]
+
+2d_physics/layer_1="Terrain"
