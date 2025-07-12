@@ -6,12 +6,17 @@ var jump_velocity: float = -310.0
 var gravity := Vector2(0, 980)
 var input_direction := Vector2.ZERO
 
+var movement_restriction_count = 0
+
 @onready var sprite = get_node("Sprite2D")
 
 func _ready() -> void:
+
 	pass
 
 func _physics_process(delta: float) -> void:
+	if movement_restriction_count != 0:
+		return
 	apply_gravity(delta)
 	move()
 	_set_sprite_direction()

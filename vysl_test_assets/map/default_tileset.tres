@@ -1,11 +1,11 @@
 [gd_resource type="TileSet" load_steps=4 format=3 uid="uid://c8nrnjf8fsfw0"]
 
-[ext_resource type="Texture2D" uid="uid://7v4lmspwfuf3" path="res://PvZ/map/Terrain (16x16).png" id="1_yia3e"]
+[ext_resource type="Texture2D" uid="uid://7v4lmspwfuf3" path="res://vysl_test_assets/map/Terrain (16x16).png" id="1_htkpo"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ikti3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_th23k"]
-texture = ExtResource("1_yia3e")
+texture = ExtResource("1_htkpo")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
