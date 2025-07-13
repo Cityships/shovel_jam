@@ -13,6 +13,7 @@ uniform float subdivision = 128.0;
 
 
 void fragment(){
+    //Difference is using UV rather than SCREEN UV and ratio.
     float ratio = SCREEN_PIXEL_SIZE.x / SCREEN_PIXEL_SIZE.y;
     vec2 scaled_uv = (UV - vec2(0.5, 0.0)) /  vec2(1.0, 1.0) + vec2(0.5, 0.0);
     float mask = (1.0 - smoothstep(size - 0.1, size, length(scaled_uv - center))) * smoothstep(size - thickness - 0.2, size - thickness, length(scaled_uv - center));
