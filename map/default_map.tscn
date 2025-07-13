@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://ou2lx56q26sn"]
+[gd_scene load_steps=4 format=4 uid="uid://ou2lx56q26sn"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_ikti3"]
 [ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/jetpack/jetpack.tscn" id="2_e51w3"]
 [ext_resource type="PackedScene" uid="uid://dcvfajmk27hns" path="res://scenes/player_character/player_character.tscn" id="3_e51w3"]
-[ext_resource type="Script" uid="uid://cfmdwbowo1mbl" path="res://camera/camera_controller.gd" id="7_lo4u6"]
 
 [node name="DefaultMap" type="Node2D"]
 
@@ -24,4 +23,3 @@ position = Vector2(-160, 80)
 position = Vector2(0, -80)
 zoom = Vector2(3, 3)
 position_smoothing_speed = 180.0
-script = ExtResource("7_lo4u6")
