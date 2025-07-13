@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbkndbkistfnt"]
+
+[ext_resource type="Script" uid="uid://daxdj2b8stsuf" path="res://enemies/scripts/base_enemy_manager.gd" id="1_40wdo"]
+[ext_resource type="Script" uid="uid://2b2vpx4gmhmh" path="res://enemies/scripts/base_enemy_body.gd" id="2_tjssy"]
+[ext_resource type="Texture2D" uid="uid://psfsagvivmh6" path="res://enemies/monsters.png" id="3_gl05p"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7jla0"]
+radius = 4.0
+height = 16.0
+
+[node name="BaseEnemyManager" type="Node2D"]
+script = ExtResource("1_40wdo")
+
+[node name="BaseEnemyBody" type="CharacterBody2D" parent="."]
+script = ExtResource("2_tjssy")
+
+[node name="BaseEnemySprite" type="Sprite2D" parent="BaseEnemyBody"]
+texture = ExtResource("3_gl05p")
+region_enabled = true
+region_rect = Rect2(69, 10.5, 16.7052, 19.5251)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseEnemyBody"]
+shape = SubResource("CapsuleShape2D_7jla0")
