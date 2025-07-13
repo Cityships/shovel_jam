@@ -11,7 +11,7 @@ size = Vector2(32, 40)
 radius = 16.0
 
 [node name="Jetpack" type="RigidBody2D"]
-collision_layer = 0
+collision_layer = 4
 mass = 0.001
 lock_rotation = true
 script = ExtResource("1_ik27r")
@@ -24,11 +24,18 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ikti3")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(8, 40)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 24.0
-offset_top = -8.0
-offset_right = 28.0
-offset_bottom = 19.0
+offset_top = -16.0
+offset_right = 32.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/outline_size = 4
+value = 100.0
 fill_mode = 3
 show_percentage = false
 
@@ -47,6 +54,7 @@ shape = SubResource("RectangleShape2D_yotyk")
 debug_color = Color(1, 1, 1, 0.42)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="InteractableArea"]
+visible = false
 position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_yotyk")
 debug_color = Color(1, 1, 1, 0.42)

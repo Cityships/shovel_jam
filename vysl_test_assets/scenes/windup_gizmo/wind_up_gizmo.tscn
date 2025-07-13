@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6kaaaqphs6mv"]
+
+[ext_resource type="Script" uid="uid://hywsynhg1uu5" path="res://vysl_test_assets/scenes/windup_gizmo/wind_up_gizmo.gd" id="1_edxmb"]
+[ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="2_8vqp0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yjeoo"]
+size = Vector2(56, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mwtyu"]
+radius = 32.0
+
+[node name="WindUpGizmo" type="Node2D"]
+visible = false
+script = ExtResource("1_edxmb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_8vqp0")
+
+[node name="TurnKey" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(-24, 0, 24, 0, 0, 0)
+width = 4.0
+
+[node name="Polygon2D" type="Polygon2D" parent="TurnKey"]
+visible = false
+position = Vector2(24, 0)
+color = Color(0, 1, 1, 1)
+polygon = PackedVector2Array(8, -8, -8, -8, -8, 8, 8, 8)
+
+[node name="Polygon2D2" type="Polygon2D" parent="TurnKey"]
+scale = Vector2(0.25, 0.25)
+color = Color(0.992064, 0.750537, 0, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="Area2D" type="Area2D" parent="TurnKey"]
+position = Vector2(24, 0)
+collision_layer = 32768
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TurnKey/Area2D"]
+position = Vector2(-24, 0)
+shape = SubResource("RectangleShape2D_yjeoo")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 48)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_mwtyu")

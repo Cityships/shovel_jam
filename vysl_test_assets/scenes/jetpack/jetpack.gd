@@ -3,6 +3,7 @@ class_name JetPack
 
 @onready var interactable_area : Area2D = get_node("InteractableArea")
 @onready var windup_progress_bar : ProgressBar = get_node("ProgressBar")
+@export var discharge_rate : float = 20.0
 
 var input_direction : Vector2
 
@@ -20,6 +21,13 @@ func _ready() -> void:
 			player_area.set_deferred("disabled", true)
 	)
 
+func recharge(value):
+	windup_progress_bar.value += value
+
+func _process(delta: float) -> void:
+	if input_direction != Vector2.ZERO and hold_player:
+		windup_progress_bar.value -= discharge_rate * delta
+
 func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("ui_accept") and player != null:
 		player.movement_restriction_count = 1
@@ -28,6 +36,11 @@ func _input(event: InputEvent) -> void:
 		player.position = round(player.position.normalized()) * 32
 		if abs(player.position.y) == abs(player.position.x):
 			player.position.y = 0
+		if player.position.x > 0:
+			windup_progress_bar.position = Vector2(-32,-16)
+		else:
+			windup_progress_bar.position = Vector2(24,-16)
+
 		player_area.position = player.position
 		player_area.set_deferred("disabled", false)
 
@@ -39,7 +52,7 @@ func _input(event: InputEvent) -> void:
 
 	input_direction.x = Input.get_axis("ui_left", "ui_right")
 	input_direction.y = Input.get_axis("ui_up", "ui_down")
-	if hold_player:
+	if hold_player and windup_progress_bar.value > 0:
 		constant_force = input_direction * Vector2(0.25, 1.25)
 	else:
 		constant_force = Vector2.ZERO
