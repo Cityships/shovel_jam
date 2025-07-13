@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biwh1jtafgece"
-path="res://.godot/imported/rogues.png-91e9e10cabcc39e08f613b80e9be0976.ctex"
+uid="uid://7v4lmspwfuf3"
+path="res://.godot/imported/Terrain (16x16).png-9717adde9e87820d1073caebb60225ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://vysl_test_assets/character/rogues.png"
-dest_files=["res://.godot/imported/rogues.png-91e9e10cabcc39e08f613b80e9be0976.ctex"]
+source_file="res://map/Terrain (16x16).png"
+dest_files=["res://.godot/imported/Terrain (16x16).png-9717adde9e87820d1073caebb60225ac.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7v4lmspwfuf3"
-path="res://.godot/imported/Terrain (16x16).png-114c197694d0c87bec7b7265f7d6435e.ctex"
+uid="uid://psfsagvivmh6"
+path="res://.godot/imported/monsters.png-ca6a6d73442cf56fc8926a41e5091468.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://vysl_test_assets/map/Terrain (16x16).png"
-dest_files=["res://.godot/imported/Terrain (16x16).png-114c197694d0c87bec7b7265f7d6435e.ctex"]
+source_file="res://enemies/monsters.png"
+dest_files=["res://.godot/imported/monsters.png-ca6a6d73442cf56fc8926a41e5091468.ctex"]
 
 [params]
 

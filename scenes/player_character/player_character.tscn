@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://dcvfajmk27hns"]
 
-[ext_resource type="Script" uid="uid://mln21dag3wyx" path="res://vysl_test_assets/character/player_character.gd" id="1_84nxo"]
-[ext_resource type="Texture2D" uid="uid://biwh1jtafgece" path="res://vysl_test_assets/character/rogues.png" id="2_ud604"]
-[ext_resource type="PackedScene" uid="uid://b6kaaaqphs6mv" path="res://vysl_test_assets/scenes/windup_gizmo/wind_up_gizmo.tscn" id="3_yia7k"]
+[ext_resource type="Script" uid="uid://mln21dag3wyx" path="res://scenes/player_character/player_character.gd" id="1_84nxo"]
+[ext_resource type="Texture2D" uid="uid://biwh1jtafgece" path="res://scenes/player_character/rogues.png" id="2_ud604"]
+[ext_resource type="PackedScene" uid="uid://b6kaaaqphs6mv" path="res://scenes/windup_gizmo/wind_up_gizmo.tscn" id="3_yia7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wlkhb"]
 

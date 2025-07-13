@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6kaaaqphs6mv"]
 
-[ext_resource type="Script" uid="uid://hywsynhg1uu5" path="res://vysl_test_assets/scenes/windup_gizmo/wind_up_gizmo.gd" id="1_edxmb"]
+[ext_resource type="Script" uid="uid://hywsynhg1uu5" path="res://scenes/windup_gizmo/wind_up_gizmo.gd" id="1_edxmb"]
 [ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="2_8vqp0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjeoo"]
