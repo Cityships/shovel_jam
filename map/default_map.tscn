@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://ou2lx56q26sn"]
+[gd_scene load_steps=4 format=4 uid="uid://ou2lx56q26sn"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_ikti3"]
 [ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/jetpack/jetpack.tscn" id="2_e51w3"]
 [ext_resource type="PackedScene" uid="uid://dcvfajmk27hns" path="res://scenes/player_character/player_character.tscn" id="3_e51w3"]
-[ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/emp_object/emp_object.tscn" id="4_yotyk"]
 
 [node name="DefaultMap" type="Node2D"]
 
@@ -28,6 +27,3 @@ position = Vector2(-160, 80)
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 position_smoothing_speed = 180.0
-
-[node name="EmpObject" parent="." instance=ExtResource("4_yotyk")]
-position = Vector2(96, 0)
