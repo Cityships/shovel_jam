@@ -3,24 +3,27 @@ class_name BaseEnemyBody extends CharacterBody2D
 ## Concrete enemies (e.g. Patroller, Chaser) extend and implement _process_state().
 
 ## ───────── CONFIGURABLE STATS ─────────
+@export var max_speed  : float = 60.0   
+@export var accel      : float = 500.0  
+@export var gravity    : float = 900.0  
+@export var turn_delay : float = 0.12 
 
-# ───────── CONFIGURABLE STATS ─────────
-@export var max_speed  : float = 60.0   # walk speed
-@export var accel      : float = 500.0  # ground acceleration
-@export var gravity    : float = 900.0  # downward force
-@export var turn_delay : float = 0.12   # seconds to wait before flipping
-
-# ───────── RUNTIME STATE ─────────
+## ───────── RUNTIME STATE ─────────
 var _move_dir   : int   = -1     ## -1 = left, 1 = right
 var _turn_timer : float = 0.0
 
 enum { STATE_IDLE, STATE_MOVE, STATE_STUNNED }
 var _state : int = STATE_IDLE
 
+@onready var ray_player: RayCast2D = %RayPlayer
 @onready var ray_front : RayCast2D = %RayFront     
 @onready var ray_down  : RayCast2D = %RayDown      
 @onready var sprite: Sprite2D = %Sprite
+@onready var chase_bubble: Area2D = %ChaseBubble
 
+
+func _ready() -> void:
+	chase_bubble.chase_bubblechase_bubble
 
 func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
@@ -42,7 +45,7 @@ func _process_state(delta: float) -> void:
 func enter_state(new_state: int) -> void:
 	_state = new_state
 
-# ───────── MOVEMENT HELPERS ─────────
+## ───────── MOVEMENT HELPERS ─────────
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -69,8 +72,10 @@ func _patrol_ground(delta: float) -> void:
 func _flip_rays() -> void:
 	ray_front.target_position.x =  abs(ray_front.target_position.x) * _move_dir
 	ray_down.target_position.x  =  abs(ray_down.target_position.x)  * _move_dir
+	ray_player.target_position.x  =  abs(ray_player.target_position.x)  * _move_dir
 	ray_front.force_raycast_update() 
 	ray_down.force_raycast_update() 
+	ray_player.force_raycast_update()
 	sprite.flip_h = _move_dir < 0       
 
 
@@ -82,3 +87,9 @@ func _should_turn() -> bool:
 		return true
 	else:
 		return false
+
+func chase_bubble_start():
+	chase_bubble.set_visible(true)
+	
+	
+	pass

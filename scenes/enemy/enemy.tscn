@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbkndbkistfnt"]
+[gd_scene load_steps=6 format=3 uid="uid://cbkndbkistfnt"]
 
 [ext_resource type="Script" uid="uid://daxdj2b8stsuf" path="res://enemy/scripts/base_enemy_manager.gd" id="1_40wdo"]
 [ext_resource type="Script" uid="uid://2b2vpx4gmhmh" path="res://enemy/scripts/base_enemy_body.gd" id="2_tjssy"]
@@ -7,6 +7,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7jla0"]
 radius = 4.0
 height = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_40wdo"]
+radius = 137.033
 
 [node name="BaseEnemyManager" type="Node2D"]
 script = ExtResource("1_40wdo")
@@ -29,10 +32,21 @@ shape = SubResource("CapsuleShape2D_7jla0")
 
 [node name="RayFront" type="RayCast2D" parent="BaseEnemyBody"]
 unique_name_in_owner = true
-position = Vector2(0, -4)
-target_position = Vector2(-128, 0)
+target_position = Vector2(-32, 0)
 
 [node name="RayDown" type="RayCast2D" parent="BaseEnemyBody"]
 unique_name_in_owner = true
-position = Vector2(0, 1)
-target_position = Vector2(-125, 12)
+target_position = Vector2(-30, 13)
+
+[node name="RayPlayer" type="RayCast2D" parent="BaseEnemyBody"]
+unique_name_in_owner = true
+target_position = Vector2(-103, 0)
+collision_mask = 8
+
+[node name="ChaseBubble" type="Area2D" parent="BaseEnemyBody"]
+unique_name_in_owner = true
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseEnemyBody/ChaseBubble"]
+shape = SubResource("CircleShape2D_40wdo")
+debug_color = Color(0.7392, 0.96, 0.86432, 0.203922)
