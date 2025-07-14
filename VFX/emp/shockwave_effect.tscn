@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://cidryyl6c10ou"]
+
+[ext_resource type="Script" uid="uid://bkdomajj3fywm" path="res://VFX/emp/shockwave_effect.gd" id="1_0iwh3"]
+[ext_resource type="Curve" uid="uid://cnostxl6f0hma" path="res://VFX/emp/shockwave_size_curve.tres" id="2_f8yo4"]
+[ext_resource type="Curve" uid="uid://bafiyqhyum7oe" path="res://VFX/emp/shockwave_force_curve.tres" id="3_2n2ej"]
+[ext_resource type="Gradient" uid="uid://bvgd1181esoxy" path="res://VFX/emp/shockwave_mark_gradient.tres" id="4_hpb6g"]
+[ext_resource type="Shader" uid="uid://dtglxnxgak1ae" path="res://VFX/emp/radial_shockwave.gdshader" id="5_csgah"]
+[ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="6_ncyjp"]
+
+[sub_resource type="Gradient" id="Gradient_phcgc"]
+offsets = PackedFloat32Array(0, 0.055814, 0.446512)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0.756863, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_phcgc"]
+noise_type = 2
+seed = 6
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3ooig"]
+seamless = true
+noise = SubResource("FastNoiseLite_phcgc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fheir"]
+shader = ExtResource("5_csgah")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = 0.35
+shader_parameter/size = 0.375
+shader_parameter/thickness = 0.0
+shader_parameter/mark_thickness = 0.005
+shader_parameter/mark_color = Color(1, 1, 1, 1)
+shader_parameter/subdivision = 128.0
+shader_parameter/noise = SubResource("NoiseTexture2D_3ooig")
+shader_parameter/noise_strength = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fheir"]
+radius = 144.0
+
+[node name="ShockwaveEffect" type="Node2D"]
+script = ExtResource("1_0iwh3")
+shockwave_radius_curve = ExtResource("2_f8yo4")
+force_curve = ExtResource("3_2n2ej")
+mark_gradient = ExtResource("4_hpb6g")
+flash_gradient = SubResource("Gradient_phcgc")
+
+[node name="EmpSprite2D" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_fheir")
+scale = Vector2(3, 3)
+texture = ExtResource("6_ncyjp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_fheir")

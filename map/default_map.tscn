@@ -1,29 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://ou2lx56q26sn"]
+[gd_scene load_steps=5 format=4 uid="uid://ou2lx56q26sn"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_ikti3"]
 [ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/jetpack/jetpack.tscn" id="2_e51w3"]
 [ext_resource type="PackedScene" uid="uid://dcvfajmk27hns" path="res://scenes/player_character/player_character.tscn" id="3_e51w3"]
-[ext_resource type="Shader" uid="uid://dtglxnxgak1ae" path="res://VFX/radial_shockwave.gdshader" id="4_jdhok"]
-[ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="5_phcgc"]
-[ext_resource type="Script" uid="uid://bkdomajj3fywm" path="res://VFX/shockwave_effect.gd" id="6_phcgc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ooig"]
-shader = ExtResource("4_jdhok")
-shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/force = 0.35
-shader_parameter/size = 0.375
-shader_parameter/thickness = 0.1
-shader_parameter/mark_thickness = 0.01
-shader_parameter/mark_color = Color(1, 1, 1, 1)
-shader_parameter/subdivision = 128.0
-
-[sub_resource type="Curve" id="Curve_phcgc"]
-_data = [Vector2(0, 0), 0.0, 2.95199, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_3ooig"]
-_data = [Vector2(0, 0.365687), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.07015, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kkbu"]
+size = Vector2(16, 16)
 
 [node name="DefaultMap" type="Node2D"]
 
@@ -50,12 +32,11 @@ position = Vector2(0, -80)
 zoom = Vector2(2, 2)
 position_smoothing_speed = 180.0
 
-[node name="ShockwaveEffect" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_3ooig")
-position = Vector2(0, -80)
-scale = Vector2(3, 3)
-texture = ExtResource("5_phcgc")
-script = ExtResource("6_phcgc")
-shockwave_radius_curve = SubResource("Curve_phcgc")
-force_curve = SubResource("Curve_3ooig")
-life_time = 3.0
+[node name="EmpObject" type="RigidBody2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="EmpObject"]
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EmpObject"]
+shape = SubResource("RectangleShape2D_3kkbu")
