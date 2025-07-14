@@ -17,14 +17,13 @@ tile_map_data = PackedByteArray("AADd/wkAAAANAAQAAADe/wkAAAANAAQAAADf/wkAAAANAAQ
 tile_set = ExtResource("1_eg0c1")
 
 [node name="Jetpack" parent="Map" instance=ExtResource("2_o6k2l")]
-position = Vector2(456, 539)
+position = Vector2(203, 550)
 
-[node name="PlayerCharacter" parent="Map" instance=ExtResource("2_w7x2g")]
-position = Vector2(548, 542)
-collision_layer = 10
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_w7x2g")]
+position = Vector2(134, 485)
 
-[node name="Camera2D" type="Camera2D" parent="Map/PlayerCharacter"]
+[node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
 
 [node name="Patroller" parent="." instance=ExtResource("4_o7bfj")]
-position = Vector2(144, 552)
+position = Vector2(597, 558)
 script = ExtResource("5_7gpld")

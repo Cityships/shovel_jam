@@ -65,5 +65,9 @@ right_mouse_button={
 2d_physics/layer_2="Interactable"
 2d_physics/layer_3="Windup"
 2d_physics/layer_4="Player"
-2d_physics/layer_5="Mob"
+2d_physics/layer_5="Enemy"
 2d_physics/layer_16="Mouse"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
