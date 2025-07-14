@@ -62,3 +62,8 @@ debug_color = Color(1, 1, 1, 0.42)
 [node name="PlayerArea" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yotyk")
 disabled = true
+
+[node name="Debug" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0

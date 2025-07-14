@@ -4,6 +4,7 @@ class_name JetPack
 @onready var interactable_area : Area2D = get_node("InteractableArea")
 @onready var windup_progress_bar : ProgressBar = get_node("ProgressBar")
 @export var discharge_rate : float = 20.0
+@onready var debug: Label = %Debug
 
 var input_direction : Vector2
 
@@ -26,10 +27,12 @@ func recharge(value):
 
 func _process(delta: float) -> void:
 	if input_direction != Vector2.ZERO and hold_player:
+		
 		windup_progress_bar.value -= discharge_rate * delta
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("ui_accept") and player != null:
+
 		player.movement_restriction_count = 1
 		hold_player = true
 		player.reparent(self, true)
@@ -45,10 +48,12 @@ func _input(event: InputEvent) -> void:
 		player_area.set_deferred("disabled", false)
 
 	if Input.is_action_just_released("ui_accept") and hold_player:
+
 		player.movement_restriction_count = 0
 		hold_player = false
 		player.reparent(get_parent())
 		player_area.set_deferred("disabled", true)
+		
 
 	input_direction.x = Input.get_axis("ui_left", "ui_right")
 	input_direction.y = Input.get_axis("ui_up", "ui_down")
