@@ -12,7 +12,7 @@ colors = PackedColorArray(0.999987, 0.393524, 0.363484, 1, 0.936943, 0, 0.146872
 metadata/_snap_count = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q63yx"]
-size = Vector2(1569, 358)
+size = Vector2(1487.5, 358)
 
 [node name="Turret" type="Node2D"]
 script = ExtResource("1_2a3v4")
@@ -45,7 +45,7 @@ collision_layer = 32
 collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TurretArea"]
-position = Vector2(730, 135)
+position = Vector2(770.75, 135)
 shape = SubResource("RectangleShape2D_q63yx")
 
 [node name="ChargeTime" type="Timer" parent="."]
@@ -55,6 +55,13 @@ one_shot = true
 [node name="ReloadTime" type="Timer" parent="."]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -9.0
+offset_top = 119.0
+offset_right = 34.0
+offset_bottom = 142.0
 
 [connection signal="timeout" from="ChargeTime" to="." method="_on_charge_time_timeout"]
 [connection signal="timeout" from="ReloadTime" to="." method="_on_reload_time_timeout"]

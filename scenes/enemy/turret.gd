@@ -1,74 +1,83 @@
 class_name Turret
 extends Node2D
 
-@onready var head := $TurretHead
-@export  var turn_speed : float = 180.0  
-@onready var charge_timer: Timer = %ChargeTime
-@onready var turret_area: Area2D = %TurretArea
-@onready var ray: RayCast2D = %Ray
-@onready var label: Label = %Label
-@onready var reload_time: Timer = %ReloadTime
+## ────────── NODES ──────────
+@onready var head         : Sprite2D = $TurretHead
+@onready var turret_area  : Area2D   = %TurretArea
+@onready var ray          : RayCast2D = %Ray
+@onready var charge_timer : Timer    = %ChargeTime  
+@onready var reload_timer : Timer    = %ReloadTime 
+@onready var label        : Label    = %Label
 
+
+
+##  ────────── CONSTANTS / ENUM ──────────
+enum State { PATROL, CHARGE, SHOOT }
+var state : int = State.PATROL  
 var target : Node2D = null
-var charging:bool = false 
-var charge: int = 0
-const MAX_CHARGE = 100
+var charging : bool = false                
 
-@export_enum("Patrol", "Charge", "Shoot") var turret_state = 0
+##  ────────── EXPORT VARIABLES ──────────
+@export var turn_speed : float = 180.0      # not used yet, future proof
 
-var text = str(turret_state)
+
+## ────────── UNITY STYLE LIFECYCLE ──────────
 func _ready() -> void:
 	turret_area.body_entered.connect(_on_body_entered)
-	turret_area.body_exited.connect(_on_body_exited)
+	turret_area.body_exited .connect(_on_body_exited)
+	charge_timer.timeout.connect(_on_charge_timeout)
+	reload_timer.timeout.connect(_on_reload_timeout)
+	_update_label()
 
+func _process(_delta: float) -> void:
+	if target:
+		head.look_at(target.global_position)
+
+## ────────── STATE CHANGE HELPER ──────────
+func _set_state(new_state: int) -> void:
+	if state == new_state:
+		return
+	state = new_state
+	_update_label()
+
+func _update_label():
+	label.text = ["Patrol", "Charge", "Shoot"][state]
+
+## ────────── AREA CALLBACKS ──────────
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		target = body
-		_state_change(1)
-		print(turret_state)
+		_set_state(State.CHARGE)
+		_start_charging()
 
 func _on_body_exited(body: Node) -> void:
 	if body == target:
 		target = null
+		_stop_charging()
+		_set_state(State.PATROL)
 
-func _process(_delta: float) -> void:
-	label.set_text(text)
-	if target == null:
+## ────────── CHARGE / RELOAD LOGIC ──────────
+func _start_charging():
+	if charging:
 		return
-
-	head.look_at(target.global_position) 
-
-
-func _state_change(new_state: int):
-	if new_state == 1:
-		turret_state = new_state
-		start_charging()
-		print("Charging")
-	if new_state == 2:
-		head.shoot_laser()
-		if target == null:
-			turret_state = 0
-		reload_time.start(1.0)
-		print("pewww")
-		
-
-func start_charging():
-	charge   = 0
 	charging = true
-	charge_timer.start()
-	print(charge_timer)             # first tick
+	charge_timer.start()               # uses Wait Time set in Inspector
 
-func stop_charging():
+func _stop_charging():
 	charging = false
 	charge_timer.stop()
 
-
-func _on_charge_time_timeout() -> void:
-	if not charging:
+func _on_charge_timeout() -> void:
+	if not charging or target == null:
 		return
-	_state_change(2)
-	
+	_stop_charging()
+	_set_state(State.SHOOT)
+	head.shoot_laser()
+	reload_timer.start()               # Wait Time set in Inspector
 
-
-func _on_reload_time_timeout() -> void:
-	start_charging()
+func _on_reload_timeout() -> void:
+	if target == null:
+		_set_state(State.PATROL)
+		return
+	_set_state(State.CHARGE)
+	_start_charging()
