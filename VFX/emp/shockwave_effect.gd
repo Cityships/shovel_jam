@@ -47,12 +47,13 @@ func play_animation():
 	emp_tween.chain().tween_callback(func(): shockwave_sprite.visible = false)
 
 	var detection = create_tween()
-	detection.tween_interval(0.5)
+	detection.tween_interval(0.1)
 	detection.tween_callback(
 		func():
 			#DEBUG body or area2d needs to be detected?
 			for body in area_2d.get_overlapping_bodies():
-				body.call(CALLED_METHOD_NAME)
+				body.get_node("VisualTreeRoot").play_emp_disable(6)
+				body.emp_disabled.emit(6)
 	)
 		
 #Test the animation for yourself!
