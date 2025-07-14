@@ -43,4 +43,3 @@ Area‑of‑effect stun; puzzle trigger, possibly more types/functions.
 
 
 Disables mechanical locks; triggers the environment or puzzle???
-

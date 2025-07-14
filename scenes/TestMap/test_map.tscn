@@ -18,10 +18,10 @@ tile_map_data = PackedByteArray("AADd/wkAAAANAAQAAADe/wkAAAANAAQAAADf/wkAAAANAAQ
 tile_set = ExtResource("1_eg0c1")
 
 [node name="Jetpack" parent="Map" instance=ExtResource("2_o6k2l")]
-position = Vector2(456, 539)
+position = Vector2(1366, 907)
 
 [node name="PlayerCharacter" parent="Map" instance=ExtResource("2_w7x2g")]
-position = Vector2(1487, 808)
+position = Vector2(1487, 924)
 collision_layer = 10
 
 [node name="Camera2D" type="Camera2D" parent="Map/PlayerCharacter"]
@@ -29,7 +29,7 @@ collision_layer = 10
 [node name="Turret" parent="Map" instance=ExtResource("4_1n5w2")]
 position = Vector2(1094, 633)
 
-[node name="Label" type="Label" parent="Map/Turret"]
+[node name="Label2" type="Label" parent="Map/Turret"]
 unique_name_in_owner = true
 offset_left = 1295.0
 offset_top = 739.0

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Shovel_jam"
+run/main_scene="uid://b0ktxfp2kloc5"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://c8v7yjmtjfbi1"
 
