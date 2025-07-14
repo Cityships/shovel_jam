@@ -20,15 +20,17 @@ var _state : int = STATE_IDLE
 @onready var ray_down  : RayCast2D = %RayDown      
 @onready var sprite: Sprite2D = %Sprite
 @onready var chase_bubble: Area2D = %ChaseBubble
-
+@onready var debug: Label = %Debug
 
 func _ready() -> void:
-	chase_bubble.chase_bubblechase_bubble
+	# chase_bubble.chase_bubblechase_bubble
+	pass
 
 func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
 	_process_state(delta)
 	move_and_slide()
+	_update_label()
 
 ## ───────── STATE MACHINE ─────────
 func _process_state(delta: float) -> void:
@@ -92,4 +94,10 @@ func chase_bubble_start():
 	chase_bubble.set_visible(true)
 	
 	
+	pass
+
+func _update_label():
+	debug.text = ["Idle", "Move", "Stunned"][_state]
+
+func _apply_stun():
 	pass
