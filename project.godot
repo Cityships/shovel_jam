@@ -14,6 +14,12 @@ config/name="Shovel_jam"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://c8v7yjmtjfbi1"
 
+[autoload]
+
+GlobalEvents="*res://global_autoload/global_events.gd"
+GlobalConstants="*res://global_autoload/global_constants.gd"
+Globals="*res://global_autoload/globals.gd"
+
 [dotnet]
 
 project/assembly_name="Shovel_jam"
