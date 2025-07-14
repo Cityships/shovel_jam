@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://c48jsiqrj4ve4"]
+
+[ext_resource type="Script" uid="uid://df5attnfnjnlb" path="res://scenes/TestMap/turret.gd" id="1_2a3v4"]
+[ext_resource type="Texture2D" uid="uid://bno25grtumtfw" path="res://enemy/png/turret_base.svg" id="2_5te02"]
+[ext_resource type="Texture2D" uid="uid://cmlmbigi8f8x0" path="res://enemy/png/turret_head.svg" id="3_d3l2q"]
+[ext_resource type="Script" uid="uid://30mfkg33ob33" path="res://scenes/TestMap/turret_head.gd" id="4_65cm3"]
+
+[sub_resource type="Gradient" id="Gradient_6mlxk"]
+offsets = PackedFloat32Array(0.773333, 1)
+colors = PackedColorArray(0.968627, 0, 0, 1, 1, 0.852598, 0.823946, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q63yx"]
+size = Vector2(1569, 358)
+
+[node name="Turret" type="Node2D"]
+script = ExtResource("1_2a3v4")
+
+[node name="TurretBase" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_5te02")
+
+[node name="TurretHead" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.07865, 1.03211)
+texture = ExtResource("3_d3l2q")
+centered = false
+offset = Vector2(-50, -10)
+script = ExtResource("4_65cm3")
+
+[node name="Ray" type="RayCast2D" parent="TurretHead"]
+unique_name_in_owner = true
+
+[node name="Beam" type="Line2D" parent="TurretHead/Ray"]
+unique_name_in_owner = true
+position = Vector2(126.083, 30.0356)
+points = PackedVector2Array(-1.85413, 2.90668)
+width = 3.0
+default_color = Color(0.860776, 0.146361, 0.14239, 1)
+gradient = SubResource("Gradient_6mlxk")
+
+[node name="TurretArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TurretArea"]
+position = Vector2(730, 135)
+shape = SubResource("RectangleShape2D_q63yx")
+
+[node name="ChargeTime" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="ReloadTime" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="timeout" from="ChargeTime" to="." method="_on_charge_time_timeout"]
+[connection signal="timeout" from="ReloadTime" to="." method="_on_reload_time_timeout"]

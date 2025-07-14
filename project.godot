@@ -18,6 +18,10 @@ config/icon="uid://c8v7yjmtjfbi1"
 
 project/assembly_name="Shovel_jam"
 
+[global_group]
+
+Player="Player"
+
 [input]
 
 ui_left={
@@ -66,6 +70,7 @@ right_mouse_button={
 2d_physics/layer_3="Windup"
 2d_physics/layer_4="Player"
 2d_physics/layer_5="Enemy"
+2d_physics/layer_6="Area"
 2d_physics/layer_16="Mouse"
 
 [rendering]
