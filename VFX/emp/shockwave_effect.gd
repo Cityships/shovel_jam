@@ -57,6 +57,6 @@ func play_animation():
 		
 #Test the animation for yourself!
 func _input(event: InputEvent) -> void:
-	pass 
+	pass
 	#if Input.is_action_just_pressed("ui_accept"):
 	#	play_animation()

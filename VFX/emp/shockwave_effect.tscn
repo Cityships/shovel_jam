@@ -20,7 +20,7 @@ fractal_type = 0
 seamless = true
 noise = SubResource("FastNoiseLite_phcgc")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fheir"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0iwh3"]
 shader = ExtResource("5_csgah")
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/force = 0.35
@@ -44,7 +44,7 @@ flash_gradient = SubResource("Gradient_phcgc")
 
 [node name="EmpSprite2D" type="Sprite2D" parent="."]
 visible = false
-material = SubResource("ShaderMaterial_fheir")
+material = SubResource("ShaderMaterial_0iwh3")
 scale = Vector2(3, 3)
 texture = ExtResource("6_ncyjp")
 
@@ -56,11 +56,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 0
+collision_priority = 0.0
+input_pickable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_fheir")
