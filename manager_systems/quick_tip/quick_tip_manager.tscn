@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://312utib22mvo"]
+
+[ext_resource type="Script" uid="uid://bljc8jtayynlk" path="res://manager_systems/quick_tip/quick_tip_manager.gd" id="1_41tgc"]
+[ext_resource type="PackedScene" uid="uid://cgv2mt2oj6v63" path="res://manager_systems/quick_tip/quick_tip.tscn" id="2_m25uw"]
+
+[node name="QuickTipManager" type="Node2D"]
+script = ExtResource("1_41tgc")
+quick_tip_scene = ExtResource("2_m25uw")

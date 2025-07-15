@@ -1,15 +1,17 @@
-extends RigidBody2D
+extends Gadget
 
 @onready var arc_indicator : Line2D = get_node("ArcIndicator")
 @export var max_throw_radius : float = 128
 @export var bezier_resolution : int = 16
 @export var emp_explosion_effect : PackedScene
 var emp_instance
+var tween
 
 @onready var interactable_area : Area2D = get_node("InteractableArea")
-@onready var windup_progress_bar : ProgressBar
-@export var throw_force_multiplier : float = 100
+@onready var windup_progress_bar : ProgressBar = get_node("ProgressBar")
+@export var max_throw_force_multiplier : float = 500
 var player
+var hold_emp : bool
 var armed_emp : bool
 
 @onready var audio_stream_player : AudioStreamPlayer2D = get_node("AudioStreamPlayer2D")
@@ -24,43 +26,54 @@ func _ready() -> void:
 	interactable_area.body_exited.connect(func(_value): player = null)
 
 func recharge(value):
+	return
 	windup_progress_bar.value += value
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_accept") and player != null and !armed_emp:
-		audio_stream_player.stream = audio_playlist.get_list_stream(0)
-		audio_stream_player.play()
+	if Input.is_action_just_pressed("ui_accept") and player != null:
+		if !armed_emp:
+			audio_stream_player.stream = audio_playlist.get_list_stream(0)
+			audio_stream_player.play()
 		freeze = true
 		reparent(player)
 		self.position = Vector2(0,-32)
-		armed_emp = true
-	if Input.is_action_just_released("ui_accept") and armed_emp:
+		hold_emp = true
+
+	if Input.is_action_just_released("ui_accept") and hold_emp:
 		freeze = false
 		reparent(scene, true)
-		armed_emp = false
-		var tween = create_tween()
-		var ticks = 4
-		tween.tween_callback(
-			func():
-				audio_stream_player.stream = audio_playlist.get_list_stream(1)
-				audio_stream_player.play()
-		)
-		tween.tween_callback(func():self.apply_force((get_global_mouse_position() - global_position) * throw_force_multiplier))
-		tween.chain().tween_interval(1)
-		tween.chain().tween_callback(func():audio_stream_player.stream = audio_playlist.get_list_stream(2))
-		for i in ticks:
-			tween.chain().tween_interval(2.0/(ticks + 0.01))
-			tween.chain().tween_callback(audio_stream_player.play)
-		for i in ticks:
-			tween.chain().tween_interval(1.0/(ticks + 0.5*i))
-			tween.chain().tween_callback(audio_stream_player.play)
-		tween.chain().tween_callback(func():emp_instance.play_animation())
-		tween.chain().tween_callback(
-			func():
-				audio_stream_player.stream = audio_playlist.get_list_stream(3)
-				audio_stream_player.play()
-				audio_stream_player.finished.connect(func():audio_stream_player.stream = null)
-		)
+		
+		if !armed_emp:	
+			audio_stream_player.stream = audio_playlist.get_list_stream(1)
+			audio_stream_player.play()
+		
+		var throw_force = Vector2.ZERO
+		throw_force.x = clamp(get_local_mouse_position().x, -max_throw_force_multiplier, max_throw_force_multiplier)
+		throw_force.y = clamp(get_local_mouse_position().y, -max_throw_force_multiplier, max_throw_force_multiplier)
+
+		self.apply_impulse((get_global_mouse_position() - global_position).normalized() * throw_force.length())
+		hold_emp = false
+
+		if !armed_emp:
+			armed_emp = true
+			tween = create_tween()
+			var ticks = 4
+			tween.tween_interval(1)
+			tween.chain().tween_callback(func():audio_stream_player.stream = audio_playlist.get_list_stream(2))
+			for i in ticks:
+				tween.chain().tween_interval(2.0/(ticks + 0.01))
+				tween.chain().tween_callback(audio_stream_player.play)
+			for i in ticks:
+				tween.chain().tween_interval(1.0/(ticks + 0.5*i))
+				tween.chain().tween_callback(audio_stream_player.play)
+			tween.chain().tween_callback(func():emp_instance.play_animation())
+			tween.chain().tween_callback(
+				func():
+					audio_stream_player.stream = audio_playlist.get_list_stream(3)
+					audio_stream_player.play()
+					audio_stream_player.finished.connect(func():audio_stream_player.stream = null)
+					armed_emp = false
+			)
 	return
 
 	#region EXPERIMENTAL PLOT TRAJECTORY

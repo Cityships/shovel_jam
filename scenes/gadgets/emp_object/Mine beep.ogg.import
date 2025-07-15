@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ck6k6ajlt8kq0"
+path="res://.godot/imported/Mine beep.ogg-f69a11629457c756335419ea8c9d2e7f.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/gadgets/emp_object/Mine beep.ogg"
+dest_files=["res://.godot/imported/Mine beep.ogg-f69a11629457c756335419ea8c9d2e7f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

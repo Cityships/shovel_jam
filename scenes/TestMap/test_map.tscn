@@ -1,12 +1,15 @@
-[gd_scene load_steps=8 format=4 uid="uid://b0ktxfp2kloc5"]
+[gd_scene load_steps=11 format=4 uid="uid://b0ktxfp2kloc5"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_eg0c1"]
-[ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/jetpack/jetpack.tscn" id="2_o6k2l"]
+[ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/gadgets/jetpack/jetpack.tscn" id="2_o6k2l"]
 [ext_resource type="PackedScene" uid="uid://dcvfajmk27hns" path="res://scenes/player_character/player_character.tscn" id="2_w7x2g"]
 [ext_resource type="PackedScene" uid="uid://c48jsiqrj4ve4" path="res://scenes/enemy/turret.tscn" id="4_1n5w2"]
 [ext_resource type="PackedScene" uid="uid://cbkndbkistfnt" path="res://scenes/enemy/enemy.tscn" id="4_o7bfj"]
-[ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/emp_object/emp_object.tscn" id="5_6mlxk"]
+[ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="5_6mlxk"]
 [ext_resource type="Script" uid="uid://b20ab0wdjtbwr" path="res://scenes/enemy/patroller_enemy.gd" id="5_7gpld"]
+[ext_resource type="PackedScene" uid="uid://312utib22mvo" path="res://manager_systems/quick_tip/quick_tip_manager.tscn" id="8_h7ndw"]
+[ext_resource type="PackedScene" uid="uid://demcpoicka6g6" path="res://manager_systems/gadget_manager/gadget_manager.tscn" id="9_61ery"]
+[ext_resource type="PackedScene" uid="uid://dejnlebot27dd" path="res://UI/controls_display/controls_display.tscn" id="10_61ery"]
 
 [node name="TestMap" type="Node2D"]
 
@@ -43,3 +46,11 @@ position = Vector2(665, 524)
 [node name="Patroller" parent="." instance=ExtResource("4_o7bfj")]
 position = Vector2(860, 566)
 script = ExtResource("5_7gpld")
+
+[node name="QuickTipManager" parent="." instance=ExtResource("8_h7ndw")]
+
+[node name="GadgetManager" parent="." instance=ExtResource("9_61ery")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ControlsDisplay" parent="CanvasLayer" instance=ExtResource("10_61ery")]

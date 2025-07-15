@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsotiedhoi7hi"]
 
-[ext_resource type="Script" uid="uid://b2uxmr8dtxxro" path="res://scenes/jetpack/jetpack.gd" id="1_ik27r"]
+[ext_resource type="Script" uid="uid://b2uxmr8dtxxro" path="res://scenes/gadgets/jetpack/jetpack.gd" id="1_ik27r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikti3"]
 size = Vector2(32, 40)
@@ -67,3 +67,5 @@ disabled = true
 unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt65m5ia5wu8q"]
+
+[ext_resource type="Script" uid="uid://ofkwl60ihm52" path="res://scenes/gadgets/gadget.gd" id="1_hkrqt"]
+
+[node name="Gadget" type="RigidBody2D"]
+script = ExtResource("1_hkrqt")

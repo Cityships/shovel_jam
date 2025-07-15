@@ -1,0 +1,127 @@
+[gd_scene load_steps=2 format=3 uid="uid://dejnlebot27dd"]
+
+[ext_resource type="Script" uid="uid://bneta55r5l705" path="res://UI/controls_display/controls_display.gd" id="1_jah1c"]
+
+[node name="ControlsDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_jah1c")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -210.0
+offset_right = 305.0
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+tab_alignment = 1
+current_tab = 0
+clip_tabs = false
+
+[node name="GadgetOptions (Q)" type="GridContainer" parent="Control/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+columns = 3
+metadata/_tab_index = 0
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/TabContainer/GadgetOptions (Q)"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Deploy
+Jetpack
+(1)"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer/TabContainer/GadgetOptions (Q)"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Deploy
+EMP
+(2)"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/VBoxContainer/TabContainer/GadgetOptions (Q)"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pick up
+Gadget
+(E)"
+horizontal_alignment = 1
+
+[node name="KeyOptions (Q)" type="GridContainer" parent="Control/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+columns = 3
+metadata/_tab_index = 1
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/TabContainer/KeyOptions (Q)"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Standard
+Key
+(1)"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer/TabContainer/KeyOptions (Q)"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Light
+Key
+(1)"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/VBoxContainer/TabContainer/KeyOptions (Q)"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Remote
+Key
+(1)"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Press space to interact with gadgets.
+WASD to control the jetpack.
+Use the mouse to throw the EMP.
+Keys can be used once near a gadget."
+fit_content = true
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(305, 110)
+layout_mode = 2
