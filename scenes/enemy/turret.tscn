@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c48jsiqrj4ve4"]
+[gd_scene load_steps=9 format=3 uid="uid://c48jsiqrj4ve4"]
 
 [ext_resource type="Script" uid="uid://df5attnfnjnlb" path="res://scenes/enemy/turret.gd" id="1_2a3v4"]
 [ext_resource type="Texture2D" uid="uid://bno25grtumtfw" path="res://enemy/png/turret_base.svg" id="2_5te02"]
@@ -14,6 +14,9 @@ metadata/_snap_count = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q63yx"]
 size = Vector2(1487.5, 358)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5te02"]
+size = Vector2(208, 122)
 
 [node name="Turret" type="Node2D"]
 script = ExtResource("1_2a3v4")
@@ -64,6 +67,14 @@ offset_left = -9.0
 offset_top = 119.0
 offset_right = 34.0
 offset_bottom = 142.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(40, 51)
+shape = SubResource("RectangleShape2D_5te02")
 
 [connection signal="timeout" from="ChargeTime" to="." method="_on_charge_time_timeout"]
 [connection signal="timeout" from="ReloadTime" to="." method="_on_reload_time_timeout"]

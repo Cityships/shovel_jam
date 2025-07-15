@@ -57,7 +57,7 @@ func play_animation():
 			#HERE
 			for area in area_2d.get_overlapping_areas():
 				area.get_parent().get_node("VisualTreeRoot").play_emp_disable(6)
-				area.emp_disabled.emit(6)
+				area.get_parent().emp_disabled.emit(6)
 	)
 #Test the animation for yourself!
 func _input(event: InputEvent) -> void:
