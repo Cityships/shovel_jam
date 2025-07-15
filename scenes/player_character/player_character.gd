@@ -61,6 +61,3 @@ func _input(_event: InputEvent) -> void:
 		GlobalEvents.request_deploy_gadget.emit(gadget_area.global_position, "Jetpack")
 	if Input.is_key_pressed(KEY_2) and current_controls == -1:
 		GlobalEvents.request_deploy_gadget.emit(gadget_area.global_position, "EmpObject")
-
-
-

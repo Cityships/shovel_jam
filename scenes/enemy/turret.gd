@@ -1,7 +1,7 @@
 class_name Turret
 extends Node2D
 
-# ────────── NODES ──────────
+## ────────── NODES ──────────
 @onready var head         : Sprite2D = %VisualTreeRoot
 @onready var turret_area  : Area2D   = %TurretArea
 @onready var ray          : RayCast2D = %Ray
@@ -9,34 +9,46 @@ extends Node2D
 @onready var reload_timer : Timer    = %ReloadTime
 @onready var label        : Label    = %Label
 
-# ────────── CONSTANTS / ENUM ──────────
+## ────────── CONSTANTS / ENUM ──────────
 enum State { PATROL, CHARGE, SHOOT, IDLE }
 
-var state        : int    = State.PATROL
-var target       : Node2D = null
-var charging     : bool   = false
-@export var turn_speed : float = 180.0
+var _patrol_base_y   : float   
+var state            : int    = State.PATROL
+var target           : Node2D = null
+var charging         : bool   = false
+var _patrol_base_rot : float  
 
-# ────────── SIGNALS ──────────
+
+## ────────── SIGNALS ──────────
 signal state_changed(new_state : int)
 signal emp_disabled(duration   : float)
 
-# ────────── READY ──────────
+## ────────── EXPORT  ──────────
+@export var turn_speed           : float = 180.0
+@export var patrol_pan_angle_deg : float = 45.0   ## how far to pan left/right
+@export var patrol_pan_speed     : float = 1.2     ## radians-per-second
+@export var patrol_center_angle_deg := 0.0 
+## ────────── READY ──────────
 func _ready() -> void:
+	_patrol_base_rot = deg_to_rad(patrol_center_angle_deg)
 	turret_area.body_entered.connect(_on_body_entered)
 	turret_area.body_exited.connect(_on_body_exited)
 	charge_timer.timeout.connect(_on_charge_timeout)
 	reload_timer.timeout.connect(_on_reload_timeout)
 	emp_disabled.connect(_on_emp_disabled)
 	_update_label()
-	print()
 
-# ────────── PROCESS ──────────
+
+## ────────── PROCESS ──────────
 func _process(_delta: float) -> void:
-	if target:
+	if target and state != State.PATROL:
 		head.look_at(target.global_position)
+	if state == State.PATROL:
+		var t      = Time.get_ticks_msec() * 0.001
+		var offset = sin(t * TAU * patrol_pan_speed) * deg_to_rad(patrol_pan_angle_deg)
+		head.rotation = _patrol_base_rot + offset
 
-# ────────── STATE HELPERS ──────────
+## ────────── STATE HELPERS ──────────
 func _set_state(new_state: int) -> void:
 	if state == new_state: return
 	state = new_state
@@ -46,7 +58,7 @@ func _set_state(new_state: int) -> void:
 func _update_label() -> void:
 	label.text = ["Patrol", "Charge", "Shoot", "Idle"][state]
 
-# ────────── AREA CALLBACKS ──────────
+## ────────── AREA CALLBACKS ──────────
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		target = body
@@ -59,7 +71,7 @@ func _on_body_exited(body: Node) -> void:
 		_stop_charging()
 		_set_state(State.PATROL)
 
-# ────────── CHARGE / RELOAD ──────────
+## ────────── CHARGE / RELOAD ──────────
 func _start_charging() -> void:
 	if charging: return
 	charging = true
@@ -82,8 +94,15 @@ func _on_reload_timeout() -> void:
 		_start_charging()
 	else:
 		_set_state(State.PATROL)
+		
+		
 
-# ────────── EMP STUN (lambda + tween) ──────────
+## ────────── Patrol  ──────────
+
+func _patrol_start()->void:
+	pass
+
+## ────────── EMP STUN (lambda + tween) ──────────
 func _on_emp_disabled(duration: float) -> void:
 	print("Signal Reached")
 	_stop_charging()
