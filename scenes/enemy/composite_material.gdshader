@@ -10,7 +10,7 @@ group_uniforms Grayscale;
 uniform bool grayscale_enabled;
 uniform bool weighted = true;
 
-group_uniforms Outline; 
+group_uniforms Outline;
 uniform vec4 outline_color : source_color = vec4(1.0);
 uniform float width : hint_range(0, 10) = 1.0;
 uniform int pattern : hint_range(0, 2) = 0; // diamond, circle, square
@@ -79,5 +79,5 @@ void fragment() {
 	else if (grayscale_enabled){
 		COLOR.rgb = mix(vec3((COLOR.r + COLOR.g + COLOR.b) / 3.0),  vec3(0.299 * COLOR.r + 0.587 * COLOR.g + 0.114 * COLOR.b), float(weighted));
 	}
-	
+
 }
