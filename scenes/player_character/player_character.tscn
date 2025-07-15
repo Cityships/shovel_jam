@@ -24,3 +24,5 @@ offset = Vector2(0, -4)
 
 [node name="WindUpGizmo" parent="." instance=ExtResource("3_yia7k")]
 position = Vector2(0, -48)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]

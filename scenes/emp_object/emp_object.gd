@@ -12,6 +12,9 @@ var emp_instance
 var player
 var armed_emp : bool
 
+@onready var audio_stream_player : AudioStreamPlayer2D = get_node("AudioStreamPlayer2D")
+@export var audio_playlist : AudioStreamPlaylist
+
 @onready var scene = get_parent()
 
 func _ready() -> void:
@@ -24,7 +27,9 @@ func recharge(value):
 	windup_progress_bar.value += value
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_accept") and player != null:
+	if Input.is_action_just_pressed("ui_accept") and player != null and !armed_emp:
+		audio_stream_player.stream = audio_playlist.get_list_stream(0)
+		audio_stream_player.play()
 		freeze = true
 		reparent(player)
 		self.position = Vector2(0,-32)
@@ -33,10 +38,29 @@ func _input(_event: InputEvent) -> void:
 		freeze = false
 		reparent(scene, true)
 		armed_emp = false
-		self.apply_force((get_global_mouse_position() - global_position) * throw_force_multiplier)
 		var tween = create_tween()
-		tween.tween_interval(2)
+		var ticks = 4
+		tween.tween_callback(
+			func():
+				audio_stream_player.stream = audio_playlist.get_list_stream(1)
+				audio_stream_player.play()
+		)
+		tween.tween_callback(func():self.apply_force((get_global_mouse_position() - global_position) * throw_force_multiplier))
+		tween.chain().tween_interval(1)
+		tween.chain().tween_callback(func():audio_stream_player.stream = audio_playlist.get_list_stream(2))
+		for i in ticks:
+			tween.chain().tween_interval(2.0/(ticks + 0.01))
+			tween.chain().tween_callback(audio_stream_player.play)
+		for i in ticks:
+			tween.chain().tween_interval(1.0/(ticks + 0.5*i))
+			tween.chain().tween_callback(audio_stream_player.play)
 		tween.chain().tween_callback(func():emp_instance.play_animation())
+		tween.chain().tween_callback(
+			func():
+				audio_stream_player.stream = audio_playlist.get_list_stream(3)
+				audio_stream_player.play()
+				audio_stream_player.finished.connect(func():audio_stream_player.stream = null)
+		)
 	return
 
 	#region EXPERIMENTAL PLOT TRAJECTORY

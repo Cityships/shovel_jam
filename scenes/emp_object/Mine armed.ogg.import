@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c7n0cylabovd0"
+path="res://.godot/imported/Mine armed.ogg-70e244dd3b56e1a320c22e3577ac2d6d.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/emp_object/Mine armed.ogg"
+dest_files=["res://.godot/imported/Mine armed.ogg-70e244dd3b56e1a320c22e3577ac2d6d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
