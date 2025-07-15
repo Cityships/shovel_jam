@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://cidryyl6c10ou"]
 
-[ext_resource type="Script" uid="uid://bkdomajj3fywm" path="res://VFX/emp/shockwave_effect.gd" id="1_0iwh3"]
-[ext_resource type="Curve" uid="uid://cnostxl6f0hma" path="res://VFX/emp/shockwave_size_curve.tres" id="2_f8yo4"]
-[ext_resource type="Curve" uid="uid://bafiyqhyum7oe" path="res://VFX/emp/shockwave_force_curve.tres" id="3_2n2ej"]
-[ext_resource type="Gradient" uid="uid://bvgd1181esoxy" path="res://VFX/emp/shockwave_mark_gradient.tres" id="4_hpb6g"]
-[ext_resource type="Shader" uid="uid://dtglxnxgak1ae" path="res://VFX/emp/radial_shockwave.gdshader" id="5_csgah"]
+[ext_resource type="Script" uid="uid://bkdomajj3fywm" path="res://scenes/gadgets/emp_object/shockwave_effect/shockwave_effect.gd" id="1_0iwh3"]
+[ext_resource type="Curve" uid="uid://cnostxl6f0hma" path="res://scenes/gadgets/emp_object/shockwave_effect/shockwave_size_curve.tres" id="2_f8yo4"]
+[ext_resource type="Curve" uid="uid://bafiyqhyum7oe" path="res://scenes/gadgets/emp_object/shockwave_effect/shockwave_force_curve.tres" id="3_2n2ej"]
+[ext_resource type="Gradient" uid="uid://bvgd1181esoxy" path="res://scenes/gadgets/emp_object/shockwave_effect/shockwave_mark_gradient.tres" id="4_hpb6g"]
+[ext_resource type="Shader" uid="uid://dtglxnxgak1ae" path="res://scenes/gadgets/emp_object/shockwave_effect/radial_shockwave.gdshader" id="5_csgah"]
 [ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="6_ncyjp"]
 
 [sub_resource type="Gradient" id="Gradient_phcgc"]

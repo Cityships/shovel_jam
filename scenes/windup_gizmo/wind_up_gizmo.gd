@@ -8,7 +8,7 @@ signal key_rotation
 @export var key_type : KeyType = KeyType.STANDARD
 @export var charge_per_rotation : float = 20
 @onready var turn_key : Node2D = %TurnKey
-@onready var recharge_area : Area2D = get_node("Area2D")
+@onready var recharge_area : Area2D = get_node("RechargeArea")
 @onready var sprite_2d : Sprite2D = get_node("Sprite2D")
 
 var current_rotation : float
@@ -17,8 +17,10 @@ var last_mouse_velocity : float
 var tween
 var mouse_over : bool = false
 
+var current_controls : int = -1#-1 gadget options, 1 key options
+
 func _ready() -> void:
-	turn_key.get_node("Area2D").mouse_entered.connect(func(): mouse_over = true)
+	turn_key.get_node("KeyArea").mouse_entered.connect(func(): mouse_over = true)
 	key_rotation.connect(recharge)
 
 	recharge_area.body_entered.connect(func(_value): visible = true)
@@ -40,6 +42,13 @@ func _ready() -> void:
 				recharge_area.force_update_transform()
 	)
 
+	GlobalEvents.control_option_switch.connect(
+		func(value):
+			current_controls = value
+			if value == 1: 
+				GlobalEvents.create_quick_tip.emit(get_parent().global_position, "Keys Selected!")
+	)
+
 func _process(delta: float) -> void:
 	if rotation_ticks > 0 and key_type == KeyType.LIGHT and last_mouse_velocity > 0:
 		if last_mouse_velocity < 0.5:
@@ -53,13 +62,13 @@ func _process(delta: float) -> void:
 
 func _input(_event: InputEvent) -> void:
 
-	if Input.is_key_pressed(KEY_1):
+	if Input.is_key_pressed(KEY_1) and current_controls == 1:
 		key_type = KeyType.STANDARD
 		key_type_changed.emit()
-	if Input.is_key_pressed(KEY_2):
+	elif Input.is_key_pressed(KEY_2) and current_controls == 1:
 		key_type = KeyType.LIGHT
 		key_type_changed.emit()
-	if Input.is_key_pressed(KEY_3):
+	elif Input.is_key_pressed(KEY_3) and current_controls == 1:
 		key_type = KeyType.REMOTE
 		key_type_changed.emit()
 
@@ -96,3 +105,5 @@ func recharge(rotations : float):
 	for body in recharge_area.get_overlapping_bodies():
 		if body.has_method("recharge"):
 			body.recharge(rotations * charge_per_rotation)
+		else:
+			print("wind_up_gizmo.gd: ", body.name, " does not have a recharge function")

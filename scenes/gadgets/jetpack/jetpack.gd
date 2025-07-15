@@ -1,10 +1,12 @@
-extends RigidBody2D
+extends Gadget
 class_name JetPack
 
 @onready var interactable_area : Area2D = get_node("InteractableArea")
 @onready var windup_progress_bar : ProgressBar = get_node("ProgressBar")
+@onready var raycast : RayCast2D = get_node("RayCast2D")
 @export var discharge_rate : float = 20.0
 @onready var debug: Label = %Debug
+
 
 var input_direction : Vector2
 
@@ -23,11 +25,11 @@ func _ready() -> void:
 	)
 
 func recharge(value):
-	windup_progress_bar.value += value
+	if raycast.is_colliding():
+		windup_progress_bar.value += value
 
 func _process(delta: float) -> void:
 	if input_direction != Vector2.ZERO and hold_player:
-		
 		windup_progress_bar.value -= discharge_rate * delta
 
 func _input(event: InputEvent) -> void:

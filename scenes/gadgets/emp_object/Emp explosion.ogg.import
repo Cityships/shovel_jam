@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://drhxnphqdg78a"
+path="res://.godot/imported/Emp explosion.ogg-21a6482c97f4d946decf13f60bf408f6.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/gadgets/emp_object/Emp explosion.ogg"
+dest_files=["res://.godot/imported/Emp explosion.ogg-21a6482c97f4d946decf13f60bf408f6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

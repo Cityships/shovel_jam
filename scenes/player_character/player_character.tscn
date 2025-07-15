@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcvfajmk27hns"]
+[gd_scene load_steps=7 format=3 uid="uid://dcvfajmk27hns"]
 
 [ext_resource type="Script" uid="uid://mln21dag3wyx" path="res://scenes/player_character/player_character.gd" id="1_84nxo"]
 [ext_resource type="Texture2D" uid="uid://biwh1jtafgece" path="res://scenes/player_character/rogues.png" id="2_ud604"]
@@ -9,6 +9,9 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_m6ehi"]
 atlas = ExtResource("2_ud604")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n4pp"]
+size = Vector2(32, 48)
 
 [node name="PlayerCharacter" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 8
@@ -23,4 +26,15 @@ texture = SubResource("AtlasTexture_m6ehi")
 offset = Vector2(0, -4)
 
 [node name="WindUpGizmo" parent="." instance=ExtResource("3_yia7k")]
+visible = false
 position = Vector2(0, -48)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+
+[node name="GadgetArea" type="Area2D" parent="."]
+position = Vector2(-32, -16)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GadgetArea"]
+shape = SubResource("RectangleShape2D_7n4pp")

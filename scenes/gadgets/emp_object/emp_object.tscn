@@ -1,7 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://chtrhnqgbwnwi"]
+[gd_scene load_steps=12 format=3 uid="uid://chtrhnqgbwnwi"]
 
-[ext_resource type="Script" uid="uid://6qbcgtkrvrhq" path="res://scenes/emp_object/emp_object.gd" id="1_e10rs"]
-[ext_resource type="PackedScene" uid="uid://cidryyl6c10ou" path="res://VFX/emp/shockwave_effect.tscn" id="2_wio0p"]
+[ext_resource type="Script" uid="uid://6qbcgtkrvrhq" path="res://scenes/gadgets/emp_object/emp_object.gd" id="1_e10rs"]
+[ext_resource type="PackedScene" uid="uid://cidryyl6c10ou" path="res://scenes/gadgets/emp_object/shockwave_effect/shockwave_effect.tscn" id="2_wio0p"]
+[ext_resource type="AudioStream" uid="uid://c7n0cylabovd0" path="res://scenes/gadgets/emp_object/Mine armed.ogg" id="3_wio0p"]
+[ext_resource type="AudioStream" uid="uid://ck6k6ajlt8kq0" path="res://scenes/gadgets/emp_object/Mine beep.ogg" id="4_iqdot"]
+[ext_resource type="AudioStream" uid="uid://drhxnphqdg78a" path="res://scenes/gadgets/emp_object/Emp explosion.ogg" id="5_jjmin"]
+[ext_resource type="AudioStream" uid="uid://bm4pt33qlgndi" path="res://scenes/gadgets/emp_object/Flap.ogg" id="6_ng87o"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_iqdot"]
+loop = false
+stream_count = 4
+stream_0 = ExtResource("3_wio0p")
+stream_1 = ExtResource("6_ng87o")
+stream_2 = ExtResource("4_iqdot")
+stream_3 = ExtResource("5_jjmin")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kkbu"]
 size = Vector2(16, 16)
@@ -20,10 +32,11 @@ height = 32
 radius = 24.0
 
 [node name="EmpObject" type="RigidBody2D"]
-collision_layer = 0
+collision_layer = 4
 lock_rotation = true
 script = ExtResource("1_e10rs")
 emp_explosion_effect = ExtResource("2_wio0p")
+audio_playlist = SubResource("AudioStreamPlaylist_iqdot")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(1, 1, 0, 1)
@@ -61,3 +74,5 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
 shape = SubResource("CircleShape2D_jdhok")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
