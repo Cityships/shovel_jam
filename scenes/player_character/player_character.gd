@@ -17,7 +17,7 @@ func _ready() -> void:
 		func(value):
 			current_controls = value
 			if value == 1: 
-				GlobalEvents.create_quick_tip.emit(get_parent().global_position, "Gadgets Selected!")
+				GlobalEvents.create_quick_tip.emit(global_position, "Gadgets Selected!")
 	)
 	pass
 
