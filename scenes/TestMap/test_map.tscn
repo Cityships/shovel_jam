@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://b0ktxfp2kloc5"]
+[gd_scene load_steps=12 format=4 uid="uid://b0ktxfp2kloc5"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_eg0c1"]
 [ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/gadgets/jetpack/jetpack.tscn" id="2_o6k2l"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://312utib22mvo" path="res://manager_systems/quick_tip/quick_tip_manager.tscn" id="8_h7ndw"]
 [ext_resource type="PackedScene" uid="uid://demcpoicka6g6" path="res://manager_systems/gadget_manager/gadget_manager.tscn" id="9_61ery"]
 [ext_resource type="PackedScene" uid="uid://dejnlebot27dd" path="res://UI/controls_display/controls_display.tscn" id="10_61ery"]
+[ext_resource type="PackedScene" uid="uid://car3gju7srni5" path="res://scenes/moving_platform/moving_platform_template.tscn" id="11_ys2ul"]
 
 [node name="TestMap" type="Node2D"]
 
@@ -29,6 +30,7 @@ position = Vector2(577, 549)
 collision_layer = 10
 
 [node name="Camera2D" type="Camera2D" parent="Map/PlayerCharacter"]
+zoom = Vector2(2, 2)
 
 [node name="Turret" parent="Map" instance=ExtResource("4_1n5w2")]
 position = Vector2(1094, 633)
@@ -54,3 +56,5 @@ script = ExtResource("5_7gpld")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ControlsDisplay" parent="CanvasLayer" instance=ExtResource("10_61ery")]
+
+[node name="Path2D" parent="." instance=ExtResource("11_ys2ul")]

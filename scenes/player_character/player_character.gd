@@ -16,7 +16,7 @@ func _ready() -> void:
 	GlobalEvents.control_option_switch.connect(
 		func(value):
 			current_controls = value
-			if value == 1: 
+			if value == -1: 
 				GlobalEvents.create_quick_tip.emit(global_position, "Gadgets Selected!")
 	)
 	pass
@@ -61,6 +61,3 @@ func _input(_event: InputEvent) -> void:
 		GlobalEvents.request_deploy_gadget.emit(gadget_area.global_position, "Jetpack")
 	if Input.is_key_pressed(KEY_2) and current_controls == -1:
 		GlobalEvents.request_deploy_gadget.emit(gadget_area.global_position, "EmpObject")
-
-
-
