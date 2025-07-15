@@ -29,7 +29,6 @@ collision_layer = 10
 
 [node name="Turret" parent="Map" instance=ExtResource("4_1n5w2")]
 position = Vector2(1094, 633)
-turn_speed = 180.0
 
 [node name="Label2" type="Label" parent="Map/Turret"]
 unique_name_in_owner = true
