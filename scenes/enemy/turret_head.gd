@@ -15,7 +15,7 @@ var _ready_to_fire := true
 func _ready() -> void:
 	material = material.duplicate()
 
-func set_solid_color(flag, color):#Necessary because modulate cannot override shaders.
+func set_solid_color(flag, color):## Necessary because modulate cannot override shaders.
 	material.set_shader_parameter("fill_color", color)
 	material.set_shader_parameter("fill_enabled", flag)
 
@@ -50,7 +50,7 @@ func shoot_laser() -> void:
 		return
 
 	_ready_to_fire = false
-	ray.enabled    = true          # physics on (NO ray.visible!)
+	ray.enabled    = true      
 	ray.target_position = Vector2.RIGHT * max_distance
 	ray.force_raycast_update()
 
@@ -64,13 +64,13 @@ func shoot_laser() -> void:
 	else:
 		hit_pos = global_position + global_transform.x * max_distance
 
-	# draw the flashy beam only
+
 	beam.points  = [Vector2.ZERO, beam.to_local(hit_pos)]
 	beam.visible = true
 
 	await get_tree().create_timer(flash_time).timeout
 	beam.visible = false
-	ray.enabled  = false           # stop querying until next shot
+	ray.enabled  = false
 
 	await get_tree().create_timer(cooldown_time - flash_time).timeout
 	_ready_to_fire = true

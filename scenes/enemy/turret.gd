@@ -24,11 +24,12 @@ signal emp_disabled(duration   : float)
 # ────────── READY ──────────
 func _ready() -> void:
 	turret_area.body_entered.connect(_on_body_entered)
-	turret_area.body_exited .connect(_on_body_exited)
-	charge_timer.timeout     .connect(_on_charge_timeout)
-	reload_timer.timeout     .connect(_on_reload_timeout)
-	emp_disabled             .connect(_on_emp_disabled)
+	turret_area.body_exited.connect(_on_body_exited)
+	charge_timer.timeout.connect(_on_charge_timeout)
+	reload_timer.timeout.connect(_on_reload_timeout)
+	emp_disabled.connect(_on_emp_disabled)
 	_update_label()
+	print()
 
 # ────────── PROCESS ──────────
 func _process(_delta: float) -> void:
@@ -84,5 +85,6 @@ func _on_reload_timeout() -> void:
 
 # ────────── EMP STUN (lambda + tween) ──────────
 func _on_emp_disabled(duration: float) -> void:
+	print("Signal Reached")
 	_stop_charging()
 	_set_state(State.IDLE)
