@@ -86,7 +86,7 @@ func _flip_rays() -> void:
 	ray_down.target_position.x  =  abs(ray_down.target_position.x)  * _move_dir
 	ray_front.force_raycast_update() 
 	ray_down.force_raycast_update() 
-	sprite.flip_h = _move_dir < 0       
+	sprite.flip_h = _move_dir > 0  ## > not <     
 
 
 func _should_turn() -> bool:

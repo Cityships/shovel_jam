@@ -1,22 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbkndbkistfnt"]
+[gd_scene load_steps=7 format=3 uid="uid://cbkndbkistfnt"]
 
 [ext_resource type="Script" uid="uid://daxdj2b8stsuf" path="res://enemy/scripts/base_enemy_manager.gd" id="1_40wdo"]
 [ext_resource type="Script" uid="uid://2b2vpx4gmhmh" path="res://enemy/scripts/base_enemy_body.gd" id="2_tjssy"]
-[ext_resource type="Shader" uid="uid://hf3ps7in7kiy" path="res://scenes/enemy/composite_material.gdshader" id="3_cwlon"]
+[ext_resource type="Material" uid="uid://co8x461kq2vk3" path="res://scenes/enemy/enemy.tres" id="3_cwlon"]
 [ext_resource type="Texture2D" uid="uid://psfsagvivmh6" path="res://enemy/png/monsters.png" id="3_gl05p"]
 [ext_resource type="Script" uid="uid://c65vc5jn16sbr" path="res://scenes/enemy/sprite_shader_control.gd" id="4_tjssy"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbhyu"]
-shader = ExtResource("3_cwlon")
-shader_parameter/fill_color = Color(1, 1, 1, 1)
-shader_parameter/fill_enabled = false
-shader_parameter/grayscale_enabled = false
-shader_parameter/weighted = true
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7jla0"]
 radius = 4.0
@@ -33,7 +21,7 @@ script = ExtResource("2_tjssy")
 
 [node name="VisualTreeRoot" type="Sprite2D" parent="BaseEnemyBody"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_nbhyu")
+material = ExtResource("3_cwlon")
 texture = ExtResource("3_gl05p")
 offset = Vector2(-2, -6)
 region_enabled = true
@@ -47,9 +35,9 @@ shape = SubResource("CapsuleShape2D_7jla0")
 [node name="RayFront" type="RayCast2D" parent="BaseEnemyBody"]
 unique_name_in_owner = true
 position = Vector2(0, -4)
-target_position = Vector2(-128, 0)
+target_position = Vector2(-35, -1)
 
 [node name="RayDown" type="RayCast2D" parent="BaseEnemyBody"]
 unique_name_in_owner = true
 position = Vector2(0, 1)
-target_position = Vector2(-125, 12)
+target_position = Vector2(-34, 9)
