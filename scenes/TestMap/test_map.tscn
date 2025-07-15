@@ -52,5 +52,6 @@ script = ExtResource("5_7gpld")
 [node name="GadgetManager" parent="." instance=ExtResource("9_61ery")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ControlsDisplay" parent="CanvasLayer" instance=ExtResource("10_61ery")]

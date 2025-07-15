@@ -20,6 +20,9 @@ size = Vector2(208, 122)
 
 [node name="Turret" type="Node2D"]
 script = ExtResource("1_2a3v4")
+patrol_pan_angle_deg = 20.0
+patrol_pan_speed = 0.2
+patrol_center_angle_deg = 15.0
 
 [node name="TurretBase" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -33,6 +36,7 @@ texture = ExtResource("3_d3l2q")
 centered = false
 offset = Vector2(-50, -10)
 script = ExtResource("4_65cm3")
+cooldown_time = 1.0
 
 [node name="Ray" type="RayCast2D" parent="VisualTreeRoot"]
 unique_name_in_owner = true
