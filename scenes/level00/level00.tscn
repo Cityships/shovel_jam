@@ -42,6 +42,19 @@ skip_to_index = 9
 [node name="GadgetDoor" parent="Map" instance=ExtResource("1_kj78h")]
 position = Vector2(-504, -480)
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Map"]
+offset_left = -896.0
+offset_top = -576.0
+offset_right = -856.0
+offset_bottom = -536.0
+bbcode_enabled = true
+text = "[center]PLACE TURRET HERE
+AND ADJUST LEVEL.
+DOOR IS USED
+FOR COVER."
+fit_content = true
+autowrap_mode = 0
+
 [node name="Jetpack" parent="." instance=ExtResource("10_kj78h")]
 position = Vector2(800, -32)
 starting_charge = 0.0
@@ -63,7 +76,7 @@ position = Vector2(-112, -128)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,7 +85,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TutorialBot" type="VBoxContainer" parent="CanvasLayer/Control"]
+[node name="TutorialBot" type="VBoxContainer" parent="CanvasLayer/UI"]
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
@@ -80,14 +93,14 @@ scale = Vector2(1.5, 1.5)
 script = ExtResource("8_g03lo")
 stop_indices = PackedInt32Array(4, 7, 8, 9)
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/TutorialBot"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/TutorialBot"]
 layout_mode = 2
 texture = ExtResource("7_kj78h")
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Control/TutorialBot"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/UI/TutorialBot"]
 layout_mode = 2
 
-[node name="TextLines" type="MarginContainer" parent="CanvasLayer/Control/TutorialBot/PanelContainer"]
+[node name="TextLines" type="MarginContainer" parent="CanvasLayer/UI/TutorialBot/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/margin_left = 4
@@ -95,7 +108,7 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="Label0" type="Label" parent="CanvasLayer/Control/TutorialBot/PanelContainer/TextLines"]
+[node name="Label0" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "Hello and welcome to our facility
@@ -104,7 +117,7 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label1" type="Label" parent="CanvasLayer/Control/TutorialBot/PanelContainer/TextLines"]
+[node name="Label1" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -113,7 +126,7 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label2" type="Label" parent="CanvasLayer/Control/TutorialBot/PanelContainer/TextLines"]
+[node name="Label2" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -122,7 +135,7 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label3" type="Label" parent="CanvasLayer/Control/TutorialBot/PanelContainer/TextLines"]
+[node name="Label3" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -131,7 +144,7 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label4" type="Label" parent="CanvasLayer/Control/TutorialBot/PanelContainer/TextLines"]
+[node name="Label4" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -140,7 +153,7 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label5" type="Label" parent="CanvasLayer/Control/TutorialBot/PanelContainer/TextLines"]
+[node name="Label5" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -150,7 +163,7 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label6" type="Label" parent="CanvasLayer/Control/TutorialBot/PanelContainer/TextLines"]
+[node name="Label6" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -160,7 +173,7 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label7" type="Label" parent="CanvasLayer/Control/TutorialBot/PanelContainer/TextLines"]
+[node name="Label7" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -169,7 +182,7 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label8" type="Label" parent="CanvasLayer/Control/TutorialBot/PanelContainer/TextLines"]
+[node name="Label8" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -178,7 +191,7 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label9" type="Label" parent="CanvasLayer/Control/TutorialBot/PanelContainer/TextLines"]
+[node name="Label9" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -187,7 +200,7 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Label10" type="Label" parent="CanvasLayer/Control/TutorialBot/PanelContainer/TextLines"]
+[node name="Label10" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -196,5 +209,5 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[connection signal="door_open" from="Map/Door1" to="CanvasLayer/Control/TutorialBot" method="skip_to_text" binds= [5]]
-[connection signal="door_open" from="Map/Door2" to="CanvasLayer/Control/TutorialBot" method="skip_to_text" binds= [10]]
+[connection signal="door_open" from="Map/Door1" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [5]]
+[connection signal="door_open" from="Map/Door2" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [10]]
