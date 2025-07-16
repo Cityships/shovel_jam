@@ -19,6 +19,8 @@ var armed_emp : bool
 
 @onready var scene = get_parent()
 
+var gadget_in_use : bool
+
 func _ready() -> void:
 	emp_instance = emp_explosion_effect.instantiate()
 	add_child(emp_instance)
@@ -38,6 +40,8 @@ func _input(_event: InputEvent) -> void:
 		reparent(player)
 		self.position = Vector2(0,-32)
 		hold_emp = true
+		gadget_in_use = true
+
 
 	if Input.is_action_just_released("ui_accept") and hold_emp:
 		freeze = false
@@ -73,6 +77,7 @@ func _input(_event: InputEvent) -> void:
 					audio_stream_player.play()
 					audio_stream_player.finished.connect(func():audio_stream_player.stream = null)
 					armed_emp = false
+					gadget_in_use = false
 			)
 	return
 

@@ -16,7 +16,7 @@ func _ready() -> void:
 	GlobalEvents.control_option_switch.connect(
 		func(value):
 			current_controls = value
-			if value == 1: 
+			if value == -1: 
 				GlobalEvents.create_quick_tip.emit(global_position, "Gadgets Selected!")
 	)
 	pass

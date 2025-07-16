@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c2lv5ko8xj4ug"
+path="res://.godot/imported/jetpack sustain loop.ogg-66172eea85dbf1d1dca5bc8494f03981.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/gadgets/jetpack/jetpack sustain loop.ogg"
+dest_files=["res://.godot/imported/jetpack sustain loop.ogg-66172eea85dbf1d1dca5bc8494f03981.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
