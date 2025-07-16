@@ -4,6 +4,10 @@ signal request_pickup_gadget
 signal request_deploy_gadget
 signal create_quick_tip
 
+signal progress_story_bot
+signal story_bot_index_changed
+signal story_bot_skip_to_index
+
 signal control_option_switch
 var control_option : int = -1
 
