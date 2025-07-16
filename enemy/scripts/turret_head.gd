@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 
 @onready var ray  : RayCast2D = %Ray
 @onready var beam : Line2D    = %Beam

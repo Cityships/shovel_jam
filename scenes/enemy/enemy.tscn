@@ -1,59 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbkndbkistfnt"]
+[gd_scene load_steps=3 format=3 uid="uid://cbkndbkistfnt"]
 
 [ext_resource type="Script" uid="uid://daxdj2b8stsuf" path="res://enemy/scripts/base_enemy_manager.gd" id="1_40wdo"]
-[ext_resource type="Script" uid="uid://2b2vpx4gmhmh" path="res://enemy/scripts/base_enemy_body.gd" id="2_tjssy"]
-[ext_resource type="Material" uid="uid://co8x461kq2vk3" path="res://scenes/enemy/enemy.tres" id="3_cwlon"]
-[ext_resource type="Texture2D" uid="uid://psfsagvivmh6" path="res://enemy/png/monsters.png" id="3_gl05p"]
-[ext_resource type="Script" uid="uid://c65vc5jn16sbr" path="res://scenes/enemy/sprite_shader_control.gd" id="4_tjssy"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7jla0"]
-radius = 4.0
-height = 16.0
+[ext_resource type="PackedScene" uid="uid://c5un07nkjbbup" path="res://scenes/enemy/base_enemy_body.tscn" id="2_a3pup"]
 
 [node name="BaseEnemyManager" type="Node2D"]
 script = ExtResource("1_40wdo")
 
-[node name="BaseEnemyBody" type="CharacterBody2D" parent="."]
+[node name="BaseEnemyBody" parent="." instance=ExtResource("2_a3pup")]
 unique_name_in_owner = true
-collision_layer = 16
-collision_mask = 9
-script = ExtResource("2_tjssy")
-
-[node name="VisualTreeRoot" type="Sprite2D" parent="BaseEnemyBody"]
-unique_name_in_owner = true
-material = ExtResource("3_cwlon")
-texture = ExtResource("3_gl05p")
-offset = Vector2(-2, -6)
-region_enabled = true
-region_rect = Rect2(64, 0, 24, 32)
-script = ExtResource("4_tjssy")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseEnemyBody"]
-unique_name_in_owner = true
-shape = SubResource("CapsuleShape2D_7jla0")
-
-[node name="RayFront" type="RayCast2D" parent="BaseEnemyBody"]
-unique_name_in_owner = true
-position = Vector2(0, -4)
-target_position = Vector2(-35, -1)
-
-[node name="RayDown" type="RayCast2D" parent="BaseEnemyBody"]
-unique_name_in_owner = true
-position = Vector2(0, 1)
-target_position = Vector2(-34, 9)
-
-[node name="RayVision" type="RayCast2D" parent="BaseEnemyBody"]
-unique_name_in_owner = true
-target_position = Vector2(-97, 0)
-collision_mask = 8
-
-[node name="RayVision2" type="RayCast2D" parent="BaseEnemyBody"]
-unique_name_in_owner = true
-target_position = Vector2(104, 0)
-collision_mask = 8
-
-[node name="Debug" type="Label" parent="."]
-offset_left = -22.0
-offset_top = -35.0
-offset_right = 18.0
-offset_bottom = -12.0

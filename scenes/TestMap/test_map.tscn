@@ -1,12 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://b0ktxfp2kloc5"]
+[gd_scene load_steps=9 format=4 uid="uid://b0ktxfp2kloc5"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_eg0c1"]
 [ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/gadgets/jetpack/jetpack.tscn" id="2_o6k2l"]
 [ext_resource type="PackedScene" uid="uid://dcvfajmk27hns" path="res://scenes/player_character/player_character.tscn" id="2_w7x2g"]
 [ext_resource type="PackedScene" uid="uid://c48jsiqrj4ve4" path="res://scenes/enemy/turret.tscn" id="4_1n5w2"]
-[ext_resource type="PackedScene" uid="uid://cbkndbkistfnt" path="res://scenes/enemy/enemy.tscn" id="4_o7bfj"]
-[ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="5_6mlxk"]
-[ext_resource type="Script" uid="uid://b20ab0wdjtbwr" path="res://scenes/enemy/patroller_enemy.gd" id="5_7gpld"]
 [ext_resource type="PackedScene" uid="uid://312utib22mvo" path="res://manager_systems/quick_tip/quick_tip_manager.tscn" id="8_h7ndw"]
 [ext_resource type="PackedScene" uid="uid://demcpoicka6g6" path="res://manager_systems/gadget_manager/gadget_manager.tscn" id="9_61ery"]
 [ext_resource type="PackedScene" uid="uid://dejnlebot27dd" path="res://UI/controls_display/controls_display.tscn" id="10_61ery"]
@@ -41,13 +38,6 @@ offset_left = 1295.0
 offset_top = 739.0
 offset_right = 1335.0
 offset_bottom = 762.0
-
-[node name="EmpObject" parent="Map" instance=ExtResource("5_6mlxk")]
-position = Vector2(665, 524)
-
-[node name="Patroller" parent="." instance=ExtResource("4_o7bfj")]
-position = Vector2(860, 566)
-script = ExtResource("5_7gpld")
 
 [node name="QuickTipManager" parent="." instance=ExtResource("8_h7ndw")]
 
