@@ -22,14 +22,17 @@ var player
 var hold_player : bool
 @onready var player_area : CollisionShape2D = get_node("PlayerArea")
 
+var gadget_in_use : bool
+
 func _ready() -> void:
 	interactable_area.body_entered.connect(func(value): player = value)
 	interactable_area.body_exited.connect(
 		func(value):
-			value.movement_restriction_count = 0
-			player = null
-			hold_player = false
-			player_area.set_deferred("disabled", true)
+			if !hold_player:
+				value.movement_restriction_count = 0
+				player = null
+				hold_player = false
+				player_area.set_deferred("disabled", true)
 	)
 
 	startup_timer = Timer.new()
@@ -70,6 +73,7 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed("ui_accept") and player != null:
+		gadget_in_use = true
 		equip_audio_stream.stream = audio_playlist.get_list_stream(0)
 		equip_audio_stream.play()
 
@@ -101,6 +105,7 @@ func _input(event: InputEvent) -> void:
 		hold_player = false
 		player.reparent(get_parent())
 		player_area.set_deferred("disabled", true)
+		gadget_in_use = false
 		
 
 	input_direction.x = Input.get_axis("ui_left", "ui_right")

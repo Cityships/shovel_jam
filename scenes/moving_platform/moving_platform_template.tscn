@@ -11,9 +11,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ery"]
-size = Vector2(48, 88)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mdd6a"]
 shader = ExtResource("2_0b7ba")
 shader_parameter/fill_color = Color(1, 1, 1, 1)
@@ -25,6 +22,9 @@ shader_parameter/width = 0.0
 shader_parameter/pattern = 0
 shader_parameter/inside = true
 shader_parameter/add_margins = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ery"]
+size = Vector2(48, 88)
 
 [node name="Path2D" type="Path2D"]
 curve = SubResource("Curve2D_61ery")
@@ -39,14 +39,14 @@ loop = false
 sync_to_physics = false
 script = ExtResource("1_gsele")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/AnimatableBody2D"]
-position = Vector2(0, 12)
-shape = SubResource("RectangleShape2D_61ery")
-
-[node name="VisualTreeRoot" type="Sprite2D" parent="PathFollow2D"]
+[node name="VisualTreeRoot" type="Sprite2D" parent="PathFollow2D/AnimatableBody2D"]
 material = SubResource("ShaderMaterial_mdd6a")
 position = Vector2(0, 12)
 texture = ExtResource("2_gvfoc")
 region_enabled = true
 region_rect = Rect2(40, 24, 48, 88)
 script = ExtResource("4_mdd6a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/AnimatableBody2D"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_61ery")
