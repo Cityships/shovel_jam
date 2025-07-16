@@ -11,19 +11,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mdd6a"]
-shader = ExtResource("2_0b7ba")
-shader_parameter/fill_color = Color(1, 1, 1, 1)
-shader_parameter/fill_enabled = false
-shader_parameter/grayscale_enabled = false
-shader_parameter/weighted = true
-shader_parameter/outline_enabled = false
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/width = 0.0
-shader_parameter/pattern = 0
-shader_parameter/inside = true
-shader_parameter/add_margins = true
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ery"]
 size = Vector2(48, 88)
 
