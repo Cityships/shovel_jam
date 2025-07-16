@@ -85,6 +85,23 @@ animations = [{
 "loop": true,
 "name": &"Moving",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpmi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7r1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4fo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6h6w")
+}],
+"loop": true,
+"name": &"Stunned",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7jla0"]
@@ -99,8 +116,9 @@ script = ExtResource("1_dk1ky")
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 material = ExtResource("2_irhln")
+position = Vector2(1, 5)
 sprite_frames = SubResource("SpriteFrames_gb6mi")
-animation = &"Moving"
+animation = &"Stunned"
 autoplay = "Idle"
 offset = Vector2(-2, -6)
 script = ExtResource("4_dpmi2")
@@ -116,7 +134,7 @@ target_position = Vector2(-35, -1)
 
 [node name="RayDown" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, 1)
+position = Vector2(0, 2)
 target_position = Vector2(-34, 9)
 
 [node name="RayVision" type="RayCast2D" parent="."]

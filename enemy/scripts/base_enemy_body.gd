@@ -71,12 +71,16 @@ func _process_state(delta: float) -> void:
 func enter_state(new_state: int) -> void:
 	state_changed.emit(new_state) #example usage of local event bus
 	_state = new_state
+	if new_state == STATE_MOVE:
+		sprite.play("Moving")
+	if new_state == STATE_STUNNED:
+		sprite.play("Stunned")
 
 
 ## ───────── EMP Stun Trigger ─────────
 func try_emp_stun(duration):
 	var tween = create_tween()
-	tween.tween_callback(func():_state = STATE_IDLE)
+	tween.tween_callback(func():_state = STATE_STUNNED)
 	tween.chain().tween_interval(duration)
 	tween.chain().tween_callback(func():_state = STATE_MOVE)
 
