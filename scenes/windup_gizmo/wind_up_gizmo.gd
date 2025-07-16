@@ -41,6 +41,7 @@ func _ready() -> void:
 			sprite_2d.material.set_shader_parameter("outline_enabled", true)
 			if get_parent().is_on_floor():
 				try_recharge.emit(standard_key_stored_energy)
+				standard_key_stored_energy = 0
 	)
 	recharge_area.body_exited.connect(
 		func(_value):
