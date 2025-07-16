@@ -6,6 +6,8 @@ class_name JetPack
 @onready var raycast : RayCast2D = get_node("RayCast2D")
 @export var discharge_rate : float = 20.0
 @onready var debug: Label = %Debug
+@export var max_force_recharge_count : int = 1
+var forced_recharge_count : int = 0
 
 @export_group("Audio")
 @export var audio_playlist : AudioStreamPlaylist
@@ -58,17 +60,34 @@ func _ready() -> void:
 func recharge(value):
 	if raycast.is_colliding():
 		windup_progress_bar.value += value
+		if windup_progress_bar.value == windup_progress_bar.max_value:
+			windup_progress_bar.modulate = Color.GREEN
+		else:
+			windup_progress_bar.modulate = Color.WHITE
 	if windup_progress_bar.value > 0:
 		out_of_power = false
+
+func force_recharge(value):
+	if forced_recharge_count < max_force_recharge_count:	
+		forced_recharge_count += 1
+		windup_progress_bar.value += value
+		if windup_progress_bar.value == windup_progress_bar.max_value:
+			windup_progress_bar.modulate = Color.GREEN
+		else:
+			windup_progress_bar.modulate = Color.WHITE
+		if windup_progress_bar.value > 0:
+			out_of_power = false
 
 func _process(delta: float) -> void:
 	if input_direction != Vector2.ZERO and hold_player:
 		windup_progress_bar.value -= discharge_rate * delta
+		windup_progress_bar.modulate = Color.WHITE
 	if windup_progress_bar.value == 0 and audio_player.playing and !out_of_power:
 		out_of_power = true
 		audio_player.stream = audio_playlist.get_list_stream(3)
 		audio_player.play()
-
+	if raycast.is_colliding():
+		forced_recharge_count = 0
 
 func _input(event: InputEvent) -> void:
 

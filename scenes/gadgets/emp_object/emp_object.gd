@@ -27,9 +27,26 @@ func _ready() -> void:
 	interactable_area.body_entered.connect(func(value): player = value)
 	interactable_area.body_exited.connect(func(_value): player = null)
 
+	auto_trigger.connect(
+		func():
+			await get_tree().create_timer(0.5).timeout
+			if windup_progress_bar.value == windup_progress_bar.max_value:
+				emp_instance.play_animation()
+				windup_progress_bar.value = 0
+				windup_progress_bar.modulate = Color.WHITE
+				audio_stream_player.stream = audio_playlist.get_list_stream(3)
+				audio_stream_player.play()
+	)
+
 func recharge(value):
-	return
 	windup_progress_bar.value += value
+	if windup_progress_bar.value == windup_progress_bar.max_value:
+		windup_progress_bar.modulate = Color.GREEN
+	else:
+		windup_progress_bar.modulate = Color.WHITE
+
+func force_recharge(value):
+	recharge(value)
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_accept") and player != null:
@@ -58,7 +75,7 @@ func _input(_event: InputEvent) -> void:
 		self.apply_impulse((get_global_mouse_position() - global_position).normalized() * throw_force.length())
 		hold_emp = false
 
-		if !armed_emp:
+		if !armed_emp and windup_progress_bar.value == windup_progress_bar.max_value:
 			armed_emp = true
 			tween = create_tween()
 			var ticks = 4
@@ -73,6 +90,8 @@ func _input(_event: InputEvent) -> void:
 			tween.chain().tween_callback(func():emp_instance.play_animation())
 			tween.chain().tween_callback(
 				func():
+					windup_progress_bar.value = 0
+					windup_progress_bar.modulate = Color.WHITE
 					audio_stream_player.stream = audio_playlist.get_list_stream(3)
 					audio_stream_player.play()
 					audio_stream_player.finished.connect(func():audio_stream_player.stream = null)

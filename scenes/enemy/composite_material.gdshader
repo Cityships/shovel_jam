@@ -11,6 +11,7 @@ uniform bool grayscale_enabled;
 uniform bool weighted = true;
 
 group_uniforms Outline;
+uniform bool outline_enabled = true;
 uniform vec4 outline_color : source_color = vec4(1.0);
 uniform float width : hint_range(0, 10) = 1.0;
 uniform int pattern : hint_range(0, 2) = 0; // diamond, circle, square
@@ -26,6 +27,9 @@ void vertex() {
 //see interactions between tweening modulate of parents and shader on current node
 
 bool hasContraryNeighbour(vec2 uv, vec2 texture_pixel_size, sampler2D texture) {
+	if (!outline_enabled){
+		return false;
+	}
 	for (float i = -ceil(width); i <= ceil(width); i++) {
 		float x = abs(i) > width ? width * sign(i) : i;
 		float offset;

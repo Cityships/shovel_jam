@@ -37,6 +37,7 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ikti3")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0, 1, 0, 1)
 custom_minimum_size = Vector2(8, 40)
 anchors_preset = 15
 anchor_right = 1.0

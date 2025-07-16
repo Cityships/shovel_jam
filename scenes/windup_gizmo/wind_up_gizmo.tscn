@@ -1,7 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6kaaaqphs6mv"]
+[gd_scene load_steps=7 format=3 uid="uid://b6kaaaqphs6mv"]
 
 [ext_resource type="Script" uid="uid://hywsynhg1uu5" path="res://scenes/windup_gizmo/wind_up_gizmo.gd" id="1_edxmb"]
+[ext_resource type="Shader" uid="uid://hf3ps7in7kiy" path="res://scenes/enemy/composite_material.gdshader" id="2_0rred"]
 [ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="2_8vqp0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ru0l5"]
+shader = ExtResource("2_0rred")
+shader_parameter/fill_color = Color(1, 1, 1, 1)
+shader_parameter/fill_enabled = false
+shader_parameter/grayscale_enabled = false
+shader_parameter/weighted = true
+shader_parameter/outline_enabled = false
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 4.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yjeoo"]
 size = Vector2(56, 12)
@@ -13,6 +27,7 @@ radius = 32.0
 script = ExtResource("1_edxmb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ru0l5")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_8vqp0")
 

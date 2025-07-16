@@ -17,6 +17,7 @@ shader_parameter/fill_color = Color(1, 1, 1, 1)
 shader_parameter/fill_enabled = false
 shader_parameter/grayscale_enabled = false
 shader_parameter/weighted = true
+shader_parameter/outline_enabled = false
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/width = 0.0
 shader_parameter/pattern = 0
@@ -33,9 +34,8 @@ curve = SubResource("Curve2D_61ery")
 position = Vector2(768, 432)
 loop = false
 
-[node name="Line2D" type="Line2D" parent="PathFollow2D"]
-
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="PathFollow2D"]
+collision_layer = 17
 sync_to_physics = false
 script = ExtResource("1_gsele")
 
@@ -50,3 +50,5 @@ script = ExtResource("4_mdd6a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/AnimatableBody2D"]
 position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_61ery")
+
+[node name="Line2D" type="Line2D" parent="PathFollow2D"]
