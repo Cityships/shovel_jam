@@ -11,21 +11,14 @@ metadata/_snap_count = 32
 
 [node name="MIB" instance=ExtResource("1_jsvih")]
 script = ExtResource("2_sqmj5")
-max_distance = 800.0
-flash_time = 0.05
-cooldown_time = 0.5
-damage = 10
+max_distance = null
+flash_time = null
+cooldown_time = null
+damage = null
 
 [node name="BaseEnemyBody" parent="." index="0"]
 target_offset = Vector2(1, 0)
-attack_range = 150.0
 _state = 1
-
-[node name="RayVision" parent="BaseEnemyBody" index="4"]
-target_position = Vector2(-200, 0)
-
-[node name="RayVision2" parent="BaseEnemyBody" index="5"]
-target_position = Vector2(100, 0)
 
 [node name="Ray" type="RayCast2D" parent="BaseEnemyBody" index="7"]
 unique_name_in_owner = true
@@ -37,5 +30,3 @@ position = Vector2(126.083, 30.0356)
 points = PackedVector2Array(-1.85413, 2.90668)
 width = 3.0
 gradient = SubResource("Gradient_54nel")
-
-[editable path="BaseEnemyBody"]

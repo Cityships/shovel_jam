@@ -8,3 +8,4 @@ script = ExtResource("1_40wdo")
 
 [node name="BaseEnemyBody" parent="." instance=ExtResource("2_a3pup")]
 unique_name_in_owner = true
+target_offset = Vector2(5, 0)
