@@ -1,10 +1,25 @@
-[gd_scene load_steps=9 format=3 uid="uid://c48jsiqrj4ve4"]
+[gd_scene load_steps=11 format=3 uid="uid://c48jsiqrj4ve4"]
 
-[ext_resource type="Script" uid="uid://df5attnfnjnlb" path="res://scenes/enemy/turret.gd" id="1_2a3v4"]
+[ext_resource type="Script" uid="uid://df5attnfnjnlb" path="res://enemy/scripts/turret.gd" id="1_2a3v4"]
 [ext_resource type="Texture2D" uid="uid://bno25grtumtfw" path="res://enemy/png/turret_base.svg" id="2_5te02"]
 [ext_resource type="Material" uid="uid://co8x461kq2vk3" path="res://scenes/enemy/enemy.tres" id="3_5te02"]
 [ext_resource type="Texture2D" uid="uid://cmlmbigi8f8x0" path="res://enemy/png/turret_head.svg" id="3_d3l2q"]
-[ext_resource type="Script" uid="uid://30mfkg33ob33" path="res://scenes/enemy/turret_head.gd" id="4_65cm3"]
+[ext_resource type="Script" uid="uid://30mfkg33ob33" path="res://enemy/scripts/turret_head.gd" id="4_65cm3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5te02"]
+atlas = ExtResource("3_d3l2q")
+region = Rect2(0, 0, 178, 109)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3l2q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5te02")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_6mlxk"]
 interpolation_mode = 2
@@ -28,11 +43,11 @@ patrol_center_angle_deg = 15.0
 unique_name_in_owner = true
 texture = ExtResource("2_5te02")
 
-[node name="VisualTreeRoot" type="Sprite2D" parent="."]
+[node name="VisualTreeRoot" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 material = ExtResource("3_5te02")
 scale = Vector2(1.07865, 1.03211)
-texture = ExtResource("3_d3l2q")
+sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
 offset = Vector2(-50, -10)
 script = ExtResource("4_65cm3")

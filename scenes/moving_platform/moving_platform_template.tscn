@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://car3gju7srni5"]
+[gd_scene load_steps=7 format=3 uid="uid://car3gju7srni5"]
 
 [ext_resource type="Script" uid="uid://b6ttdpgnutwhp" path="res://scenes/moving_platform/moving_platform.gd" id="1_gsele"]
-[ext_resource type="Shader" uid="uid://hf3ps7in7kiy" path="res://scenes/enemy/composite_material.gdshader" id="2_0b7ba"]
 [ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="2_gvfoc"]
-[ext_resource type="Script" uid="uid://c65vc5jn16sbr" path="res://scenes/enemy/sprite_shader_control.gd" id="4_mdd6a"]
+[ext_resource type="Material" uid="uid://cx7tkp20yv1b6" path="res://scenes/enemy/platforms.tres" id="2_mdd6a"]
+[ext_resource type="Script" uid="uid://dgm7ki0n07at" path="res://scenes/enemy/platform.gd" id="4_3yh0v"]
 
 [sub_resource type="Curve2D" id="Curve2D_61ery"]
 _data = {
@@ -40,12 +40,12 @@ sync_to_physics = false
 script = ExtResource("1_gsele")
 
 [node name="VisualTreeRoot" type="Sprite2D" parent="PathFollow2D/AnimatableBody2D"]
-material = SubResource("ShaderMaterial_mdd6a")
+material = ExtResource("2_mdd6a")
 position = Vector2(0, 12)
 texture = ExtResource("2_gvfoc")
 region_enabled = true
 region_rect = Rect2(40, 24, 48, 88)
-script = ExtResource("4_mdd6a")
+script = ExtResource("4_3yh0v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/AnimatableBody2D"]
 position = Vector2(0, 12)
