@@ -1,7 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://3wmt1xd0cyue"]
 
 [ext_resource type="PackedScene" uid="uid://b5ahij8wstxs4" path="res://scenes/enemy/patroler.tscn" id="1_jsvih"]
-[ext_resource type="Script" uid="uid://bckoy402jkhcl" path="res://scenes/enemy/men_in_black.gd" id="2_sqmj5"]
+[ext_resource type="Script" uid="uid://bckoy402jkhcl" path="res://enemy/men_in_black.gd" id="2_sqmj5"]
 
 [node name="MIB" instance=ExtResource("1_jsvih")]
 script = ExtResource("2_sqmj5")
+
+[node name="BaseEnemyBody" parent="." index="0"]
+max_speed = null
+accel = null
+gravity = null
+turn_delay = null
+_state = null

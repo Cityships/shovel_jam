@@ -16,14 +16,13 @@ signal emp_disabled
 @export var gravity    : float = 900.0  ## downward force
 @export var turn_delay : float = 0.12   ## seconds to wait before flipping
 
-
 var _move_dir   : int   = -1     ## -1 = left, 1 = right
 var _turn_timer : float = 0.0
 var _target_position : Vector2 = Vector2.ZERO  
 
 ## ───────── STATE ─────────
-enum { STATE_IDLE, STATE_MOVE, STATE_STUNNED , STATE_CHASE }
-var _state : int = STATE_IDLE
+enum State { STATE_IDLE, STATE_MOVE, STATE_STUNNED , STATE_CHASE }
+@export var _state: State = State.STATE_IDLE
 
 
 ## ───────── On Ready ──────────────────────────|
