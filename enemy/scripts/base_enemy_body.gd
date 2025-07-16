@@ -124,9 +124,9 @@ func _should_chase() -> bool:
 		var body := vision.get_collider()
 		if body == null:
 			body =  vision_2.get_collider()
-
+			
 		_target_position = body.global_position if body is Node2D \
-						   else vision.get_collision_point()
+		else vision.get_collision_point()
 
 		return body.is_in_group("Player") 
 	return false
@@ -137,11 +137,15 @@ func _chase_player(delta: float) -> void:
 	if _should_chase():
 		var desired := (_target_position - global_position).normalized() * max_speed
 		velocity = velocity.move_toward(desired, accel * delta)
-
+		
 		if abs(velocity.x) > 1.0:     
 			_move_dir = sign(velocity.x)      ## -1 left, 1 right
 			sprite.flip_h = _move_dir > 0
+			vision.target_position.x  =  abs(vision.target_position.x)  * _move_dir
+			vision_2.target_position.x  =  abs(vision_2.target_position.x)  * -_move_dir
+			_flip_rays()
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, accel * delta)
+		
 		if velocity.length() < 1.0:
 			enter_state(STATE_IDLE)
