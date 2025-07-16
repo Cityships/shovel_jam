@@ -2,7 +2,7 @@ class_name Turret
 extends Node2D
 
 ## ────────── NODES ──────────
-@onready var head         : Sprite2D = %VisualTreeRoot
+@onready var head         : AnimatedSprite2D = %VisualTreeRoot
 @onready var turret_area  : Area2D   = %TurretArea
 @onready var ray          : RayCast2D = %Ray
 @onready var charge_timer : Timer    = %ChargeTime
@@ -28,6 +28,7 @@ signal emp_disabled(duration   : float)
 @export var patrol_pan_angle_deg : float = 45.0   ## how far to pan left/right
 @export var patrol_pan_speed     : float = 1.2     ## radians-per-second
 @export var patrol_center_angle_deg := 0.0 
+@export var enemy_resource: EnemyResource
 ## ────────── READY ──────────
 func _ready() -> void:
 	_patrol_base_rot = deg_to_rad(patrol_center_angle_deg)

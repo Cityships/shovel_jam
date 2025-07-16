@@ -8,7 +8,7 @@ signal state_changed
 signal emp_disabled
 #endregion 
 
-## ───────── CONFIGURABLE STATS ─────────
+
 
 ## ───────── CONFIGURABLE STATS ─────────
 @export var max_speed  : float = 60.0   ## walk speed
@@ -16,26 +16,31 @@ signal emp_disabled
 @export var gravity    : float = 900.0  ## downward force
 @export var turn_delay : float = 0.12   ## seconds to wait before flipping
 
-## ───────── RUNTIME STATE ─────────
+
 var _move_dir   : int   = -1     ## -1 = left, 1 = right
 var _turn_timer : float = 0.0
 var _target_position : Vector2 = Vector2.ZERO  
 
-
+## ───────── STATE ─────────
 enum { STATE_IDLE, STATE_MOVE, STATE_STUNNED , STATE_CHASE }
 var _state : int = STATE_IDLE
 
-@onready var vision_2: RayCast2D = %RayVision2
+
+## ───────── On Ready ──────────────────────────|
+@onready var vision_2: RayCast2D = %RayVision2  
 @onready var vision: RayCast2D = $RayVision
 @onready var ray_front : RayCast2D = %RayFront     
 @onready var ray_down  : RayCast2D = %RayDown      
-@onready var sprite: Sprite2D = %VisualTreeRoot
-@onready var debug: Label = $"../Debug"
+@onready var sprite: AnimatedSprite2D = %VisualTreeRoot
+@onready var debug: Label = %Debug
 
 
 func _ready() -> void:
 	emp_disabled.connect(try_emp_stun)
 
+
+
+## ───────── Main Loop ─────────────────────────|
 func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
 	_process_state(delta)
@@ -60,21 +65,27 @@ func _process_state(delta: float) -> void:
 
 		STATE_CHASE:
 			_chase_player(delta)
-			if !_should_chase():         # lost sight?
+			if !_should_chase():      
 				enter_state(STATE_MOVE)  
 
-func _update_debug() -> void:
-	debug.text = ["Idle", "Move", "Stunned", "Chase"][_state]
+func enter_state(new_state: int) -> void:
+	state_changed.emit(new_state) #example usage of local event bus
+	_state = new_state
 
+
+## ───────── EMP Stun Trigger ─────────
 func try_emp_stun(duration):
 	var tween = create_tween()
 	tween.tween_callback(func():_state = STATE_IDLE)
 	tween.chain().tween_interval(duration)
 	tween.chain().tween_callback(func():_state = STATE_MOVE)
 
-func enter_state(new_state: int) -> void:
-	state_changed.emit(new_state) #example usage of local event bus
-	_state = new_state
+
+#Temp debug lable. 
+func _update_debug() -> void:
+	debug.text = ["Idle", "Move", "Stunned", "Chase"][_state]
+
+
 
 ## ───────── MOVEMENT HELPERS ─────────
 func _apply_gravity(delta: float) -> void:
@@ -105,7 +116,7 @@ func _flip_rays() -> void:
 	ray_down.target_position.x  =  abs(ray_down.target_position.x)  * _move_dir
 	ray_front.force_raycast_update() 
 	ray_down.force_raycast_update() 
-	sprite.flip_h = _move_dir > 0  ## > not <     
+	sprite.flip_h = _move_dir > 0  ## [ > ] not [ < ]     
 
 
 func _should_turn() -> bool:
