@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgvlgknpqnyax"]
+
+[ext_resource type="Script" uid="uid://bce7sk8abb5od" path="res://scenes/level00/doors/story_door/story_door.gd" id="1_togkp"]
+[ext_resource type="Material" uid="uid://cx7tkp20yv1b6" path="res://scenes/enemy/platforms.tres" id="2_a76pk"]
+[ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="3_v25em"]
+
+[sub_resource type="Curve2D" id="Curve2D_l64ck"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 24, 136, 0, 0, 0, 0, 24, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ery"]
+size = Vector2(46, 88)
+
+[node name="StoryDoor" type="Path2D"]
+curve = SubResource("Curve2D_l64ck")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(24, 136)
+rotates = false
+loop = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="PathFollow2D"]
+collision_layer = 5
+sync_to_physics = false
+script = ExtResource("1_togkp")
+story_index = 1
+
+[node name="VisualTreeRoot" type="Sprite2D" parent="PathFollow2D/AnimatableBody2D"]
+material = ExtResource("2_a76pk")
+texture = ExtResource("3_v25em")
+region_enabled = true
+region_rect = Rect2(40, 24, 46, 88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_61ery")

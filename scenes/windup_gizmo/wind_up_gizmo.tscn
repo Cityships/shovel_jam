@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6kaaaqphs6mv"]
+[gd_scene load_steps=8 format=3 uid="uid://b6kaaaqphs6mv"]
 
 [ext_resource type="Script" uid="uid://hywsynhg1uu5" path="res://scenes/windup_gizmo/wind_up_gizmo.gd" id="1_edxmb"]
 [ext_resource type="Shader" uid="uid://hf3ps7in7kiy" path="res://scenes/enemy/composite_material.gdshader" id="2_0rred"]
 [ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="2_8vqp0"]
+[ext_resource type="AudioStream" uid="uid://ctswyqoptpywn" path="res://scenes/windup_gizmo/Winding up.ogg" id="4_ru0l5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ru0l5"]
 shader = ExtResource("2_0rred")
@@ -63,3 +64,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RechargeArea"]
 shape = SubResource("CircleShape2D_mwtyu")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ru0l5")
+pitch_scale = 2.0

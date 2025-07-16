@@ -5,6 +5,7 @@ class_name JetPack
 @onready var windup_progress_bar : ProgressBar = get_node("ProgressBar")
 @onready var raycast : RayCast2D = get_node("RayCast2D")
 @export var discharge_rate : float = 20.0
+@export var starting_charge = 100.0
 @onready var debug: Label = %Debug
 @export var max_force_recharge_count : int = 1
 var forced_recharge_count : int = 0
@@ -27,6 +28,8 @@ var hold_player : bool
 var gadget_in_use : bool
 
 func _ready() -> void:
+	
+	windup_progress_bar.value = starting_charge
 	interactable_area.body_entered.connect(func(value): player = value)
 	interactable_area.body_exited.connect(
 		func(value):

@@ -68,6 +68,7 @@ grow_horizontal = 2
 grow_vertical = 2
 max_value = 75.0
 value = 75.0
+fill_mode = 3
 show_percentage = false
 
 [node name="InteractableArea" type="Area2D" parent="."]
