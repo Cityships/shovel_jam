@@ -51,7 +51,7 @@ sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
 offset = Vector2(-50, -10)
 script = ExtResource("4_65cm3")
-cooldown_time = 1.0
+cooldown_time = 3.0
 
 [node name="Ray" type="RayCast2D" parent="VisualTreeRoot"]
 unique_name_in_owner = true
