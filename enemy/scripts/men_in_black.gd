@@ -73,23 +73,23 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	## While winding‑up keep facing the player so the shot is always up‑to‑date.
-	if base_enemy_body._state == base_enemy_body.State.WIND_UP and base_enemy_body._target_position:
-		_update_orientation_towards_target()
+	if base_enemy_body._state in [
+			base_enemy_body.State.WIND_UP,
+			base_enemy_body.State.ATTACK]   \
+		and not _has_fired_during_attack:
+		_update_orientation_towards_player()
 
-func _update_orientation_towards_target() -> void:
-	if base_enemy_body._target_position == Vector2.ZERO:
-		return
 
-	var dir := 1 if base_enemy_body._target_position.x > global_position.x else -1
+func _update_orientation_towards_player() -> void:
+	var player := get_tree().get_first_node_in_group("player")
+	if player == null:
+		return                              # no player found
+	var dir := 1 if player.global_position.x > global_position.x else -1
 	if dir == base_enemy_body._move_dir:
-		return                                   # already facing
-
+		return                              # already facing
 	base_enemy_body._move_dir = dir
-	laser_pivot.scale.x  = dir                   # flip ONLY the pivot
-	ray.position.x       = 0                     # keep ray centred
-
-
+	laser_pivot.scale.x = dir               # flip ONLY the pivot
+	ray.position.x = 0                      # keep ray centred
 
 ## Handles BaseEnemyBody state changes.
 func _on_state_changed(state: BaseEnemyBody.State) -> void:
@@ -99,8 +99,6 @@ func _on_state_changed(state: BaseEnemyBody.State) -> void:
 		print("pew")  # Debug SFX placeholder
 	elif state != base_enemy_body.State.ATTACK:
 		_has_fired_during_attack = false
-
-
 ## Performs the laser attack.
 ##
 ## The method:
@@ -112,9 +110,12 @@ func _on_state_changed(state: BaseEnemyBody.State) -> void:
 ##      transitions the enemy into **WIND_UP**.
 
 
+
+
 func shoot_laser() -> void:
 	if not _ready_to_fire:
 		return
+	_update_orientation_towards_player()
 	_ready_to_fire = false  # Lock until cooldown completes.
 
 	ray.enabled = true
