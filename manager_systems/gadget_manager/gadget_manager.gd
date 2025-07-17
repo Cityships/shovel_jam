@@ -11,11 +11,11 @@ func _ready() -> void:
 	GlobalEvents.request_deploy_gadget.connect(deploy_gadget)
 
 func on_player_pickup_gadget(gadget : RigidBody2D):
-	if !gadget.gadget_in_use:
-		await get_tree().create_timer(0.25).timeout
-		gadget.reparent(self)
-		gadget.position = Vector2.ZERO
-		gadget.freeze = true
+	await get_tree().create_timer(0.25).timeout
+	gadget.reparent(self)
+	gadget.position = Vector2.ZERO
+	gadget.freeze = true
+	
 
 func deploy_gadget(deploy_location : Vector2, gadget_name):
 	var gadget : RigidBody2D = get_node_or_null(gadget_name)

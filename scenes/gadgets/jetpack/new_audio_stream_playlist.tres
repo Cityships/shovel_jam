@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamPlaylist" load_steps=5 format=3 uid="uid://bq1xdjv0n640l"]
+
+[ext_resource type="AudioStream" uid="uid://c74sjqw2qkvei" path="res://scenes/gadgets/jetpack/startup backfire.ogg" id="1_bhhy7"]
+[ext_resource type="AudioStream" uid="uid://1j4qo8tkptiv" path="res://scenes/gadgets/jetpack/Jetpack sustain start.ogg" id="2_8akhh"]
+[ext_resource type="AudioStream" uid="uid://c2lv5ko8xj4ug" path="res://scenes/gadgets/jetpack/jetpack sustain loop.ogg" id="3_f12oc"]
+[ext_resource type="AudioStream" uid="uid://dhvmnnunos81u" path="res://scenes/gadgets/jetpack/jetpack sustain end.ogg" id="4_t34ek"]
+
+[resource]
+loop = false
+stream_count = 4
+stream_0 = ExtResource("1_bhhy7")
+stream_1 = ExtResource("2_8akhh")
+stream_2 = ExtResource("3_f12oc")
+stream_3 = ExtResource("4_t34ek")

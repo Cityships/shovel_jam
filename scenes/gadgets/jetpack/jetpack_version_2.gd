@@ -1,12 +1,12 @@
-extends Gadget
-class_name JetPack
+extends RigidBody2D
 
 @onready var interactable_area : Area2D = get_node("InteractableArea")
-@onready var windup_progress_bar : ProgressBar = get_node("ProgressBar")
+@onready var player_area : CollisionShape2D = get_node("PlayerArea")
 @onready var raycast : RayCast2D = get_node("RayCast2D")
+@onready var windup_progress_bar : ProgressBar = get_node("ProgressBar")
+@onready var remote_transform : RemoteTransform2D = get_node("RemoteTransform2D")
 @export var discharge_rate : float = 20.0
 @export var starting_charge = 100.0
-@onready var debug: Label = %Debug
 @export var max_force_recharge_count : int = 1
 var forced_recharge_count : int = 0
 
@@ -21,47 +21,45 @@ var out_of_power : bool = false
 
 var input_direction : Vector2
 
-var player
-var hold_player : bool
-@onready var player_area : CollisionShape2D = get_node("PlayerArea")
+var player : Node2D
+var gadget_in_use : bool:
+	set(value):
+		gadget_in_use = value
+		if gadget_in_use:
+			player.movement_restriction_count = 1
+			var temp = to_local(player.global_position)
+			remote_transform.position = round(temp.normalized()) * 32
+			if abs(remote_transform.position.y) == abs(remote_transform.position.x):
+				remote_transform.position.y = 0
+			if remote_transform.position.x > 0:
+				windup_progress_bar.position = Vector2(-32,-16)
+			else:
+				windup_progress_bar.position = Vector2(24,-16)
+			player_area.position = remote_transform.position
+			player_area.set_deferred("disabled", false)
+			remote_transform.update_position = true
+		else:
+			player.movement_restriction_count = 0
+			remote_transform.update_position = false
+			player_area.set_deferred("disabled", true)
+			remote_transform.update_position = false
+		
 
-var death_override : bool
-
-var gadget_in_use : bool
+var can_attach_player : bool
 
 func _ready() -> void:
 
-	GlobalEvents.player_death.connect(
-		func():
-			get_tree().create_timer(1).timeout.connect(func():death_override = false)
-			death_override = true
-			audio_player.stop()
-			hold_player = false
+	GlobalEvents.request_pickup_gadget.connect(
+		func(_value):
 			gadget_in_use = false
-			player = null
-			GlobalEvents.request_pickup_gadget.emit(self)
+			audio_player.stop()
+			input_hold_timer.stop()
 	)
-	
-	windup_progress_bar.value = starting_charge
-	interactable_area.body_entered.connect(func(value): player = value)
-	interactable_area.body_exited.connect(
-		func(value):
-			if hold_player and (global_position - player.global_position).length() > 32:
-				value.movement_restriction_count = 0
-				if player.get_parent() == self:
-					await get_tree().create_timer(0.5).timeout
-				player.reparent(get_parent())
-				player = null
-				hold_player = false
-				audio_player.stop()
-				player_area.set_deferred("disabled", true)
-			if !hold_player or death_override:
-				value.movement_restriction_count = 0
-				player = null
-				hold_player = false
-				audio_player.stop()
-				player_area.set_deferred("disabled", true)
-	)
+
+	player = get_tree().get_nodes_in_group("Player")[0]
+	remote_transform.remote_path = player.get_path()
+	interactable_area.body_entered.connect(func(_value):can_attach_player = true)
+	interactable_area.body_exited.connect(func(_value):can_attach_player = false)
 
 	startup_timer = Timer.new()
 	startup_timer.wait_time = startup_delay
@@ -81,7 +79,6 @@ func _ready() -> void:
 				audio_player.stream = audio_playlist.get_list_stream(2)
 				audio_player.play()
 	)
-	
 
 func recharge(value):
 	if raycast.is_colliding():
@@ -105,7 +102,7 @@ func force_recharge(value):
 			out_of_power = false
 
 func _process(delta: float) -> void:
-	if input_direction != Vector2.ZERO and hold_player:
+	if input_direction != Vector2.ZERO and gadget_in_use:
 		windup_progress_bar.value -= discharge_rate * delta
 		windup_progress_bar.modulate = Color.WHITE
 	if windup_progress_bar.value == 0 and audio_player.playing and !out_of_power:
@@ -117,48 +114,21 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 
-	if death_override:
-		return
-
-	if Input.is_action_just_pressed("ui_accept") and player != null:
+	if Input.is_action_just_pressed("ui_accept") and can_attach_player:
 		gadget_in_use = true
-		equip_audio_stream.stream = audio_playlist.get_list_stream(0)
-		equip_audio_stream.play()
 
-	if Input.is_action_pressed("ui_accept") and player != null:
-
-		player.movement_restriction_count = 1
-		hold_player = true
-		player.reparent(self, true)
-		player.position = round(player.position.normalized()) * 32
-		if abs(player.position.y) == abs(player.position.x):
-			player.position.y = 0
-		if player.position.x > 0:
-			windup_progress_bar.position = Vector2(-32,-16)
-		else:
-			windup_progress_bar.position = Vector2(24,-16)
-
-		player_area.position = player.position
-		player_area.set_deferred("disabled", false)
-
-	if Input.is_action_just_released("ui_accept") and hold_player:
-
+	if Input.is_action_just_released("ui_accept") and gadget_in_use:
 		if audio_player.playing:
 			audio_player.stream = audio_playlist.get_list_stream(3)
 			audio_player.play()
 		input_hold_timer.stop()
 		startup_timer.stop()
-
-		player.movement_restriction_count = 0
-		hold_player = false
-		player.reparent(get_parent())
-		player_area.set_deferred("disabled", true)
 		gadget_in_use = false
 		
 
 	input_direction.x = Input.get_axis("ui_left", "ui_right")
 	input_direction.y = Input.get_axis("ui_up", "ui_down")
-	if hold_player and windup_progress_bar.value > 0:
+	if gadget_in_use and windup_progress_bar.value > 0:
 		
 		constant_force = input_direction * Vector2(0.25, 1.25)
 
@@ -175,5 +145,3 @@ func _input(event: InputEvent) -> void:
 
 	else:
 		constant_force = Vector2.ZERO
-	
-	
