@@ -1,17 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmmudt8agidyk"]
+[gd_scene load_steps=2 format=3 uid="uid://dmmudt8agidyk"]
 
 [ext_resource type="PackedScene" uid="uid://ou2lx56q26sn" path="res://map/default_map.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://c5un07nkjbbup" path="res://scenes/enemy/base_enemy_body.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://b5ahij8wstxs4" path="res://scenes/enemy/patroler.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://c48jsiqrj4ve4" path="res://scenes/enemy/turret.tscn" id="4_1bvp3"]
 
 [node name="Main" type="Node"]
 
 [node name="DefaultMap" parent="." instance=ExtResource("1_ig7tw")]
-
-[node name="BaseEnemyBody" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(68, -51)
-
-[node name="Patroler" parent="." instance=ExtResource("3_h2yge")]
-
-[node name="Turret" parent="." instance=ExtResource("4_1bvp3")]

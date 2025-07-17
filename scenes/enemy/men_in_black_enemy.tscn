@@ -21,12 +21,6 @@ target_offset = Vector2(1, 0)
 attack_range = 150.0
 _state = 1
 
-[node name="RayVision" parent="BaseEnemyBody" index="4"]
-target_position = Vector2(-200, 0)
-
-[node name="RayVision2" parent="BaseEnemyBody" index="5"]
-target_position = Vector2(100, 0)
-
 [node name="Ray" type="RayCast2D" parent="BaseEnemyBody" index="7"]
 unique_name_in_owner = true
 target_position = Vector2(-131, 0)
@@ -37,5 +31,3 @@ position = Vector2(126.083, 30.0356)
 points = PackedVector2Array(-1.85413, 2.90668)
 width = 3.0
 gradient = SubResource("Gradient_54nel")
-
-[editable path="BaseEnemyBody"]

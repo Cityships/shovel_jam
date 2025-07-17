@@ -16,7 +16,7 @@ signal emp_disabled
 @export var gravity    : float = 900.0  ## downward force
 @export var turn_delay : float = 0.12   ## seconds to wait before flipping
 @export var target_offset: Vector2 = Vector2(0.5, 0.0)
-@export var attack_range: float = 64.0  # Start large
+@export var attack_range: float = 64.0 
 @export var wind_up_delay: float = 3.0
 @onready var wind_up: Timer = %WindUP
 

@@ -10,7 +10,7 @@ var movement_restriction_count = 0
 
 @onready var sprite = get_node("Sprite2D")
 @onready var gadget_area :Area2D = get_node("GadgetArea")
-var current_controls : int = -1#1 gadget options, 2 key options
+var current_controls : int = -1 ##1 gadget options, 2 key options
 
 func _ready() -> void:
 	GlobalEvents.control_option_switch.connect(
