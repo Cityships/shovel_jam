@@ -28,6 +28,7 @@ project/assembly_name="Shovel_jam"
 [global_group]
 
 Player="Player"
+Jetpack=""
 
 [input]
 
