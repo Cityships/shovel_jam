@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxfyqekw50jhi"]
 
-[ext_resource type="Script" uid="uid://ck2dbru5ufrk4" path="res://scenes/enemy/men_in_black/laser_pivot.gd" id="1_bbo0h"]
+[ext_resource type="Script" uid="uid://ck2dbru5ufrk4" path="res://enemy/scripts/laser_pivot.gd" id="1_bbo0h"]
 
 [sub_resource type="Gradient" id="Gradient_3yb6u"]
 interpolation_mode = 2

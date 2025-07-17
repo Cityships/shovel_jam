@@ -105,6 +105,7 @@ func _process_state(delta: float) -> void:
 				enter_state(State.CHASE)
 
 		State.STUNNED:
+			velocity = Vector2.ZERO
 			pass ## Movement is deliberately frozen.
 
 		State.CHASE:
