@@ -10,6 +10,7 @@ signal try_recharge
 @onready var turn_key : Node2D = %TurnKey
 @onready var recharge_area : Area2D = get_node("RechargeArea")
 @onready var sprite_2d : Sprite2D = get_node("Sprite2D")
+@onready var audio_stream : AudioStreamPlayer2D = get_node("AudioStreamPlayer2D")
 
 var current_rotation : float
 var rotation_ticks : int = 0
@@ -59,7 +60,7 @@ func _ready() -> void:
 				recharge_area.force_update_transform()
 			if key_type == KeyType.LIGHT:
 				self.modulate = Color.YELLOW
-				recharge_area.get_node("CollisionShape2D").shape.radius = 32
+				recharge_area.get_node("CollisionShape2D").shape.radius = 64
 				recharge_area.force_update_transform()
 			if key_type == KeyType.RETAIN:
 				recharge_area.get_node("CollisionShape2D").shape.radius = 32
@@ -130,6 +131,8 @@ func _input(_event: InputEvent) -> void:
 				current_rotation += 30
 				if key_type == KeyType.STANDARD:
 					try_recharge.emit(30 / 360.0)
+		if fmod(rotation_ticks, 6) == 0 and !audio_stream.playing:
+			audio_stream.play()
 			
 	if mouse_over and Input.is_action_just_pressed("left_mouse_button"):
 		last_mouse_velocity = 0
@@ -155,7 +158,7 @@ func recharge(rotations : float):
 		if key_type == KeyType.LIGHT:
 			return
 		if key_type == KeyType.RETAIN:
-			body.force_recharge(rotations * charge_per_rotation)
+			body.force_recharge(rotations * charge_per_rotation + last_mouse_velocity * 0.01)
 		if body.has_method("recharge"):
 			body.recharge(rotations * charge_per_rotation)
 		else:

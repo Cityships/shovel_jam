@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://ttrym2ihwlab"]
+
+[ext_resource type="Script" uid="uid://bn460lvprlt3s" path="res://scenes/level00/doors/gadget_door/gadget_door.gd" id="1_cilsc"]
+[ext_resource type="Script" uid="uid://c7wgk05aylv3f" path="res://scenes/level00/doors/gadget_door/chargeable_door.gd" id="2_raa2u"]
+[ext_resource type="Material" uid="uid://cx7tkp20yv1b6" path="res://scenes/enemy/platforms.tres" id="2_ubqui"]
+[ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="3_jyu57"]
+
+[sub_resource type="Curve2D" id="Curve2D_l64ck"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 24, 136, 0, 0, 0, 0, 24, 0)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ery"]
+size = Vector2(46, 88)
+
+[node name="GadgetDoor" type="Path2D"]
+curve = SubResource("Curve2D_l64ck")
+script = ExtResource("1_cilsc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(24, 136)
+rotates = false
+loop = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="PathFollow2D"]
+collision_layer = 5
+sync_to_physics = false
+script = ExtResource("2_raa2u")
+
+[node name="VisualTreeRoot" type="Sprite2D" parent="PathFollow2D/AnimatableBody2D"]
+material = ExtResource("2_ubqui")
+texture = ExtResource("3_jyu57")
+region_enabled = true
+region_rect = Rect2(40, 24, 46, 88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_61ery")
+
+[node name="ProgressBar" type="ProgressBar" parent="PathFollow2D/AnimatableBody2D"]
+custom_minimum_size = Vector2(32, 64)
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 4.0
+offset_bottom = 32.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Line2D" type="Line2D" parent="PathFollow2D"]
