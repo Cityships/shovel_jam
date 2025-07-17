@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://ht5lx1vd84mr"]
 
-[ext_resource type="Material" uid="uid://co8x461kq2vk3" path="res://scenes/enemy/enemy.tres" id="1_alco5"]
+[ext_resource type="Material" uid="uid://co8x461kq2vk3" path="res://enemy/resource/enemy_shader.tres" id="1_alco5"]
 [ext_resource type="Texture2D" uid="uid://l3buegkgxogf" path="res://enemy/png/BaseBody-Sheet-Sheet.png" id="2_4mcxi"]
 [ext_resource type="Texture2D" uid="uid://3vwv4v657y7o" path="res://enemy/png/BaseBodyMoving-Sheet.png" id="3_l6l6v"]
 [ext_resource type="Script" uid="uid://c65vc5jn16sbr" path="res://enemy/scripts/sprite_shader_control.gd" id="4_8g2wi"]

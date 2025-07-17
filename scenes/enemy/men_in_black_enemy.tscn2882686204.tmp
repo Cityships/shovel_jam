@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://3wmt1xd0cyue"]
+
+[ext_resource type="Script" uid="uid://bckoy402jkhcl" path="res://enemy/scripts/men_in_black.gd" id="2_sqmj5"]
+
+[node name="MIB"]
+script = ExtResource("2_sqmj5")
+max_distance = 800.0
+flash_time = 0.05
+cooldown_time = 0.5
+damage = 10
+enemy_resource = null

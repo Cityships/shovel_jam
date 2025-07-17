@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bn460lvprlt3s" path="res://scenes/level00/doors/gadget_door/gadget_door.gd" id="1_cilsc"]
 [ext_resource type="Script" uid="uid://c7wgk05aylv3f" path="res://scenes/level00/doors/gadget_door/chargeable_door.gd" id="2_raa2u"]
-[ext_resource type="Material" uid="uid://cx7tkp20yv1b6" path="res://scenes/enemy/platforms.tres" id="2_ubqui"]
+[ext_resource type="Material" uid="uid://cx7tkp20yv1b6" path="res://map/resources/platforms.tres" id="2_ubqui"]
 [ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="3_jyu57"]
 
 [sub_resource type="Curve2D" id="Curve2D_l64ck"]

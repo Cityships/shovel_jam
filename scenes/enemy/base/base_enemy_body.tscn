@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5un07nkjbbup"]
 
 [ext_resource type="Script" uid="uid://2b2vpx4gmhmh" path="res://enemy/scripts/base_enemy_body.gd" id="1_dk1ky"]
-[ext_resource type="PackedScene" uid="uid://ht5lx1vd84mr" path="res://scenes/enemy/visual_tree_root.tscn" id="2_ed3yb"]
-[ext_resource type="PackedScene" uid="uid://bca8wekgxotot" path="res://scenes/enemy/collision_shape_2d.tscn" id="3_dk1ky"]
+[ext_resource type="PackedScene" uid="uid://ht5lx1vd84mr" path="res://scenes/enemy/base/visual_tree_root.tscn" id="2_ed3yb"]
+[ext_resource type="PackedScene" uid="uid://bca8wekgxotot" path="res://scenes/enemy/base/collision_shape_2d.tscn" id="3_dk1ky"]
 
 [node name="BaseEnemyBody" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 9
 script = ExtResource("1_dk1ky")
-target_offset = Vector2(50, 0)
+target_offset = Vector2(-0.5, 0)
 
 [node name="VisualTreeRoot" parent="." instance=ExtResource("2_ed3yb")]
 unique_name_in_owner = true
@@ -20,21 +20,21 @@ unique_name_in_owner = true
 [node name="RayFront" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -4)
-target_position = Vector2(-35, -1)
+target_position = Vector2(36, 0)
 
 [node name="RayDown" type="RayCast2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, 2)
-target_position = Vector2(-34, 9)
+target_position = Vector2(27, 10)
 
 [node name="RayVision" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-target_position = Vector2(-97, 0)
+target_position = Vector2(226, 0)
 collision_mask = 8
 
 [node name="RayVision2" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-target_position = Vector2(104, 0)
+target_position = Vector2(-137, -1)
 collision_mask = 8
 
 [node name="Debug" type="Label" parent="."]
@@ -47,3 +47,8 @@ text = "T"
 
 [node name="WindUP" type="Timer" parent="."]
 unique_name_in_owner = true
+
+[node name="DIR" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b6ttdpgnutwhp" path="res://scenes/moving_platform/moving_platform.gd" id="1_gsele"]
 [ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="2_gvfoc"]
-[ext_resource type="Material" uid="uid://cx7tkp20yv1b6" path="res://scenes/enemy/platforms.tres" id="2_mdd6a"]
-[ext_resource type="Script" uid="uid://dgm7ki0n07at" path="res://enemy/platform.gd" id="4_3yh0v"]
+[ext_resource type="Material" uid="uid://cx7tkp20yv1b6" path="res://map/resources/platforms.tres" id="2_mdd6a"]
+[ext_resource type="Script" uid="uid://dgm7ki0n07at" path="res://map/scripts/platform.gd" id="4_3yh0v"]
 
 [sub_resource type="Curve2D" id="Curve2D_61ery"]
 _data = {
