@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hqmafcal53s3"
-path="res://.godot/imported/turret_gun.png-b04bbb4b3d9c54f8956aa28f19ee77e7.ctex"
+path="res://.godot/imported/turret_gun.png-0d5d9d2981863e334370b61532f29366.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/level00/turret/turret_gun.png"
-dest_files=["res://.godot/imported/turret_gun.png-b04bbb4b3d9c54f8956aa28f19ee77e7.ctex"]
+source_file="res://scenes/level00/los_turret/turret_gun.png"
+dest_files=["res://.godot/imported/turret_gun.png-0d5d9d2981863e334370b61532f29366.ctex"]
 
 [params]
 

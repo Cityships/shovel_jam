@@ -15,14 +15,12 @@ func on_player_pickup_gadget(gadget : RigidBody2D):
 		await get_tree().create_timer(0.25).timeout
 		gadget.reparent(self)
 		gadget.position = Vector2.ZERO
-		gadget.visible = false
 		gadget.freeze = true
 
 func deploy_gadget(deploy_location : Vector2, gadget_name):
 	var gadget : RigidBody2D = get_node_or_null(gadget_name)
 	if gadget != null:
 		msg_timeout.start(2)
-		gadget.visible = true
 		gadget.global_position = deploy_location
 		gadget.reparent(get_parent())
 		gadget.freeze = false

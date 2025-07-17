@@ -25,12 +25,20 @@ var player
 var hold_player : bool
 @onready var player_area : CollisionShape2D = get_node("PlayerArea")
 
+var death_override : bool
+
 var gadget_in_use : bool
 
 func _ready() -> void:
 
 	GlobalEvents.player_death.connect(
-		func(_value):
+		func():
+			get_tree().create_timer(1).timeout.connect(func():death_override = false)
+			death_override = true
+			audio_player.stop()
+			hold_player = false
+			gadget_in_use = false
+			player = null
 			GlobalEvents.request_pickup_gadget.emit(self)
 	)
 	
@@ -38,7 +46,7 @@ func _ready() -> void:
 	interactable_area.body_entered.connect(func(value): player = value)
 	interactable_area.body_exited.connect(
 		func(value):
-			if !hold_player:
+			if !hold_player or death_override:
 				value.movement_restriction_count = 0
 				player = null
 				hold_player = false
@@ -98,6 +106,9 @@ func _process(delta: float) -> void:
 		forced_recharge_count = 0
 
 func _input(event: InputEvent) -> void:
+
+	if death_override:
+		return
 
 	if Input.is_action_just_pressed("ui_accept") and player != null:
 		gadget_in_use = true
