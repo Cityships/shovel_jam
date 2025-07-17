@@ -116,7 +116,7 @@ show_percentage = false
 [node name="Line2D" type="Line2D" parent="Map/Door2/PathFollow2D"]
 
 [node name="Door3" type="Path2D" parent="Map"]
-position = Vector2(-512, -496)
+position = Vector2(-512, -480)
 curve = SubResource("Curve2D_dvbwm")
 script = ExtResource("4_0w5ss")
 
