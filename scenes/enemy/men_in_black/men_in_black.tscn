@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccvaya45j8x0y"]
+
+[ext_resource type="Script" uid="uid://bckoy402jkhcl" path="res://enemy/scripts/men_in_black.gd" id="1_3yb6u"]
+
+[node name="MenInBlack" type="Node2D"]
+script = ExtResource("1_3yb6u")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dgvlgknpqnyax"]
 
 [ext_resource type="Script" uid="uid://bce7sk8abb5od" path="res://scenes/level00/doors/story_door/story_door.gd" id="1_togkp"]
-[ext_resource type="Material" uid="uid://cx7tkp20yv1b6" path="res://scenes/enemy/platforms.tres" id="2_a76pk"]
+[ext_resource type="Material" uid="uid://cx7tkp20yv1b6" path="res://map/resources/platforms.tres" id="2_a76pk"]
 [ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="3_v25em"]
 
 [sub_resource type="Curve2D" id="Curve2D_l64ck"]

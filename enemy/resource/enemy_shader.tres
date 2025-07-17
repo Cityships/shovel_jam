@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://co8x461kq2vk3"]
 
-[ext_resource type="Shader" uid="uid://hf3ps7in7kiy" path="res://scenes/enemy/composite_material.gdshader" id="1_juwh8"]
+[ext_resource type="Shader" uid="uid://hf3ps7in7kiy" path="res://enemy/resource/composite_material.gdshader" id="1_juwh8"]
 
 [resource]
 shader = ExtResource("1_juwh8")

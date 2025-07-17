@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b6kaaaqphs6mv"]
 
 [ext_resource type="Script" uid="uid://hywsynhg1uu5" path="res://scenes/windup_gizmo/wind_up_gizmo.gd" id="1_edxmb"]
-[ext_resource type="Shader" uid="uid://hf3ps7in7kiy" path="res://scenes/enemy/composite_material.gdshader" id="2_0rred"]
+[ext_resource type="Shader" uid="uid://hf3ps7in7kiy" path="res://enemy/resource/composite_material.gdshader" id="2_0rred"]
 [ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="2_8vqp0"]
 [ext_resource type="AudioStream" uid="uid://ctswyqoptpywn" path="res://scenes/windup_gizmo/Winding up.ogg" id="4_ru0l5"]
 

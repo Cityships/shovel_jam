@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxfyqekw50jhi"]
+
+[ext_resource type="Script" uid="uid://ck2dbru5ufrk4" path="res://scenes/enemy/men_in_black/laser_pivot.gd" id="1_bbo0h"]
+
+[sub_resource type="Gradient" id="Gradient_3yb6u"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.306667, 0.593333, 0.906667)
+colors = PackedColorArray(0.999987, 0.393524, 0.363484, 1, 0.936943, 0, 0.146872, 1, 0.996904, 0.000417245, 0.000221209, 1, 0.84956, 3.29696e-06, 1.54018e-06, 1)
+metadata/_snap_count = 32
+
+[node name="LaserPivot" type="Node2D"]
+script = ExtResource("1_bbo0h")
+
+[node name="Ray" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Beam" type="Line2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2, -3)
+points = PackedVector2Array(-1.85413, 2.90668)
+width = 3.0
+gradient = SubResource("Gradient_3yb6u")

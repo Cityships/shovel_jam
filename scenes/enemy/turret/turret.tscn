@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://df5attnfnjnlb" path="res://enemy/scripts/turret.gd" id="1_2a3v4"]
 [ext_resource type="Texture2D" uid="uid://bno25grtumtfw" path="res://enemy/png/turret_base.svg" id="2_5te02"]
-[ext_resource type="Material" uid="uid://co8x461kq2vk3" path="res://scenes/enemy/enemy.tres" id="3_5te02"]
+[ext_resource type="Material" uid="uid://co8x461kq2vk3" path="res://enemy/resource/enemy_shader.tres" id="3_5te02"]
 [ext_resource type="Texture2D" uid="uid://cmlmbigi8f8x0" path="res://enemy/png/turret_head.svg" id="3_d3l2q"]
 [ext_resource type="Script" uid="uid://30mfkg33ob33" path="res://enemy/scripts/turret_head.gd" id="4_65cm3"]
 
