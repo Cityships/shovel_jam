@@ -11,7 +11,6 @@ shader_parameter/fill_color = Color(1, 1, 1, 1)
 shader_parameter/fill_enabled = false
 shader_parameter/grayscale_enabled = false
 shader_parameter/weighted = true
-shader_parameter/outline_enabled = false
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/width = 4.0
 shader_parameter/pattern = 0
