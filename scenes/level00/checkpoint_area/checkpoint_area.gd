@@ -4,6 +4,8 @@ extends Area2D
 
 func _ready() -> void:
     body_entered.connect(
-        func(_value):
-            GlobalEvents.story_bot_skip_to_index.emit(skip_to_index),
+        func(_player):
+            if skip_to_index != -1:
+                GlobalEvents.story_bot_skip_to_index.emit(skip_to_index)
+            GlobalEvents.set_checkpoint.emit(self),
     )

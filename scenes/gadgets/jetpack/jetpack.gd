@@ -28,6 +28,11 @@ var hold_player : bool
 var gadget_in_use : bool
 
 func _ready() -> void:
+
+	GlobalEvents.player_death.connect(
+		func(_value):
+			GlobalEvents.request_pickup_gadget.emit(self)
+	)
 	
 	windup_progress_bar.value = starting_charge
 	interactable_area.body_entered.connect(func(value): player = value)

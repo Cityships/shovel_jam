@@ -22,6 +22,12 @@ var armed_emp : bool
 var gadget_in_use : bool
 
 func _ready() -> void:
+
+	GlobalEvents.player_death.connect(
+		func(_value):
+			GlobalEvents.request_pickup_gadget.emit(self)
+	)
+
 	emp_instance = emp_explosion_effect.instantiate()
 	add_child(emp_instance)
 	interactable_area.body_entered.connect(func(value): player = value)

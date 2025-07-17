@@ -95,13 +95,13 @@ func _process(delta: float) -> void:
 
 func _input(_event: InputEvent) -> void:
 
-	if Input.is_key_pressed(KEY_1) and current_controls == 1:
+	if Input.is_key_pressed(KEY_1) and current_controls == 1 and !mouse_over:
 		key_type = KeyType.STANDARD
 		key_type_changed.emit()
-	elif Input.is_key_pressed(KEY_2) and current_controls == 1:
+	elif Input.is_key_pressed(KEY_2) and current_controls == 1 and !mouse_over:
 		key_type = KeyType.LIGHT
 		key_type_changed.emit()
-	elif Input.is_key_pressed(KEY_3) and current_controls == 1:
+	elif Input.is_key_pressed(KEY_3) and current_controls == 1 and !mouse_over:
 		key_type = KeyType.RETAIN
 		key_type_changed.emit()
 
