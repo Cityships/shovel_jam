@@ -53,6 +53,9 @@ position = Vector2(196, 179)
 [node name="MenInBlack" parent="Map" instance=ExtResource("7_ys2ul")]
 position = Vector2(84, 192)
 
+[node name="ClockworkEnemy2" parent="Map" instance=ExtResource("6_61ery")]
+position = Vector2(274, 182)
+
 [node name="QuickTipManager" parent="." instance=ExtResource("8_h7ndw")]
 
 [node name="GadgetManager" parent="." instance=ExtResource("9_61ery")]

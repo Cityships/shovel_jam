@@ -14,10 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cane6ddgdd7ym" path="res://scenes/level00/hazard/hazard_area.tscn" id="8_la4if"]
 [ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/gadgets/jetpack/jetpack.tscn" id="10_kj78h"]
 [ext_resource type="PackedScene" uid="uid://dopj80mkon6wb" path="res://manager_systems/game_manager/game_manager.tscn" id="13_la4if"]
-
-[ext_resource type="Texture2D" uid="uid://bh1quj72s8v7r" path="res://scenes/level00/turret/turret_base.png" id="14_b7lq2"]
-[ext_resource type="Material" uid="uid://co8x461kq2vk3" path="res://enemy/resource/enemy_shader.tres" id="15_la4if"]
-
+[ext_resource type="Texture2D" uid="uid://bh1quj72s8v7r" path="res://scenes/level00/los_turret/turret_base.png" id="14_b7lq2"]
 [ext_resource type="PackedScene" uid="uid://dduacje26mt8b" path="res://manager_systems/screen_effect_manager/screen_effects_manager.tscn" id="15_si1ye"]
 [ext_resource type="Texture2D" uid="uid://hqmafcal53s3" path="res://scenes/level00/los_turret/turret_gun.png" id="16_ak84c"]
 [ext_resource type="Script" uid="uid://po87hcrrbmbv" path="res://scenes/level00/los_turret/los_turret.gd" id="16_la4if"]
