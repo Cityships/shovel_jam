@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://c40c8eqmrfgcd"]
+
+[ext_resource type="Script" uid="uid://po87hcrrbmbv" path="res://scenes/level00/los_turret/los_turret.gd" id="1_vv8ve"]
+[ext_resource type="AudioStream" uid="uid://b6aphofe4u6cp" path="res://scenes/level00/los_turret/pew.tres" id="2_pdeis"]
+[ext_resource type="Texture2D" uid="uid://kg8egr5hdyxe" path="res://scenes/level00/los_turret/base.tres" id="3_vv8ve"]
+[ext_resource type="SpriteFrames" uid="uid://cjhbyrexvp54g" path="res://scenes/level00/los_turret/level00.tres" id="4_xspaq"]
+
+[sub_resource type="Gradient" id="Gradient_6mlxk"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.306667, 0.593333, 0.906667)
+colors = PackedColorArray(0.999987, 0.393524, 0.363484, 1, 0.936943, 0, 0.146872, 1, 0.996904, 0.000417245, 0.000221209, 1, 0.84956, 3.29696e-06, 1.54018e-06, 1)
+metadata/_snap_count = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q63yx"]
+size = Vector2(1216, 358)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5te02"]
+size = Vector2(104, 58)
+
+[node name="LOSTurret" type="StaticBody2D"]
+script = ExtResource("1_vv8ve")
+audio_playlist = ExtResource("2_pdeis")
+
+[node name="CycleTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 6.0
+one_shot = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+position = Vector2(-8, 40)
+remote_path = NodePath("../VisualTreeRoot")
+update_position = false
+update_scale = false
+
+[node name="TurretBase" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(-8, 16)
+scale = Vector2(2, 2)
+texture = ExtResource("3_vv8ve")
+offset = Vector2(0, 2)
+
+[node name="VisualTreeRoot" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
+position = Vector2(-8, 40)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("4_xspaq")
+centered = false
+offset = Vector2(-13.5, -11.5)
+
+[node name="LaserRaycast" type="RayCast2D" parent="VisualTreeRoot"]
+unique_name_in_owner = true
+position = Vector2(32, 3)
+target_position = Vector2(500, 0)
+collision_mask = 9
+
+[node name="LaserLine" type="Line2D" parent="VisualTreeRoot"]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(36, 6)
+gradient = SubResource("Gradient_6mlxk")
+
+[node name="DangerArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DangerArea"]
+position = Vector2(568, 135)
+shape = SubResource("RectangleShape2D_q63yx")
+debug_color = Color(0.994517, 0, 0.22816, 0.027451)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(28, 55)
+shape = SubResource("RectangleShape2D_5te02")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

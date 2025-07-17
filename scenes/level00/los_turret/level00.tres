@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://cjhbyrexvp54g"]
+
+[ext_resource type="Texture2D" uid="uid://hqmafcal53s3" path="res://scenes/level00/los_turret/turret_gun.png" id="1_q3rqo"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_q3rqo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

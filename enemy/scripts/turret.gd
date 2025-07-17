@@ -63,6 +63,9 @@ signal emp_disabled(duration   : float)        ## External EMP stun trigger.
 @export var enemy_resource         : EnemyResource ## Reference to data asset.
 @export var shoot_on_sight         : bool  = true  ## Fire immediately on detect.
 
+@onready var audio_player : AudioStreamPlayer2D = get_node("AudioStreamPlayer2D")
+@export var audio_playlist : AudioStreamPlaylist
+
 #───────────────────────────────────────────────────────────────────────────────
 ## Ready
 #───────────────────────────────────────────────────────────────────────────────

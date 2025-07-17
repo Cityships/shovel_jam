@@ -1,25 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c48jsiqrj4ve4"]
+[gd_scene load_steps=9 format=3 uid="uid://c48jsiqrj4ve4"]
 
 [ext_resource type="Script" uid="uid://df5attnfnjnlb" path="res://enemy/scripts/turret.gd" id="1_2a3v4"]
-[ext_resource type="Texture2D" uid="uid://bno25grtumtfw" path="res://enemy/png/turret_base.svg" id="2_5te02"]
+[ext_resource type="Texture2D" uid="uid://bh1quj72s8v7r" path="res://scenes/level00/los_turret/turret_base.png" id="2_m1j5q"]
 [ext_resource type="Material" uid="uid://co8x461kq2vk3" path="res://enemy/resource/enemy_shader.tres" id="3_5te02"]
-[ext_resource type="Texture2D" uid="uid://cmlmbigi8f8x0" path="res://enemy/png/turret_head.svg" id="3_d3l2q"]
 [ext_resource type="Script" uid="uid://30mfkg33ob33" path="res://enemy/scripts/turret_head.gd" id="4_65cm3"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5te02"]
-atlas = ExtResource("3_d3l2q")
-region = Rect2(0, 0, 178, 109)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_d3l2q"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5te02")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="SpriteFrames" uid="uid://cjhbyrexvp54g" path="res://scenes/level00/los_turret/level00.tres" id="4_m1j5q"]
 
 [sub_resource type="Gradient" id="Gradient_6mlxk"]
 interpolation_mode = 2
@@ -28,7 +13,7 @@ colors = PackedColorArray(0.999987, 0.393524, 0.363484, 1, 0.936943, 0, 0.146872
 metadata/_snap_count = 32
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q63yx"]
-size = Vector2(1487.5, 358)
+size = Vector2(1097, 286)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5te02"]
 size = Vector2(208, 122)
@@ -41,25 +26,26 @@ patrol_center_angle_deg = 15.0
 
 [node name="TurretBase" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-texture = ExtResource("2_5te02")
+texture = ExtResource("2_m1j5q")
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 material = ExtResource("3_5te02")
+position = Vector2(-10, -7)
 scale = Vector2(1.07865, 1.03211)
-sprite_frames = SubResource("SpriteFrames_d3l2q")
+sprite_frames = ExtResource("4_m1j5q")
 centered = false
-offset = Vector2(-50, -10)
 script = ExtResource("4_65cm3")
 cooldown_time = 3.0
 
 [node name="Ray" type="RayCast2D" parent="VisualTreeRoot"]
 unique_name_in_owner = true
+collision_mask = 9
 
 [node name="Beam" type="Line2D" parent="VisualTreeRoot/Ray"]
 unique_name_in_owner = true
-position = Vector2(126.083, 30.0356)
-points = PackedVector2Array(-1.85413, 2.90668)
+position = Vector2(53.7709, 15.5022)
+points = PackedVector2Array(1.85417, 0)
 width = 3.0
 gradient = SubResource("Gradient_6mlxk")
 
@@ -69,7 +55,6 @@ collision_layer = 32
 collision_mask = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TurretArea"]
-position = Vector2(770.75, 135)
 shape = SubResource("RectangleShape2D_q63yx")
 
 [node name="ChargeTime" type="Timer" parent="."]
@@ -92,8 +77,9 @@ collision_layer = 16
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(40, 51)
 shape = SubResource("RectangleShape2D_5te02")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="timeout" from="ChargeTime" to="." method="_on_charge_time_timeout"]
 [connection signal="timeout" from="ReloadTime" to="." method="_on_reload_time_timeout"]
