@@ -1,10 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbkndbkistfnt"]
+[gd_scene load_steps=2 format=3 uid="uid://cbkndbkistfnt"]
 
 [ext_resource type="Script" uid="uid://daxdj2b8stsuf" path="res://enemy/scripts/base_enemy_manager.gd" id="1_40wdo"]
-[ext_resource type="PackedScene" uid="uid://c5un07nkjbbup" path="res://scenes/enemy/base_enemy_body.tscn" id="2_a3pup"]
 
 [node name="BaseEnemyManager" type="Node2D"]
 script = ExtResource("1_40wdo")
-
-[node name="BaseEnemyBody" parent="." instance=ExtResource("2_a3pup")]
-unique_name_in_owner = true

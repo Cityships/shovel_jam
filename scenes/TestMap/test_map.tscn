@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://b0ktxfp2kloc5"]
+
+[gd_scene load_steps=11 format=4 uid="uid://b0ktxfp2kloc5"]
+
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_eg0c1"]
 [ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/gadgets/jetpack/jetpack.tscn" id="2_o6k2l"]
 [ext_resource type="PackedScene" uid="uid://dcvfajmk27hns" path="res://scenes/player_character/player_character.tscn" id="2_w7x2g"]
 [ext_resource type="PackedScene" uid="uid://c48jsiqrj4ve4" path="res://scenes/enemy/turret.tscn" id="4_1n5w2"]
+[ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="5_6mlxk"]
+[ext_resource type="PackedScene" uid="uid://3wmt1xd0cyue" path="res://scenes/enemy/men_in_black_enemy.tscn" id="5_h7ndw"]
 [ext_resource type="PackedScene" uid="uid://312utib22mvo" path="res://manager_systems/quick_tip/quick_tip_manager.tscn" id="8_h7ndw"]
 [ext_resource type="PackedScene" uid="uid://demcpoicka6g6" path="res://manager_systems/gadget_manager/gadget_manager.tscn" id="9_61ery"]
 [ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="9_h7ndw"]
@@ -11,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://car3gju7srni5" path="res://scenes/moving_platform/moving_platform_template.tscn" id="11_ys2ul"]
 
 [node name="TestMap" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
 
 [node name="Map" type="Node" parent="."]
 
@@ -39,6 +45,12 @@ offset_left = 1295.0
 offset_top = 739.0
 offset_right = 1335.0
 offset_bottom = 762.0
+
+[node name="MIB" parent="Map" instance=ExtResource("5_h7ndw")]
+position = Vector2(778, 566)
+
+[node name="EmpObject" parent="Map" instance=ExtResource("5_6mlxk")]
+position = Vector2(624, 552)
 
 [node name="QuickTipManager" parent="." instance=ExtResource("8_h7ndw")]
 

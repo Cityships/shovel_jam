@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://3wmt1xd0cyue"]
+
+[ext_resource type="PackedScene" uid="uid://b5ahij8wstxs4" path="res://scenes/enemy/patroler.tscn" id="1_jsvih"]
+[ext_resource type="Script" uid="uid://bckoy402jkhcl" path="res://enemy/men_in_black.gd" id="2_sqmj5"]
+
+[sub_resource type="Gradient" id="Gradient_54nel"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.306667, 0.593333, 0.906667)
+colors = PackedColorArray(0.999987, 0.393524, 0.363484, 1, 0.936943, 0, 0.146872, 1, 0.996904, 0.000417245, 0.000221209, 1, 0.84956, 3.29696e-06, 1.54018e-06, 1)
+metadata/_snap_count = 32
+
+[node name="MIB" instance=ExtResource("1_jsvih")]
+script = ExtResource("2_sqmj5")
+max_distance = null
+flash_time = null
+cooldown_time = null
+damage = null
+
+[node name="BaseEnemyBody" parent="." index="0"]
+target_offset = Vector2(1, 0)
+_state = 1
+
+[node name="Ray" type="RayCast2D" parent="BaseEnemyBody" index="7"]
+unique_name_in_owner = true
+target_position = Vector2(-131, 0)
+
+[node name="Beam" type="Line2D" parent="BaseEnemyBody/Ray" index="0"]
+unique_name_in_owner = true
+position = Vector2(126.083, 30.0356)
+points = PackedVector2Array(-1.85413, 2.90668)
+width = 3.0
+gradient = SubResource("Gradient_54nel")

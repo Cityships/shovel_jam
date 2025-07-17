@@ -1,0 +1,112 @@
+[gd_scene load_steps=15 format=3 uid="uid://ht5lx1vd84mr"]
+
+[ext_resource type="Material" uid="uid://co8x461kq2vk3" path="res://scenes/enemy/enemy.tres" id="1_alco5"]
+[ext_resource type="Texture2D" uid="uid://l3buegkgxogf" path="res://enemy/png/BaseBody-Sheet-Sheet.png" id="2_4mcxi"]
+[ext_resource type="Texture2D" uid="uid://3vwv4v657y7o" path="res://enemy/png/BaseBodyMoving-Sheet.png" id="3_l6l6v"]
+[ext_resource type="Script" uid="uid://c65vc5jn16sbr" path="res://enemy/scripts/sprite_shader_control.gd" id="4_8g2wi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dpmi2"]
+atlas = ExtResource("2_4mcxi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7r1d"]
+atlas = ExtResource("2_4mcxi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4fo6"]
+atlas = ExtResource("2_4mcxi")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6h6w"]
+atlas = ExtResource("2_4mcxi")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05qiw"]
+atlas = ExtResource("3_l6l6v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgyiy"]
+atlas = ExtResource("3_l6l6v")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofreg"]
+atlas = ExtResource("3_l6l6v")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nje0"]
+atlas = ExtResource("3_l6l6v")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j00kn"]
+atlas = ExtResource("3_l6l6v")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gb6mi"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpmi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7r1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4fo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6h6w")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05qiw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgyiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofreg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nje0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j00kn")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dpmi2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7r1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4fo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6h6w")
+}],
+"loop": true,
+"name": &"Stunned",
+"speed": 5.0
+}]
+
+[node name="VisualTreeRoot" type="AnimatedSprite2D"]
+material = ExtResource("1_alco5")
+sprite_frames = SubResource("SpriteFrames_gb6mi")
+animation = &"Idle"
+autoplay = "Idle"
+offset = Vector2(-2, -6)
+script = ExtResource("4_8g2wi")
