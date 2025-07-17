@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bbpxit1isuy13"]
+[gd_scene load_steps=27 format=4 uid="uid://bbpxit1isuy13"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_m831i"]
 [ext_resource type="PackedScene" uid="uid://dcvfajmk27hns" path="res://scenes/player_character/player_character.tscn" id="2_6mels"]
@@ -12,6 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="7_kj78h"]
 [ext_resource type="Script" uid="uid://cyuts4m4qsd0l" path="res://scenes/level00/tutorial_bot.gd" id="8_g03lo"]
 [ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/gadgets/jetpack/jetpack.tscn" id="10_kj78h"]
+[ext_resource type="Script" uid="uid://df5attnfnjnlb" path="res://enemy/scripts/turret.gd" id="13_b7lq2"]
+[ext_resource type="Texture2D" uid="uid://bh1quj72s8v7r" path="res://scenes/level00/turret/turret_base.png" id="14_b7lq2"]
+[ext_resource type="Material" uid="uid://co8x461kq2vk3" path="res://scenes/enemy/enemy.tres" id="15_la4if"]
+[ext_resource type="Texture2D" uid="uid://hqmafcal53s3" path="res://scenes/level00/turret/turret_gun.png" id="16_ak84c"]
+[ext_resource type="Script" uid="uid://30mfkg33ob33" path="res://enemy/scripts/turret_head.gd" id="17_rrkdo"]
 
 [sub_resource type="Curve2D" id="Curve2D_l64ck"]
 _data = {
@@ -33,6 +38,29 @@ point_count = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_g03lo"]
 font_size = 12
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3l2q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_ak84c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_6mlxk"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.306667, 0.593333, 0.906667)
+colors = PackedColorArray(0.999987, 0.393524, 0.363484, 1, 0.936943, 0, 0.146872, 1, 0.996904, 0.000417245, 0.000221209, 1, 0.84956, 3.29696e-06, 1.54018e-06, 1)
+metadata/_snap_count = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q63yx"]
+size = Vector2(1088, 358)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5te02"]
+size = Vector2(104, 58)
 
 [node name="Level00" type="Node2D"]
 
@@ -326,5 +354,76 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="Turret" type="Node2D" parent="."]
+position = Vector2(-888, -616)
+script = ExtResource("13_b7lq2")
+patrol_pan_angle_deg = 20.0
+patrol_pan_speed = 0.2
+patrol_center_angle_deg = 15.0
+
+[node name="TurretBase" type="Sprite2D" parent="Turret"]
+unique_name_in_owner = true
+position = Vector2(-16, -16)
+scale = Vector2(2, 2)
+texture = ExtResource("14_b7lq2")
+offset = Vector2(0, 2)
+
+[node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Turret"]
+unique_name_in_owner = true
+material = ExtResource("15_la4if")
+position = Vector2(-16, 8)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_d3l2q")
+centered = false
+offset = Vector2(-13.5, -11.5)
+script = ExtResource("17_rrkdo")
+cooldown_time = 1.0
+
+[node name="Ray" type="RayCast2D" parent="Turret/VisualTreeRoot"]
+unique_name_in_owner = true
+position = Vector2(36, 4)
+
+[node name="Beam" type="Line2D" parent="Turret/VisualTreeRoot/Ray"]
+unique_name_in_owner = true
+position = Vector2(-7.62939e-06, -4.00001)
+points = PackedVector2Array(-1.85413, 2.90668)
+width = 3.0
+gradient = SubResource("Gradient_6mlxk")
+
+[node name="TurretArea" type="Area2D" parent="Turret"]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turret/TurretArea"]
+position = Vector2(504, 135)
+shape = SubResource("RectangleShape2D_q63yx")
+debug_color = Color(0.994517, 0, 0.22816, 0.027451)
+
+[node name="ChargeTime" type="Timer" parent="Turret"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="ReloadTime" type="Timer" parent="Turret"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="Label" type="Label" parent="Turret"]
+unique_name_in_owner = true
+offset_left = -9.0
+offset_top = 119.0
+offset_right = 34.0
+offset_bottom = 142.0
+
+[node name="Area2D" type="Area2D" parent="Turret"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turret/Area2D"]
+position = Vector2(20, 19)
+shape = SubResource("RectangleShape2D_5te02")
+
 [connection signal="door_open" from="Map/Door1" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [5]]
 [connection signal="door_open" from="Map/Door2" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [10]]
+[connection signal="timeout" from="Turret/ChargeTime" to="Turret" method="_on_charge_time_timeout"]
+[connection signal="timeout" from="Turret/ReloadTime" to="Turret" method="_on_reload_time_timeout"]
