@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://cane6ddgdd7ym" path="res://scenes/level00/hazard/hazard_area.tscn" id="8_la4if"]
 [ext_resource type="Script" uid="uid://bctu4nwbcfrms" path="res://scenes/level00/doors/vent_door/vent_door.gd" id="9_pg7fu"]
 [ext_resource type="Script" uid="uid://h8ni33d4rjg7" path="res://scenes/level00/checkpoint_area/checkpoint_area.gd" id="9_u07e3"]
-[ext_resource type="PackedScene" uid="uid://d2q54j7jls2mw" path="res://scenes/gadgets/jetpack/jetpack_version_2.tscn" id="10_pg7fu"]
 [ext_resource type="PackedScene" uid="uid://beubd7m68a4bv" path="res://scenes/level00/los_turret/los_turret.tscn" id="12_3s6ok"]
 [ext_resource type="PackedScene" uid="uid://dopj80mkon6wb" path="res://manager_systems/game_manager/game_manager.tscn" id="13_la4if"]
 [ext_resource type="Texture2D" uid="uid://bh1quj72s8v7r" path="res://scenes/level00/los_turret/turret_base.png" id="14_b7lq2"]
@@ -32,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="24_505b6"]
 [ext_resource type="Script" uid="uid://b36scf4n074ai" path="res://scenes/level00/hazard/hazard_area.gd" id="27_0sf4y"]
 [ext_resource type="Script" uid="uid://dwjv6qmxhlkuh" path="res://scenes/level00/doors/triple_door/triple_door.gd" id="28_bwgtc"]
+[ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/gadgets/jetpack/jetpack.tscn" id="29_0sf4y"]
 [ext_resource type="Script" uid="uid://yaf3aphqrxj4" path="res://scenes/level00/doors/triple_door/triple_door_lock.gd" id="29_23ve5"]
 [ext_resource type="Texture2D" uid="uid://c5dhdfjstxgtb" path="res://scenes/level00/clocktower.webp" id="32_5lade"]
 [ext_resource type="PackedScene" uid="uid://bjp4e0btlhpsa" path="res://scenes/level00/items/light_key_item.tscn" id="34_1v3bv"]
@@ -816,7 +816,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99997, 40)
+position = Vector2(-7.99985, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -868,8 +868,8 @@ collision_layer = 10
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
 zoom = Vector2(2, 2)
 
-[node name="Jetpack" parent="." groups=["Jetpack"] instance=ExtResource("10_pg7fu")]
-position = Vector2(801, -26)
+[node name="Jetpack" parent="." instance=ExtResource("29_0sf4y")]
+position = Vector2(799, -22)
 
 [node name="EmpObject" parent="." instance=ExtResource("24_505b6")]
 position = Vector2(-816, -1256)
