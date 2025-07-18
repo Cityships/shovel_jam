@@ -816,7 +816,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-8, 40)
+position = Vector2(-7.99997, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
