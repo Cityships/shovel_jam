@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://b25n8207emop8" path="res://scenes/level00/los_turret/continuous laser start.ogg" id="17_rrkdo"]
 [ext_resource type="AudioStream" uid="uid://dmpxf67uxswd7" path="res://scenes/level00/los_turret/Continuous Laser loop.ogg" id="18_pg7fu"]
 [ext_resource type="AudioStream" uid="uid://cdkfo8jokggxe" path="res://scenes/level00/los_turret/Continuous laser end.ogg" id="19_3s6ok"]
+[ext_resource type="Script" uid="uid://ciixynqe2whmh" path="res://scenes/level00/start.gd" id="23_3s6ok"]
 
 [sub_resource type="Curve2D" id="Curve2D_pg7fu"]
 _data = {
@@ -578,6 +579,10 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="ScreenEffectsManager" parent="CanvasLayer" instance=ExtResource("15_si1ye")]
+
+[node name="Start" type="Node2D" parent="."]
+position = Vector2(-6, -27)
+script = ExtResource("23_3s6ok")
 
 [connection signal="door_open" from="Map/Door1" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [5]]
 [connection signal="door_open" from="Map/Door2" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [10]]
