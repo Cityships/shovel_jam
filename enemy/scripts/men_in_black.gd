@@ -26,7 +26,6 @@ extends BaseEnemyManager
 
 const SHOOT_ATTACK = preload("res://scenes/enemy/base/shoot_attack.tscn")
 
-@onready var muzzle: Node2D = $Muzzle
 @onready var laser_pivot: Node2D
 @onready var ray: RayCast2D
 @onready var beam: Line2D
@@ -61,10 +60,9 @@ var _has_fired_during_attack: bool = false
 
 func _ready() -> void:
 	super._ready()
-	
+
 	if base_enemy_body:
 		laser_pivot = SHOOT_ATTACK.instantiate()
-		laser_pivot.position = muzzle.position 
 		base_enemy_body.add_child(laser_pivot)
 
 		ray  = laser_pivot.ray

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=4 uid="uid://ba32bo0erw33g"]
 
-[ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/resources/default_tileset.tres" id="1_7fnvr"]
+[ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_7fnvr"]
 
 [node name="TowerScene" type="Node2D"]
 

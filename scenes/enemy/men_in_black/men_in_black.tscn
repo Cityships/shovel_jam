@@ -4,6 +4,3 @@
 
 [node name="MenInBlack" type="Node2D"]
 script = ExtResource("1_3yb6u")
-
-[node name="Muzzle" type="Node2D" parent="."]
-position = Vector2(10, -8)
