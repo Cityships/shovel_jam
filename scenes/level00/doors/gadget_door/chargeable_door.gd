@@ -8,6 +8,13 @@ signal emp_disabled
 @export var animation_time : float = 3
 var door_opened = false
 
+@export var electronicly_locked : bool = false
+
+func _ready() -> void:
+	emp_disabled.connect(func(_value): electronicly_locked = false)
+	if electronicly_locked:
+		self.modulate = Color.YELLOW
+
 func open_door():
 	var tween = create_tween()
 	tween.tween_method(
@@ -17,6 +24,8 @@ func open_door():
 	).set_trans(Tween.TRANS_QUAD)
 
 func recharge(value):
+	if electronicly_locked:
+		return
 	windup_progress_bar.value += value
 	if windup_progress_bar.value == windup_progress_bar.max_value and !door_opened:
 		windup_progress_bar.modulate = Color.GREEN
