@@ -25,7 +25,8 @@ func _ready() -> void:
 
 	GlobalEvents.player_death.connect(
 		func():
-			GlobalEvents.request_pickup_gadget.emit(self)
+			if Globals.obtained_gadgets.has(self):
+				GlobalEvents.request_pickup_gadget.emit(self)
 	)
 
 	emp_instance = emp_explosion_effect.instantiate()
