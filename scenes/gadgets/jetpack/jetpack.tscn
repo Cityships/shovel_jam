@@ -1,10 +1,75 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsotiedhoi7hi"]
+[gd_scene load_steps=20 format=3 uid="uid://dsotiedhoi7hi"]
 
 [ext_resource type="Script" uid="uid://b2uxmr8dtxxro" path="res://scenes/gadgets/jetpack/jetpack.gd" id="1_ik27r"]
 [ext_resource type="AudioStream" uid="uid://bq1xdjv0n640l" path="res://scenes/gadgets/jetpack/new_audio_stream_playlist.tres" id="2_5qapv"]
+[ext_resource type="Texture2D" uid="uid://d2yhdgimmgorv" path="res://assets/jet_pack/JP base.png" id="3_1dbem"]
+[ext_resource type="Texture2D" uid="uid://c6ncor4y2vswt" path="res://assets/jet_pack/JP key L frame 1.png" id="4_4rqsq"]
+[ext_resource type="Texture2D" uid="uid://dfblhuhr10xwy" path="res://assets/jet_pack/JP key L frame 2.png" id="5_6p5pu"]
+[ext_resource type="Texture2D" uid="uid://br5aiij368tgs" path="res://assets/jet_pack/JP key L frame 3.png" id="6_icpl7"]
+[ext_resource type="Texture2D" uid="uid://cv2fxi1nndgaa" path="res://assets/jet_pack/JP key L frame 4.png" id="7_d8d28"]
+[ext_resource type="Texture2D" uid="uid://76wuxdhu6lmq" path="res://assets/jet_pack/JP key R frame 1.png" id="8_2ffq3"]
+[ext_resource type="Texture2D" uid="uid://bm12q5ly1gcnu" path="res://assets/jet_pack/JP key R frame 2.png" id="9_owcxs"]
+[ext_resource type="Texture2D" uid="uid://dt8neqk0dntbj" path="res://assets/jet_pack/JP key R frame 3.png" id="10_1sl8r"]
+[ext_resource type="Texture2D" uid="uid://dc0m7ahk205u1" path="res://assets/jet_pack/JP key R frame 4.png" id="11_5r7q3"]
+[ext_resource type="Texture2D" uid="uid://ihnxeafd2ifk" path="res://assets/jet_pack/JP trail frame 1.png" id="12_1sl8r"]
+[ext_resource type="Texture2D" uid="uid://b1e7s880nmvt7" path="res://assets/jet_pack/JP trail frame 2.png" id="13_5r7q3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ffq3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4rqsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6p5pu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_icpl7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_d8d28")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8uutu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_2ffq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_owcxs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1sl8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5r7q3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ja6dn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_1sl8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_5r7q3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikti3"]
-size = Vector2(32, 40)
+size = Vector2(18, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yotyk"]
 
@@ -18,11 +83,34 @@ lock_rotation = true
 script = ExtResource("1_ik27r")
 audio_playlist = ExtResource("2_5qapv")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(16, -16, 8, -16, 8, -8, -8, -8, -8, -16, -16, -16, -16, 24, -8, 24, -8, 16, 8, 16, 8, 24, 16, 24)
+[node name="JetpackSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("3_1dbem")
+
+[node name="KeyLeft" type="AnimatedSprite2D" parent="JetpackSprite"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(-8, 2)
+sprite_frames = SubResource("SpriteFrames_2ffq3")
+frame_progress = 0.865398
+
+[node name="KeyRight" type="AnimatedSprite2D" parent="JetpackSprite"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(8, 2)
+sprite_frames = SubResource("SpriteFrames_8uutu")
+autoplay = "default"
+frame_progress = 0.73368
+
+[node name="Stream" type="AnimatedSprite2D" parent="JetpackSprite"]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, 27)
+sprite_frames = SubResource("SpriteFrames_ja6dn")
+autoplay = "default"
+frame_progress = 0.343282
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ikti3")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -31,10 +119,10 @@ custom_minimum_size = Vector2(8, 40)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = -16.0
-offset_right = 32.0
-offset_bottom = 24.0
+offset_left = 20.0
+offset_top = -21.0
+offset_right = 28.0
+offset_bottom = 19.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 4
@@ -47,12 +135,12 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
-position = Vector2(-32, 8)
+position = Vector2(-25, 8)
 shape = SubResource("RectangleShape2D_yotyk")
 debug_color = Color(1, 1, 1, 0.42)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractableArea"]
-position = Vector2(32, 8)
+position = Vector2(24, 8)
 shape = SubResource("RectangleShape2D_yotyk")
 debug_color = Color(1, 1, 1, 0.42)
 

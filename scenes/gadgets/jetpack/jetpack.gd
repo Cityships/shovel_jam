@@ -1,32 +1,36 @@
 extends Gadget
 class_name JetPack
 
+
+
+@onready var jetpack_sprite: Sprite2D = %JetpackSprite
+@onready var key_left: AnimatedSprite2D = %KeyLeft
+@onready var key_right: AnimatedSprite2D = %KeyRight
 @onready var interactable_area : Area2D = get_node("InteractableArea")
 @onready var windup_progress_bar : ProgressBar = get_node("ProgressBar")
 @onready var raycast : RayCast2D = get_node("RayCast2D")
+@onready var debug: Label = %Debug
+@onready var player_area : CollisionShape2D = get_node("PlayerArea")
+@onready var stream: AnimatedSprite2D = %Stream
+
+@export var max_force_recharge_count : int = 1
 @export var discharge_rate : float = 20.0
 @export var starting_charge = 100.0
-@onready var debug: Label = %Debug
-@export var max_force_recharge_count : int = 1
-var forced_recharge_count : int = 0
-
 @export_group("Audio")
 @export var audio_playlist : AudioStreamPlaylist
 @onready var audio_player : AudioStreamPlayer2D = get_node("AudioStreamPlayer2D")
 @onready var equip_audio_stream : AudioStreamPlayer2D = get_node("EquipAudioStream") 
 @export var startup_delay : float = 2.5
+
+
 var startup_timer : Timer
 var input_hold_timer : Timer
 var out_of_power : bool = false
-
+var forced_recharge_count : int = 0
 var input_direction : Vector2
-
 var player
 var hold_player : bool
-@onready var player_area : CollisionShape2D = get_node("PlayerArea")
-
 var death_override : bool
-
 var gadget_in_use : bool
 
 func _ready() -> void:
@@ -88,10 +92,14 @@ func recharge(value):
 		windup_progress_bar.value += value
 		if windup_progress_bar.value == windup_progress_bar.max_value:
 			windup_progress_bar.modulate = Color.GREEN
+			key_right.set_visible(false)
 		else:
 			windup_progress_bar.modulate = Color.WHITE
+			key_right.set_visible(true)
+			
 	if windup_progress_bar.value > 0:
 		out_of_power = false
+		
 
 func force_recharge(value):
 	if forced_recharge_count < max_force_recharge_count:	
@@ -108,6 +116,7 @@ func _process(delta: float) -> void:
 	if input_direction != Vector2.ZERO and hold_player:
 		windup_progress_bar.value -= discharge_rate * delta
 		windup_progress_bar.modulate = Color.WHITE
+		stream.set_visible(true)
 	if windup_progress_bar.value == 0 and audio_player.playing and !out_of_power:
 		out_of_power = true
 		audio_player.stream = audio_playlist.get_list_stream(3)
@@ -154,6 +163,7 @@ func _input(event: InputEvent) -> void:
 		player.reparent(get_parent())
 		player_area.set_deferred("disabled", true)
 		gadget_in_use = false
+		stream.set_visible(false)
 		
 
 	input_direction.x = Input.get_axis("ui_left", "ui_right")
