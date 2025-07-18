@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://bbpxit1isuy13"]
+[gd_scene load_steps=64 format=4 uid="uid://bbpxit1isuy13"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_m831i"]
 [ext_resource type="Script" uid="uid://di362p0l14ryw" path="res://scenes/level00/doors/triple_door/moving_platform_shield.gd" id="1_q30id"]
@@ -89,6 +89,15 @@ _data = {
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1v3bv"]
+size = Vector2(46, 88)
+
+[sub_resource type="Curve2D" id="Curve2D_1v3bv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 25, 140, 0, 0, 0, 0, 25, 228)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a55ot"]
 size = Vector2(46, 88)
 
 [sub_resource type="Curve2D" id="Curve2D_q30id"]
@@ -376,6 +385,42 @@ region_rect = Rect2(40, 24, 46, 88)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door5/PathFollow2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_1v3bv")
+
+[node name="Door6" type="Path2D" parent="Map"]
+position = Vector2(-841, -1268)
+curve = SubResource("Curve2D_1v3bv")
+script = ExtResource("4_0w5ss")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Map/Door6"]
+position = Vector2(25, 140)
+rotates = false
+loop = false
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Map/Door6/PathFollow2D"]
+collision_layer = 21
+sync_to_physics = false
+script = ExtResource("5_11fvo")
+electronicly_locked = true
+
+[node name="VisualTreeRoot" type="Sprite2D" parent="Map/Door6/PathFollow2D/AnimatableBody2D"]
+material = ExtResource("6_1pv21")
+texture = ExtResource("7_kj78h")
+region_enabled = true
+region_rect = Rect2(40, 24, 46, 88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door6/PathFollow2D/AnimatableBody2D"]
+shape = SubResource("RectangleShape2D_a55ot")
+
+[node name="ProgressBar" type="ProgressBar" parent="Map/Door6/PathFollow2D/AnimatableBody2D"]
+custom_minimum_size = Vector2(32, 64)
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 4.0
+offset_bottom = 32.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Line2D" type="Line2D" parent="Map/Door6/PathFollow2D"]
 
 [node name="ElectronicDoor" type="Path2D" parent="Map"]
 position = Vector2(-968, -688)
@@ -745,7 +790,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99927, 40)
+position = Vector2(-7.99924, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -789,7 +834,7 @@ zoom = Vector2(2, 2)
 position = Vector2(-1202, -947)
 
 [node name="EmpObject" parent="." instance=ExtResource("24_505b6")]
-position = Vector2(-1020, -593)
+position = Vector2(-816, -1256)
 
 [node name="ManagerSystems" type="Node" parent="."]
 
