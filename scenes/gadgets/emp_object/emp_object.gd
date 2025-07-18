@@ -24,7 +24,7 @@ var gadget_in_use : bool
 func _ready() -> void:
 
 	GlobalEvents.player_death.connect(
-		func(_value):
+		func():
 			GlobalEvents.request_pickup_gadget.emit(self)
 	)
 
