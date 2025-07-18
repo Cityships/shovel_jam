@@ -39,6 +39,9 @@ position = Vector2(631, 183)
 
 [node name="EmpObject" parent="Map" instance=ExtResource("9_h7ndw")]
 position = Vector2(493, 191)
+max_throw_force_multiplier = 500.0
+max_throw_radius = 128.0
+bezier_resolution = 16
 
 [node name="ClockworkEnemy" parent="Map" instance=ExtResource("6_61ery")]
 position = Vector2(196, 179)
@@ -69,3 +72,6 @@ position = Vector2(0, -6)
 
 [node name="EmpObject" parent="." instance=ExtResource("9_h7ndw")]
 position = Vector2(632, 488)
+max_throw_force_multiplier = 500.0
+max_throw_radius = 128.0
+bezier_resolution = 16

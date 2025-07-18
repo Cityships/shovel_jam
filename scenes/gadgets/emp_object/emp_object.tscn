@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://chtrhnqgbwnwi"]
+[gd_scene load_steps=22 format=3 uid="uid://chtrhnqgbwnwi"]
 
 [ext_resource type="Script" uid="uid://6qbcgtkrvrhq" path="res://scenes/gadgets/emp_object/emp_object.gd" id="1_e10rs"]
 [ext_resource type="PackedScene" uid="uid://cidryyl6c10ou" path="res://scenes/gadgets/emp_object/shockwave_effect/shockwave_effect.tscn" id="2_wio0p"]
@@ -6,6 +6,15 @@
 [ext_resource type="AudioStream" uid="uid://ck6k6ajlt8kq0" path="res://scenes/gadgets/emp_object/Mine beep.ogg" id="4_iqdot"]
 [ext_resource type="AudioStream" uid="uid://drhxnphqdg78a" path="res://scenes/gadgets/emp_object/Emp explosion.ogg" id="5_jjmin"]
 [ext_resource type="AudioStream" uid="uid://bm4pt33qlgndi" path="res://scenes/gadgets/emp_object/Flap.ogg" id="6_ng87o"]
+[ext_resource type="Texture2D" uid="uid://6mtdgq6xqt8u" path="res://assets/emp/emp detonated  frame 1.png" id="7_huq3i"]
+[ext_resource type="Texture2D" uid="uid://bjbmci1aqiuc1" path="res://assets/emp/emp idle frame 1.png" id="7_n7fqs"]
+[ext_resource type="Texture2D" uid="uid://dnutogkltd8cp" path="res://assets/emp/emp idle frame 2.png" id="8_u3oxm"]
+[ext_resource type="Texture2D" uid="uid://50q16024us3g" path="res://assets/emp/emp idle frame 3.png" id="9_8ij0t"]
+[ext_resource type="Texture2D" uid="uid://bpfuxumdu2arw" path="res://assets/emp/emp idle frame 4.png" id="10_t8wke"]
+[ext_resource type="Texture2D" uid="uid://drcvx8g0fqrhp" path="res://assets/emp/emp detonate  frame 1.png" id="12_6685m"]
+[ext_resource type="Texture2D" uid="uid://c7w2vj720mi6i" path="res://assets/emp/emp detonate  frame 2.png" id="13_eduuy"]
+[ext_resource type="Texture2D" uid="uid://dtna37cs0vcqr" path="res://assets/emp/emp detonate  frame 3.png" id="14_u7qte"]
+[ext_resource type="Texture2D" uid="uid://cv2lyjaj317bf" path="res://assets/emp/emp detonate  frame 4.png" id="15_ij1wr"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_iqdot"]
 loop = false
@@ -14,6 +23,51 @@ stream_0 = ExtResource("3_wio0p")
 stream_1 = ExtResource("6_ng87o")
 stream_2 = ExtResource("4_iqdot")
 stream_3 = ExtResource("5_jjmin")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u6u00"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_huq3i")
+}],
+"loop": true,
+"name": &"Detonated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_n7fqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u3oxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8ij0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_t8wke")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_6685m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_eduuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_u7qte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_ij1wr")
+}],
+"loop": true,
+"name": &"WindUp",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kkbu"]
 size = Vector2(16, 16)
@@ -35,12 +89,14 @@ radius = 24.0
 collision_layer = 4
 lock_rotation = true
 script = ExtResource("1_e10rs")
-emp_explosion_effect = ExtResource("2_wio0p")
 audio_playlist = SubResource("AudioStreamPlaylist_iqdot")
+emp_explosion_effect = ExtResource("2_wio0p")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(1, 1, 0, 1)
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_u6u00")
+animation = &"WindUp"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3kkbu")

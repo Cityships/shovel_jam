@@ -1,24 +1,28 @@
 extends Gadget
 
+@onready var sprite: AnimatedSprite2D = %AnimatedSprite2D
 @onready var arc_indicator : Line2D = get_node("ArcIndicator")
+@onready var scene = get_parent()
+@onready var interactable_area : Area2D = get_node("InteractableArea")
+@onready var windup_progress_bar : ProgressBar = get_node("ProgressBar")
+@onready var audio_stream_player : AudioStreamPlayer2D = get_node("AudioStreamPlayer2D")
+
+
+
+@export var max_throw_force_multiplier : float = 500
+@export var audio_playlist : AudioStreamPlaylist
 @export var max_throw_radius : float = 128
 @export var bezier_resolution : int = 16
 @export var emp_explosion_effect : PackedScene
+
+
+
+
 var emp_instance
 var tween
-
-@onready var interactable_area : Area2D = get_node("InteractableArea")
-@onready var windup_progress_bar : ProgressBar = get_node("ProgressBar")
-@export var max_throw_force_multiplier : float = 500
 var player
 var hold_emp : bool
 var armed_emp : bool
-
-@onready var audio_stream_player : AudioStreamPlayer2D = get_node("AudioStreamPlayer2D")
-@export var audio_playlist : AudioStreamPlaylist
-
-@onready var scene = get_parent()
-
 var gadget_in_use : bool
 
 func _ready() -> void:
@@ -85,6 +89,7 @@ func _input(_event: InputEvent) -> void:
 		if !armed_emp and windup_progress_bar.value == windup_progress_bar.max_value:
 			armed_emp = true
 			tween = create_tween()
+			sprite.play("WindUp")
 			var ticks = 4
 			tween.tween_interval(1)
 			tween.chain().tween_callback(func():audio_stream_player.stream = audio_playlist.get_list_stream(2))
@@ -101,9 +106,12 @@ func _input(_event: InputEvent) -> void:
 					windup_progress_bar.modulate = Color.WHITE
 					audio_stream_player.stream = audio_playlist.get_list_stream(3)
 					audio_stream_player.play()
+					sprite.play("Detonated")
 					audio_stream_player.finished.connect(func():audio_stream_player.stream = null)
 					armed_emp = false
 					gadget_in_use = false
+					await get_tree().create_timer(1.0).timeout
+					sprite.play("Idle")
 			)
 	return
 
