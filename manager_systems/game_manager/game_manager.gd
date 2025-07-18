@@ -10,7 +10,14 @@ func _ready() -> void:
 	GlobalEvents.player_death.connect(respawn_player)
 	GlobalEvents.set_checkpoint.connect(func(value): checkpoint = value)
 
-func respawn_player():
-	var tween = create_tween()
-	tween.chain().tween_callback(func():player.reparent(scene))
-	tween.chain().tween_property(player, "global_position", checkpoint.global_position, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+func respawn_player() -> void:
+	var target = Globals.checkpoint
+	if target == Vector2.ZERO:
+		target = Globals.start_point
+
+	var tween := create_tween()
+	tween.tween_callback(func(): player.reparent(scene))
+	tween.tween_property(
+		player, "global_position",
+		target, 0.5
+	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)

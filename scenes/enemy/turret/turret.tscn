@@ -55,6 +55,7 @@ cooldown_time = 3.0
 
 [node name="Ray" type="RayCast2D" parent="VisualTreeRoot"]
 unique_name_in_owner = true
+collision_mask = 9
 
 [node name="Beam" type="Line2D" parent="VisualTreeRoot/Ray"]
 unique_name_in_owner = true

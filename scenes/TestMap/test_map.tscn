@@ -40,13 +40,6 @@ position = Vector2(631, 183)
 [node name="EmpObject" parent="Map" instance=ExtResource("9_h7ndw")]
 position = Vector2(493, 191)
 
-[node name="PlayerCharacter" parent="Map" instance=ExtResource("2_w7x2g")]
-position = Vector2(368, 204)
-collision_layer = 10
-
-[node name="Camera2D" type="Camera2D" parent="Map/PlayerCharacter"]
-zoom = Vector2(2, 2)
-
 [node name="ClockworkEnemy" parent="Map" instance=ExtResource("6_61ery")]
 position = Vector2(196, 179)
 
@@ -55,6 +48,13 @@ position = Vector2(84, 192)
 
 [node name="ClockworkEnemy2" parent="Map" instance=ExtResource("6_61ery")]
 position = Vector2(274, 182)
+
+[node name="PlayerCharacter" parent="Map" instance=ExtResource("2_w7x2g")]
+position = Vector2(368, 204)
+collision_layer = 10
+
+[node name="Camera2D" type="Camera2D" parent="Map/PlayerCharacter"]
+zoom = Vector2(2, 2)
 
 [node name="QuickTipManager" parent="." instance=ExtResource("8_h7ndw")]
 
