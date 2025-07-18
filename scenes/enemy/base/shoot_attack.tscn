@@ -17,6 +17,6 @@ unique_name_in_owner = true
 [node name="Beam" type="Line2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(2, -3)
-points = PackedVector2Array(-1.85413, 2.90668)
+points = PackedVector2Array(7, 3)
 width = 3.0
 gradient = SubResource("Gradient_3yb6u")

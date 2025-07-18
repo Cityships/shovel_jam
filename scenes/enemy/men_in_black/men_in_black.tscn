@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccvaya45j8x0y"]
+[gd_scene load_steps=3 format=3 uid="uid://ccvaya45j8x0y"]
 
 [ext_resource type="Script" uid="uid://bckoy402jkhcl" path="res://enemy/scripts/men_in_black.gd" id="1_3yb6u"]
+[ext_resource type="SpriteFrames" uid="uid://b6ospk8nueuyv" path="res://resources/men_in_black.tres" id="2_eydpc"]
 
 [node name="MenInBlack" type="Node2D"]
 script = ExtResource("1_3yb6u")
+animxzated_sprite = ExtResource("2_eydpc")
 
 [node name="Muzzle" type="Node2D" parent="."]
-position = Vector2(10, -8)
+position = Vector2(11, -13)
