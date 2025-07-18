@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://bbpxit1isuy13"]
+[gd_scene load_steps=67 format=4 uid="uid://bbpxit1isuy13"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_m831i"]
 [ext_resource type="Script" uid="uid://di362p0l14ryw" path="res://scenes/level00/doors/triple_door/moving_platform_shield.gd" id="1_q30id"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dpwkrirbioubl" path="res://icon.svg" id="7_kj78h"]
 [ext_resource type="Script" uid="uid://b6h7k64ka4ode" path="res://scenes/level00/doors/time_door/time_door_lock.gd" id="7_rjlbt"]
 [ext_resource type="Script" uid="uid://cwte5ebyjnmq6" path="res://scenes/level00/doors/gadget_door/gadget_door_sprite_control.gd" id="8_1v3bv"]
-[ext_resource type="Script" uid="uid://cyuts4m4qsd0l" path="res://scenes/level00/tutorial_bot.gd" id="8_g03lo"]
+[ext_resource type="Script" uid="uid://cyuts4m4qsd0l" path="res://scenes/level00/start/tutorial_bot.gd" id="8_g03lo"]
 [ext_resource type="PackedScene" uid="uid://cane6ddgdd7ym" path="res://scenes/level00/hazard/hazard_area.tscn" id="8_la4if"]
 [ext_resource type="Script" uid="uid://bctu4nwbcfrms" path="res://scenes/level00/doors/vent_door/vent_door.gd" id="9_pg7fu"]
 [ext_resource type="Script" uid="uid://h8ni33d4rjg7" path="res://scenes/level00/checkpoint_area/checkpoint_area.gd" id="9_u07e3"]
@@ -27,13 +27,15 @@
 [ext_resource type="AudioStream" uid="uid://b25n8207emop8" path="res://scenes/level00/los_turret/continuous laser start.ogg" id="17_rrkdo"]
 [ext_resource type="AudioStream" uid="uid://dmpxf67uxswd7" path="res://scenes/level00/los_turret/Continuous Laser loop.ogg" id="18_pg7fu"]
 [ext_resource type="AudioStream" uid="uid://cdkfo8jokggxe" path="res://scenes/level00/los_turret/Continuous laser end.ogg" id="19_3s6ok"]
-[ext_resource type="Script" uid="uid://ciixynqe2whmh" path="res://scenes/level00/start.gd" id="23_3s6ok"]
+[ext_resource type="Script" uid="uid://ciixynqe2whmh" path="res://scenes/level00/start/start.gd" id="23_3s6ok"]
 [ext_resource type="Script" uid="uid://bce7sk8abb5od" path="res://scenes/level00/doors/story_door/story_door.gd" id="23_vn2ov"]
 [ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="24_505b6"]
 [ext_resource type="Script" uid="uid://dwjv6qmxhlkuh" path="res://scenes/level00/doors/triple_door/triple_door.gd" id="28_bwgtc"]
 [ext_resource type="Script" uid="uid://yaf3aphqrxj4" path="res://scenes/level00/doors/triple_door/triple_door_lock.gd" id="29_23ve5"]
 [ext_resource type="Texture2D" uid="uid://c5dhdfjstxgtb" path="res://scenes/level00/clocktower.webp" id="32_5lade"]
 [ext_resource type="PackedScene" uid="uid://bjp4e0btlhpsa" path="res://scenes/level00/items/light_key_item.tscn" id="34_1v3bv"]
+[ext_resource type="PackedScene" uid="uid://dga7y3vw74cmx" path="res://scenes/enemy/clockwork/clockwork_enemy.tscn" id="35_s2o0g"]
+[ext_resource type="PackedScene" uid="uid://ccvaya45j8x0y" path="res://scenes/enemy/men_in_black/men_in_black.tscn" id="36_0sf4y"]
 
 [sub_resource type="Curve2D" id="Curve2D_an840"]
 _data = {
@@ -796,7 +798,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99899, 40)
+position = Vector2(-7.99811, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -829,8 +831,16 @@ shape = SubResource("RectangleShape2D_5te02")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Map/LOSTurret2"]
 
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="ClockworkEnemy" parent="Enemies" instance=ExtResource("35_s2o0g")]
+position = Vector2(-1546, -1135)
+
+[node name="MenInBlack" parent="Enemies" instance=ExtResource("36_0sf4y")]
+position = Vector2(-1328, -1268)
+
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_6mels")]
-position = Vector2(-904, -752)
+position = Vector2(-1458, -1136)
 collision_layer = 10
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]

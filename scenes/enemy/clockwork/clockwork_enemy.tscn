@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dga7y3vw74cmx"]
+[gd_scene load_steps=3 format=3 uid="uid://dga7y3vw74cmx"]
 
 [ext_resource type="Script" uid="uid://dn1pnv7uwo06v" path="res://enemy/scripts/enemy_clockwork.gd" id="1_kg6eu"]
+[ext_resource type="SpriteFrames" uid="uid://b2ex2h1wlgmnf" path="res://resources/clock_work.tres" id="2_at20b"]
 
 [node name="ClockworkEnemy" type="Node2D"]
 script = ExtResource("1_kg6eu")
+animxzated_sprite = ExtResource("2_at20b")

@@ -1,0 +1,122 @@
+[gd_resource type="SpriteFrames" load_steps=18 format=3 uid="uid://b2ex2h1wlgmnf"]
+
+[ext_resource type="Texture2D" uid="uid://cgxsv4xwy0aeb" path="res://assets/clockwork_enemy/enemy 2 jump frame 1.png" id="1_4k7e0"]
+[ext_resource type="Texture2D" uid="uid://q5hpb5eppug1" path="res://assets/clockwork_enemy/enemy 2 jump frame 2.png" id="2_yqp5q"]
+[ext_resource type="Texture2D" uid="uid://dqya7u4m0u6ue" path="res://assets/clockwork_enemy/enemy 2 jump frame 3.png" id="3_d057c"]
+[ext_resource type="Texture2D" uid="uid://dwlci3ikmw4be" path="res://assets/clockwork_enemy/enemy 2 jump frame 4.png" id="4_pw0xy"]
+[ext_resource type="Texture2D" uid="uid://kmyy0snmwuen" path="res://assets/clockwork_enemy/enemy 2 jump frame 5.png" id="5_an0ki"]
+[ext_resource type="Texture2D" uid="uid://4pvxu575e27j" path="res://assets/clockwork_enemy/enemy 2 idle frame 1.png" id="6_ehj5d"]
+[ext_resource type="Texture2D" uid="uid://dvv7ul3p1nbhf" path="res://assets/clockwork_enemy/enemy 2 idle frame 2.png" id="7_63e5e"]
+[ext_resource type="Texture2D" uid="uid://f1oo0mmhvn84" path="res://assets/clockwork_enemy/enemy 2 idle frame 3.png" id="8_wghhs"]
+[ext_resource type="Texture2D" uid="uid://dsnosnhcad2d4" path="res://assets/clockwork_enemy/enemy 2 idle frame 4.png" id="9_5ux8g"]
+[ext_resource type="Texture2D" uid="uid://cnp3dyw3g1orq" path="res://assets/clockwork_enemy/enemy 2 idle frame 5.png" id="10_qeuqf"]
+[ext_resource type="Texture2D" uid="uid://soc3xy6l3efu" path="res://assets/clockwork_enemy/enemy 2 idle frame 6.png" id="11_wh0na"]
+[ext_resource type="Texture2D" uid="uid://baarr4cxl1jyg" path="res://assets/clockwork_enemy/enemy 2 walk frame 1.png" id="12_oj88q"]
+[ext_resource type="Texture2D" uid="uid://v2kre7sqpy1i" path="res://assets/clockwork_enemy/enemy 2 walk frame 2.png" id="13_e5g5t"]
+[ext_resource type="Texture2D" uid="uid://c7s7hnqbwi8cd" path="res://assets/clockwork_enemy/enemy 2 walk frame 3.png" id="14_k1b3v"]
+[ext_resource type="Texture2D" uid="uid://b1r1w6lqfqanx" path="res://assets/clockwork_enemy/enemy 2 walk frame 4.png" id="15_hymre"]
+[ext_resource type="Texture2D" uid="uid://b3flqbj7e8ptx" path="res://assets/clockwork_enemy/enemy 2 walk frame 5.png" id="16_3vhsu"]
+[ext_resource type="Texture2D" uid="uid://eas5q6xx28xt" path="res://assets/clockwork_enemy/enemy 2 walk frame 6.png" id="17_kavds"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4k7e0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yqp5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d057c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pw0xy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_an0ki")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ehj5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_63e5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wghhs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5ux8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qeuqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wh0na")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_oj88q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_e5g5t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_k1b3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_hymre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3vhsu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_kavds")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ehj5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_63e5e")
+}],
+"loop": true,
+"name": &"Stunned",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ehj5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_63e5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wghhs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5ux8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qeuqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wh0na")
+}],
+"loop": true,
+"name": &"WindUp",
+"speed": 20.0
+}]

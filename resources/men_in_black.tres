@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://bvw0dnvyhiear" path="res://assets/MenInBlack/MIB 2 aim frame 3.png" id="3_vnpao"]
 [ext_resource type="Texture2D" uid="uid://cqqyv52r1aej" path="res://assets/MenInBlack/MIB 2 shoot frame 1.png" id="4_bgbol"]
 [ext_resource type="Texture2D" uid="uid://brvfgdqdqjayc" path="res://assets/MenInBlack/MIB 2 shoot frame 2.png" id="5_u3mi0"]
-[ext_resource type="Texture2D" uid="uid://bunisttpqy5mp" path="res://assets/default/default idle frame 1.png" id="6_3nlgr"]
-[ext_resource type="Texture2D" uid="uid://bdd2papaw5d2p" path="res://assets/default/default idle frame 2.png" id="7_r1nyr"]
+[ext_resource type="Texture2D" uid="uid://b0fx5kd6esov6" path="res://assets/MenInBlack/MIB 1 idle frame 1.png" id="6_xtnyr"]
+[ext_resource type="Texture2D" uid="uid://clanmpl874nem" path="res://assets/MenInBlack/MIB 1 idle frame 2.png" id="7_6p3kq"]
 [ext_resource type="Texture2D" uid="uid://baywbinw6l17d" path="res://assets/MenInBlack/MIB 2 walk frame 1.png" id="8_osrt8"]
 [ext_resource type="Texture2D" uid="uid://c1fjcfkro0fwf" path="res://assets/MenInBlack/MIB 2 walk frame 2.png" id="9_lk8k8"]
 [ext_resource type="Texture2D" uid="uid://c7pusw5kekwv0" path="res://assets/MenInBlack/MIB 2 walk frame 3.png" id="10_14upp"]
@@ -48,10 +48,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_3nlgr")
+"texture": ExtResource("6_xtnyr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_r1nyr")
+"texture": ExtResource("7_6p3kq")
 }],
 "loop": true,
 "name": &"Idle",

@@ -135,8 +135,9 @@ func shoot_laser() -> bool:
 	if ray.is_colliding():
 		hit_pos = ray.get_collision_point()
 		var body := ray.get_collider()
-		if damage != 0 and body.has_method("apply_damage"):
-			body.apply_damage(damage)
+		if body.is_in_group("Player"):
+			print("Die!")
+			GlobalEvents.player_death.emit()
 	else:
 		hit_pos = global_position + global_transform.x * max_distance
 
