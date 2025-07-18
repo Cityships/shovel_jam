@@ -343,6 +343,7 @@ loop = false
 collision_layer = 5
 sync_to_physics = false
 script = ExtResource("5_11fvo")
+electronicly_locked = true
 
 [node name="VisualTreeRoot" type="Sprite2D" parent="Map/Door4/PathFollow2D/AnimatableBody2D"]
 material = ExtResource("6_1pv21")
@@ -868,7 +869,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(1.5, 1.5)
 script = ExtResource("8_g03lo")
-stop_indices = PackedInt32Array(4, 7, 8, 9, 10, 11)
+stop_indices = PackedInt32Array(4, 7, 8, 9, 10, 11, 12, 13)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/TutorialBot"]
 layout_mode = 2
@@ -1006,7 +1007,6 @@ autowrap_mode = 3
 [node name="Label13" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-text = "In this room we would like you to demonstrate the functions of the other devices that were with you. Pickup the \"light key.\" [R>]"
 label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
