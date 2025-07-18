@@ -85,10 +85,11 @@ func _process(delta: float) -> void:
 			last_mouse_velocity = 0
 			try_recharge.emit(rotation_ticks * 30 / 360.0)
 			rotation_ticks = 0
-			for body in delayed_recharge_list:
+			for body : Node2D in delayed_recharge_list:
 				if body.has_method("recharge"):
 					body.recharge(delayed_recharge_rotations * charge_per_rotation)
-					body.auto_trigger.emit()
+					if body.has_signal("auto_trigger"):
+						body.auto_trigger.emit()
 		last_mouse_velocity = lerp(last_mouse_velocity, 0.0, delta)
 		turn_key.rotation += delta * last_mouse_velocity
 		

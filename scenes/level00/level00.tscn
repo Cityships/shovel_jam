@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://bbpxit1isuy13"]
+[gd_scene load_steps=69 format=4 uid="uid://bbpxit1isuy13"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/resources/default_tileset.tres" id="1_m831i"]
 [ext_resource type="Script" uid="uid://di362p0l14ryw" path="res://scenes/level00/doors/triple_door/moving_platform_shield.gd" id="1_q30id"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://ciixynqe2whmh" path="res://scenes/level00/start/start.gd" id="23_3s6ok"]
 [ext_resource type="Script" uid="uid://bce7sk8abb5od" path="res://scenes/level00/doors/story_door/story_door.gd" id="23_vn2ov"]
 [ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="24_505b6"]
+[ext_resource type="Script" uid="uid://b36scf4n074ai" path="res://scenes/level00/hazard/hazard_area.gd" id="27_0sf4y"]
 [ext_resource type="Script" uid="uid://dwjv6qmxhlkuh" path="res://scenes/level00/doors/triple_door/triple_door.gd" id="28_bwgtc"]
 [ext_resource type="Script" uid="uid://yaf3aphqrxj4" path="res://scenes/level00/doors/triple_door/triple_door_lock.gd" id="29_23ve5"]
 [ext_resource type="Texture2D" uid="uid://c5dhdfjstxgtb" path="res://scenes/level00/clocktower.webp" id="32_5lade"]
@@ -132,6 +133,9 @@ size = Vector2(448, 304)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn2ov"]
 size = Vector2(85.3333, 138.667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ak84c"]
+size = Vector2(352, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrkdo"]
 size = Vector2(48, 48)
@@ -686,13 +690,27 @@ shape = SubResource("RectangleShape2D_vn2ov")
 position = Vector2(-1216, -832)
 skip_to_index = -1
 
-[node name="Polygon2D" type="Polygon2D" parent="Map"]
+[node name="Hazard1" type="Polygon2D" parent="Map"]
+position = Vector2(-1520, -720)
+color = Color(1, 0.207843, 0, 0.513726)
+polygon = PackedVector2Array(-176, -16, 176, -16, 176, 32, -176, 32)
+
+[node name="Area2D" type="Area2D" parent="Map/Hazard1"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("27_0sf4y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Hazard1/Area2D"]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_ak84c")
+
+[node name="Hazard0" type="Polygon2D" parent="Map"]
 position = Vector2(-192, -328)
 scale = Vector2(1, 0.25)
 color = Color(1, 0.207843, 0, 0.513726)
 polygon = PackedVector2Array(-128, -32, 128, -32, 128, 32, -128, 32)
 
-[node name="Area2D" parent="Map/Polygon2D" instance=ExtResource("8_la4if")]
+[node name="Area2D" parent="Map/Hazard0" instance=ExtResource("8_la4if")]
 
 [node name="VentTeleporter0" type="Sprite2D" parent="Map"]
 modulate = Color(0, 1, 0, 1)
@@ -798,7 +816,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99799, 40)
+position = Vector2(-8, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false

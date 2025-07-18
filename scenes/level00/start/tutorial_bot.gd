@@ -3,6 +3,8 @@ extends VBoxContainer
 @onready var text_lines : Control = %TextLines
 @onready var text_index : int = 0:
 	set(value):
+		if text_index == value:
+			return
 		text_index = value
 		GlobalEvents.story_bot_index_changed.emit(value)
 
