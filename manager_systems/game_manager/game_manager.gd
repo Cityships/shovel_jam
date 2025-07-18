@@ -10,6 +10,7 @@ func _ready() -> void:
 	GlobalEvents.player_death.connect(respawn_player)
 	GlobalEvents.set_checkpoint.connect(func(value): checkpoint = value)
 
+
 func respawn_player() -> void:
 	var target = Globals.checkpoint
 	if target == Vector2.ZERO:
@@ -21,3 +22,6 @@ func respawn_player() -> void:
 		player, "global_position",
 		target, 0.5
 	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	for gadget in Globals.obtained_gadgets:
+		tween.chain().tween_callback(func(): GlobalEvents.request_pickup_gadget.emit(gadget))
+
