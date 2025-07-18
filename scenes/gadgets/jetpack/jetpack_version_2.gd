@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Gadget
 
 @onready var interactable_area : Area2D = get_node("InteractableArea")
 @onready var player_area : CollisionShape2D = get_node("PlayerArea")
@@ -55,6 +55,7 @@ func _ready() -> void:
 			audio_player.stop()
 			input_hold_timer.stop()
 	)
+	Globals.obtained_gadgets.append(self)
 
 	player = get_tree().get_nodes_in_group("Player")[0]
 	remote_transform.remote_path = player.get_path()
