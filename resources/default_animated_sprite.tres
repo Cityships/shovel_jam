@@ -1,0 +1,112 @@
+[gd_resource type="SpriteFrames" load_steps=17 format=3 uid="uid://bf6q7r4ng5qad"]
+
+[ext_resource type="Texture2D" uid="uid://cne5x18ka8t0b" path="res://assets/default/default aim frame 1.png" id="1_bs08w"]
+[ext_resource type="Texture2D" uid="uid://b4qp2dy624fle" path="res://assets/default/default aim frame 2.png" id="2_ppf0t"]
+[ext_resource type="Texture2D" uid="uid://c6dbbq1tyw8gi" path="res://assets/default/default aim frame 3.png" id="3_xe7tk"]
+[ext_resource type="Texture2D" uid="uid://b2m4wrxi6mwk" path="res://assets/default/default shoot frame 1.png" id="4_12wo7"]
+[ext_resource type="Texture2D" uid="uid://v1f42edm1a3g" path="res://assets/default/default shoot frame 2.png" id="5_vrkwd"]
+[ext_resource type="Texture2D" uid="uid://chbghg20qgv3o" path="res://assets/default/default shoot frame 3.png" id="6_wt038"]
+[ext_resource type="Texture2D" uid="uid://bunisttpqy5mp" path="res://assets/default/default idle frame 1.png" id="7_bb16e"]
+[ext_resource type="Texture2D" uid="uid://bdd2papaw5d2p" path="res://assets/default/default idle frame 2.png" id="8_5fhlh"]
+[ext_resource type="Texture2D" uid="uid://codxt284mkf57" path="res://assets/default/default run frame 1.png" id="9_tl4nj"]
+[ext_resource type="Texture2D" uid="uid://bn7phdr2sho50" path="res://assets/default/default run frame 2.png" id="10_2hstt"]
+[ext_resource type="Texture2D" uid="uid://bthtymc6ocqrb" path="res://assets/default/default run frame 3.png" id="11_2apbe"]
+[ext_resource type="Texture2D" uid="uid://d01pli34k2q8t" path="res://assets/default/default run frame 4.png" id="12_iigfo"]
+[ext_resource type="Texture2D" uid="uid://ddc0b25nt3g60" path="res://assets/default/default run frame 5.png" id="13_idvp2"]
+[ext_resource type="Texture2D" uid="uid://b56dq11mp0vqu" path="res://assets/default/default run frame 6.png" id="14_hl5h2"]
+[ext_resource type="Texture2D" uid="uid://d3g8drhnn5knq" path="res://assets/default/default run frame 7.png" id="15_t02ol"]
+[ext_resource type="Texture2D" uid="uid://l6ly7u5kaq74" path="res://assets/default/default run frame 8.png" id="16_piwgd"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bs08w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ppf0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xe7tk")
+}],
+"loop": true,
+"name": &"Aim",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_12wo7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vrkwd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wt038")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_bb16e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_5fhlh")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_tl4nj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2hstt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2apbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_iigfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_idvp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_hl5h2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_t02ol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_piwgd")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ppf0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xe7tk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ppf0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xe7tk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ppf0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xe7tk")
+}],
+"loop": true,
+"name": &"WindUp",
+"speed": 3.0
+}]

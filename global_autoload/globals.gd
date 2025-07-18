@@ -8,5 +8,5 @@ var start_point: Vector2
 var checkpoint: Vector2
 
 var obtained_gadgets = []
-var obtained_keys = []
 
+var obtained_keys = []
