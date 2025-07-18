@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://bbpxit1isuy13"]
+[gd_scene load_steps=60 format=4 uid="uid://bbpxit1isuy13"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_m831i"]
 [ext_resource type="Script" uid="uid://di362p0l14ryw" path="res://scenes/level00/doors/triple_door/moving_platform_shield.gd" id="1_q30id"]
@@ -697,7 +697,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99942, 40)
+position = Vector2(-7.99939, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -731,14 +731,14 @@ shape = SubResource("RectangleShape2D_5te02")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Map/LOSTurret2"]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_6mels")]
-position = Vector2(-160, -712)
+position = Vector2(15, -23)
 collision_layer = 10
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
 zoom = Vector2(2, 2)
 
 [node name="Jetpack" parent="." groups=["Jetpack"] instance=ExtResource("10_pg7fu")]
-position = Vector2(-8, -744)
+position = Vector2(800, -33)
 
 [node name="EmpObject" parent="." instance=ExtResource("24_505b6")]
 position = Vector2(-808, -1288)

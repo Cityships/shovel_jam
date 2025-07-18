@@ -1,6 +1,5 @@
 extends Node2D
 
-var checkpoint
 var player
 var scene
 
@@ -8,11 +7,12 @@ func _ready() -> void:
 	player = get_tree().get_nodes_in_group("Player")[0]
 	scene = player.get_parent()
 	GlobalEvents.player_death.connect(respawn_player)
-	GlobalEvents.set_checkpoint.connect(func(value): checkpoint = value)
+	GlobalEvents.set_checkpoint.connect(func(value): Globals.checkpoint = value)
 
 
 func respawn_player() -> void:
 	var target = Globals.checkpoint
+	print(target)
 	if target == Vector2.ZERO:
 		target = Globals.start_point
 

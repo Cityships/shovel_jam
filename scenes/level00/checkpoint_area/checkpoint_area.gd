@@ -7,5 +7,5 @@ func _ready() -> void:
         func(_player):
             if skip_to_index != -1:
                 GlobalEvents.story_bot_skip_to_index.emit(skip_to_index)
-            GlobalEvents.set_checkpoint.emit(self),
+            GlobalEvents.set_checkpoint.emit(self.global_position),
     )
