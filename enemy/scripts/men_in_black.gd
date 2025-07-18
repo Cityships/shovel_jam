@@ -48,6 +48,8 @@ const SHOOT_ATTACK = preload("res://scenes/enemy/base/shoot_attack.tscn")
 
 @export var range:int = 150
 
+@export var animxzated_sprite: SpriteFrames
+
 # ------------------------------------------------------------------
 # Internal state flags
 # ------------------------------------------------------------------
@@ -69,29 +71,11 @@ func _ready() -> void:
 
 		ray  = laser_pivot.ray
 		beam = laser_pivot.beam
-
 		base_enemy_body.attack_range = 150
 		base_enemy_body.state_changed.connect(_on_state_changed)
+		base_enemy_body.set_resources(animxzated_sprite)
 
 
-func _physics_process(_delta: float) -> void:
-	if base_enemy_body._state in [
-			base_enemy_body.State.WIND_UP,
-			base_enemy_body.State.ATTACK]   \
-		and not _has_fired_during_attack:
-		_update_orientation_towards_player()
-
-
-func _update_orientation_towards_player() -> void:
-	var player := get_tree().get_first_node_in_group("player")
-	if player == null:
-		return                              # no player found
-	var dir := 1 if player.global_position.x > global_position.x else -1
-	if dir == base_enemy_body._move_dir:
-		return                              # already facing
-	base_enemy_body._move_dir = dir
-	laser_pivot.scale.x = dir               # flip ONLY the pivot
-	ray.position.x = 0                      # keep ray centred
 
 ## Handles BaseEnemyBody state changes.
 func _on_state_changed(state: BaseEnemyBody.State) -> void:
@@ -117,9 +101,11 @@ func _on_state_changed(state: BaseEnemyBody.State) -> void:
 func shoot_laser() -> void:
 	if not _ready_to_fire:
 		return
-	_update_orientation_towards_player()
 	_ready_to_fire = false  # Lock until cooldown completes.
-
+	if base_enemy_body._move_dir > 0:
+		laser_pivot.position = Vector2(11, -13)
+	if base_enemy_body._move_dir < 0:
+		laser_pivot.position = Vector2(-11, -13)
 	ray.enabled = true
 
 	# Aim along the body’s facing direction (‑1 or +1 on the X axis).
@@ -140,16 +126,18 @@ func shoot_laser() -> void:
 	# Draw the beam.
 	beam.global_position = ray.global_position
 	beam.points = [Vector2.ZERO, hit_pos - beam.global_position]
+	## Delay for animation. 
+	await get_tree().create_timer(0.3).timeout
 	beam.visible = true
 
-	# Flash beam visibility.
+	## Flash beam visibility.
 	await get_tree().create_timer(flash_time).timeout
 	beam.visible = false
 	ray.enabled = false
 
-	# Finish cooldown period.
+	## Finish cooldown period.
 	await get_tree().create_timer(cooldown_time - flash_time).timeout
 	_ready_to_fire = true
 
-	# Return to WIND_UP so the FSM can transition again.
+	## Return to WIND_UP so the FSM can transition again.
 	base_enemy_body.enter_state(base_enemy_body.State.WIND_UP)

@@ -154,8 +154,8 @@ func enter_state(new_state: int) -> void:
 			## Start the wind‑up coroutine *once*, not each physics frame.
 			if not _windup_started:
 				_windup_started = true
-				sprite.play("Attack")
-				call_deferred("_wind_up_logic")
+				sprite.play("WindUp")
+				_wind_up_logic()
 
 # ───────── EMP STUN LOGIC ───────────────────────────────────────────────────
 func try_emp_stun(duration: float) -> void:
@@ -298,3 +298,8 @@ func _update_vision_targets() -> void:
 	## "sight" pointing ahead because the ray is defined from *tail → head*.)
 	back_vision.target_position.x  = abs(back_vision.target_position.x)  * _move_dir
 	front_vision.target_position.x = abs(front_vision.target_position.x) * -_move_dir
+
+
+func set_resources(resource):
+	sprite.set_sprite_frames(resource)
+	pass
