@@ -1,14 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcvfajmk27hns"]
+[gd_scene load_steps=6 format=3 uid="uid://dcvfajmk27hns"]
 
 [ext_resource type="Script" uid="uid://mln21dag3wyx" path="res://scenes/player_character/player_character.gd" id="1_84nxo"]
-[ext_resource type="Texture2D" uid="uid://biwh1jtafgece" path="res://scenes/player_character/rogues.png" id="2_ud604"]
+[ext_resource type="SpriteFrames" uid="uid://bf6q7r4ng5qad" path="res://resources/default_animated_sprite.tres" id="2_7n4pp"]
 [ext_resource type="PackedScene" uid="uid://b6kaaaqphs6mv" path="res://scenes/windup_gizmo/wind_up_gizmo.tscn" id="3_yia7k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wlkhb"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m6ehi"]
-atlas = ExtResource("2_ud604")
-region = Rect2(96, 0, 32, 32)
+size = Vector2(13, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7n4pp"]
 size = Vector2(32, 48)
@@ -18,12 +15,15 @@ collision_layer = 8
 script = ExtResource("1_84nxo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 0.5)
 shape = SubResource("RectangleShape2D_wlkhb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = SubResource("AtlasTexture_m6ehi")
-offset = Vector2(0, -4)
+sprite_frames = ExtResource("2_7n4pp")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.482933
 
 [node name="WindUpGizmo" parent="." instance=ExtResource("3_yia7k")]
 visible = false
