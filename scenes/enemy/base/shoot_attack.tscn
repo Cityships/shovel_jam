@@ -13,6 +13,7 @@ script = ExtResource("1_bbo0h")
 
 [node name="Ray" type="RayCast2D" parent="."]
 unique_name_in_owner = true
+collision_mask = 9
 
 [node name="Beam" type="Line2D" parent="."]
 unique_name_in_owner = true

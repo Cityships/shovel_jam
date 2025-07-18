@@ -74,6 +74,7 @@ func _ready() -> void:
 		base_enemy_body.attack_range = 150
 		base_enemy_body.state_changed.connect(_on_state_changed)
 		base_enemy_body.set_resources(animxzated_sprite)
+		base_enemy_body.enter_state(base_enemy_body.State.MOVE)
 
 
 
@@ -113,13 +114,11 @@ func shoot_laser() -> void:
 	var aim_end      : Vector2 = global_position + aim_direction * max_distance
 	ray.target_position = ray.to_local(aim_end)
 	ray.force_raycast_update()
-
+	var body = ray.get_collider()
 	var hit_pos: Vector2
 	if ray.is_colliding():
 		hit_pos = ray.get_collision_point()
-		var body = ray.get_collider()
-		if body and body.has_method("apply_damage"):
-			body.apply_damage(damage)
+		
 	else:
 		hit_pos = aim_end
 
@@ -134,6 +133,8 @@ func shoot_laser() -> void:
 	await get_tree().create_timer(flash_time).timeout
 	beam.visible = false
 	ray.enabled = false
+	if body.is_in_group("Player"):
+		GlobalEvents.player_death.emit()
 
 	## Finish cooldown period.
 	await get_tree().create_timer(cooldown_time - flash_time).timeout

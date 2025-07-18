@@ -50,7 +50,7 @@ signal flipped(dir: int)               ## Horizontal flip completed.
 @export var attack_range  : float   = 24.0   ## Distance that triggers an attack.
 @export var wind_up_delay : float   = 1.0    ## Delay spent in `WIND_UP` state.
 
-@onready var wind_up : Timer = %WindUP       ## Timer node for wind‑up handling.
+
 
 # ───────── INTERNAL STATE (runtime only) ────────────────────────────────────
 var _move_dir        : int    = 1   ## Current facing / movement dir (`‑1`/`1`).
@@ -72,7 +72,8 @@ enum State { IDLE, MOVE, STUNNED, CHASE, ATTACK, WIND_UP }
 @onready var ray_down     : RayCast2D = %RayDown    ## Ledge sensor (down‑front).
 @onready var sprite       : AnimatedSprite2D = %VisualTreeRoot ## Main visuals.
 @onready var debug        : Label = %Debug           ## On‑screen debug label.
-
+@onready var melee_hit_box: Area2D = %MeleeHitBox
+@onready var wind_up : Timer = %WindUP       ## Timer node for wind‑up handling.
 # ───────────────────────────── LIFECYCLE CALLBACKS ──────────────────────────
 func _ready() -> void:
 	## Connect signals that originate *outside* this script.
