@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://bbpxit1isuy13"]
+[gd_scene load_steps=59 format=4 uid="uid://bbpxit1isuy13"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_m831i"]
 [ext_resource type="Script" uid="uid://di362p0l14ryw" path="res://scenes/level00/doors/triple_door/moving_platform_shield.gd" id="1_q30id"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="24_505b6"]
 [ext_resource type="Script" uid="uid://dwjv6qmxhlkuh" path="res://scenes/level00/doors/triple_door/triple_door.gd" id="28_bwgtc"]
 [ext_resource type="Script" uid="uid://yaf3aphqrxj4" path="res://scenes/level00/doors/triple_door/triple_door_lock.gd" id="29_23ve5"]
+[ext_resource type="Texture2D" uid="uid://c5dhdfjstxgtb" path="res://scenes/level00/clocktower.webp" id="32_5lade"]
 
 [sub_resource type="Curve2D" id="Curve2D_an840"]
 _data = {
@@ -695,7 +696,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99948, 40)
+position = Vector2(-7.99942, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -904,6 +905,11 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="ScreenEffectsManager" parent="CanvasLayer" instance=ExtResource("15_si1ye")]
+
+[node name="Clocktower" type="Sprite2D" parent="."]
+position = Vector2(-2288, -664)
+scale = Vector2(2, 2)
+texture = ExtResource("32_5lade")
 
 [connection signal="door_open" from="Map/Door1" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [5]]
 [connection signal="door_open" from="Map/Door2" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [10]]
