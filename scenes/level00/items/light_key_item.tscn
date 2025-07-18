@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjp4e0btlhpsa"]
+
+[ext_resource type="Script" uid="uid://ciakbp22r40db" path="res://scenes/level00/items/light_key_item.gd" id="1_ea6sy"]
+[ext_resource type="Texture2D" uid="uid://bh1quj72s8v7r" path="res://scenes/level00/los_turret/turret_base.png" id="1_qetk6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ea6sy"]
+atlas = ExtResource("1_qetk6")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_62pxs"]
+
+[node name="LightKeyItem" type="Node2D"]
+script = ExtResource("1_ea6sy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
+texture = SubResource("AtlasTexture_ea6sy")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_62pxs")

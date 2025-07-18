@@ -99,11 +99,13 @@ func _input(_event: InputEvent) -> void:
 		key_type = KeyType.STANDARD
 		key_type_changed.emit()
 	elif Input.is_key_pressed(KEY_2) and current_controls == 1 and !mouse_over:
-		key_type = KeyType.LIGHT
-		key_type_changed.emit()
+		if Globals.obtained_keys.has(2):
+			key_type = KeyType.LIGHT
+			key_type_changed.emit()
 	elif Input.is_key_pressed(KEY_3) and current_controls == 1 and !mouse_over:
-		key_type = KeyType.RETAIN
-		key_type_changed.emit()
+		if Globals.obtained_keys.has(3):
+			key_type = KeyType.RETAIN
+			key_type_changed.emit()
 
 	if key_type == KeyType.LIGHT and last_mouse_velocity != 0:
 		return
@@ -148,6 +150,8 @@ func _input(_event: InputEvent) -> void:
 		if key_type == KeyType.RETAIN:
 			try_recharge.emit(rotation_ticks * 30 / 360.0)	
 			rotation_ticks = 0
+			
+	if Input.is_action_just_released("left_mouse_button") and mouse_over:
 		mouse_over = false
 		
 func recharge(rotations : float):
