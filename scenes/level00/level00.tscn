@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://bbpxit1isuy13"]
+[gd_scene load_steps=70 format=4 uid="uid://bbpxit1isuy13"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/resources/default_tileset.tres" id="1_m831i"]
 [ext_resource type="Script" uid="uid://di362p0l14ryw" path="res://scenes/level00/doors/triple_door/moving_platform_shield.gd" id="1_q30id"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" uid="uid://ciixynqe2whmh" path="res://scenes/level00/start/start.gd" id="23_3s6ok"]
 [ext_resource type="Script" uid="uid://bce7sk8abb5od" path="res://scenes/level00/doors/story_door/story_door.gd" id="23_vn2ov"]
 [ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="24_505b6"]
+[ext_resource type="Script" uid="uid://cqvv8n1nw26an" path="res://scenes/level00/enemies.gd" id="26_xg6sh"]
 [ext_resource type="Script" uid="uid://b36scf4n074ai" path="res://scenes/level00/hazard/hazard_area.gd" id="27_0sf4y"]
 [ext_resource type="Script" uid="uid://dwjv6qmxhlkuh" path="res://scenes/level00/doors/triple_door/triple_door.gd" id="28_bwgtc"]
 [ext_resource type="Script" uid="uid://yaf3aphqrxj4" path="res://scenes/level00/doors/triple_door/triple_door_lock.gd" id="29_23ve5"]
@@ -816,7 +817,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-8, 40)
+position = Vector2(-7.99985, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -854,6 +855,26 @@ position = Vector2(-6, -27)
 script = ExtResource("23_3s6ok")
 
 [node name="Enemies" type="Node2D" parent="."]
+script = ExtResource("26_xg6sh")
+
+[node name="LightKeyEvent" type="Node2D" parent="Enemies"]
+unique_name_in_owner = true
+
+[node name="1" type="Node2D" parent="Enemies/LightKeyEvent"]
+unique_name_in_owner = true
+position = Vector2(-792, -733)
+
+[node name="2" type="Node2D" parent="Enemies/LightKeyEvent"]
+unique_name_in_owner = true
+position = Vector2(-298, -427)
+
+[node name="3" type="Node2D" parent="Enemies/LightKeyEvent"]
+unique_name_in_owner = true
+position = Vector2(-521, -1130)
+
+[node name="4" type="Node2D" parent="Enemies/LightKeyEvent"]
+unique_name_in_owner = true
+position = Vector2(-659, -754)
 
 [node name="ClockworkEnemy" parent="Enemies" instance=ExtResource("35_s2o0g")]
 position = Vector2(-1546, -1135)
@@ -861,8 +882,17 @@ position = Vector2(-1546, -1135)
 [node name="MenInBlack" parent="Enemies" instance=ExtResource("36_0sf4y")]
 position = Vector2(-1328, -1268)
 
+[node name="ClockworkEnemy2" parent="Enemies" instance=ExtResource("35_s2o0g")]
+position = Vector2(-1233, -786)
+
+[node name="ClockworkEnemy3" parent="Enemies" instance=ExtResource("35_s2o0g")]
+position = Vector2(-1660, -712)
+
+[node name="ClockworkEnemy4" parent="Enemies" instance=ExtResource("35_s2o0g")]
+position = Vector2(-1411, -713)
+
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_6mels")]
-position = Vector2(31, -2)
+position = Vector2(-1249, -836)
 collision_layer = 10
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]

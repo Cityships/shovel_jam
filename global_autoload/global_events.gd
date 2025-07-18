@@ -11,8 +11,12 @@ signal story_bot_skip_to_index
 signal player_death
 signal set_checkpoint
 
+signal light_key_event
+
+
 signal control_option_switch
 var control_option : int = -1
+
 
 func _ready() -> void:
 	control_option_switch.emit(control_option)
@@ -21,3 +25,10 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("switch_control_options"):
 		control_option = - control_option
 		control_option_switch.emit(control_option)
+
+
+
+func light_key_obtained()->void:
+	
+	Globals.obtained_keys.append(2)
+	emit_signal("light_key_event")
