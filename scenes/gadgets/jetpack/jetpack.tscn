@@ -92,7 +92,7 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(-8, 2)
 sprite_frames = SubResource("SpriteFrames_2ffq3")
-frame_progress = 0.093525
+frame_progress = 0.574469
 
 [node name="KeyRight" type="AnimatedSprite2D" parent="JetpackSprite"]
 unique_name_in_owner = true
@@ -100,7 +100,7 @@ visible = false
 position = Vector2(8, 2)
 sprite_frames = SubResource("SpriteFrames_8uutu")
 autoplay = "default"
-frame_progress = 0.961809
+frame_progress = 0.442751
 
 [node name="Stream" type="AnimatedSprite2D" parent="JetpackSprite"]
 unique_name_in_owner = true
@@ -108,7 +108,7 @@ visible = false
 position = Vector2(0, 27)
 sprite_frames = SubResource("SpriteFrames_ja6dn")
 autoplay = "default"
-frame_progress = 0.216952
+frame_progress = 0.394165
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ikti3")
