@@ -22,6 +22,8 @@ var last_target_position : Vector2
 var laser_firing : bool
 var player_on_danger_area : bool
 
+@export_enum("face_left", "face_right") var flip_h = 1
+
 func _ready() -> void:
 	var refs = get_tree().get_nodes_in_group("Player")
 	player_target = refs[0]
