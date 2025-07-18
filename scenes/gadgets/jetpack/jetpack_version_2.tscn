@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2q54j7jls2mw"]
+[gd_scene load_steps=7 format=3 uid="uid://d2q54j7jls2mw"]
 
 [ext_resource type="Script" uid="uid://ijq6t4k6ylw0" path="res://scenes/gadgets/jetpack/jetpack_version_2.gd" id="1_vjhi7"]
 [ext_resource type="AudioStream" uid="uid://bq1xdjv0n640l" path="res://scenes/gadgets/jetpack/new_audio_stream_playlist.tres" id="2_gx3cu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gx3cu"]
+friction = 0.0
+bounce = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikti3"]
 size = Vector2(32, 40)
@@ -14,6 +18,7 @@ radius = 16.0
 [node name="Jetpack" type="RigidBody2D"]
 collision_layer = 4
 mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_gx3cu")
 lock_rotation = true
 script = ExtResource("1_vjhi7")
 audio_playlist = ExtResource("2_gx3cu")
