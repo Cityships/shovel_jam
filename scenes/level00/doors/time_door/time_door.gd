@@ -41,5 +41,10 @@ func open_door(_value):
             0.0, 1.0, 0.2
         ).set_trans(Tween.TRANS_QUAD)
         tween.chain().tween_interval(1)
-        tween.chain().tween_callback(func(): door_locked = true; close_door())
+        tween.chain().tween_callback(
+            func():
+                if room_enter.get_overlapping_bodies().size() == 0:
+                    door_locked = true
+                    close_door()
+        )
 

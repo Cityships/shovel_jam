@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=4 uid="uid://bbpxit1isuy13"]
+[gd_scene load_steps=65 format=4 uid="uid://bbpxit1isuy13"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/default_tileset.tres" id="1_m831i"]
 [ext_resource type="Script" uid="uid://di362p0l14ryw" path="res://scenes/level00/doors/triple_door/moving_platform_shield.gd" id="1_q30id"]
@@ -33,6 +33,7 @@
 [ext_resource type="Script" uid="uid://dwjv6qmxhlkuh" path="res://scenes/level00/doors/triple_door/triple_door.gd" id="28_bwgtc"]
 [ext_resource type="Script" uid="uid://yaf3aphqrxj4" path="res://scenes/level00/doors/triple_door/triple_door_lock.gd" id="29_23ve5"]
 [ext_resource type="Texture2D" uid="uid://c5dhdfjstxgtb" path="res://scenes/level00/clocktower.webp" id="32_5lade"]
+[ext_resource type="PackedScene" uid="uid://bjp4e0btlhpsa" path="res://scenes/level00/items/light_key_item.tscn" id="34_1v3bv"]
 
 [sub_resource type="Curve2D" id="Curve2D_an840"]
 _data = {
@@ -678,6 +679,10 @@ skip_to_index = 12
 position = Vector2(-6.10352e-05, -48)
 shape = SubResource("RectangleShape2D_vn2ov")
 
+[node name="KeyArea5" parent="Map" instance=ExtResource("4_kj78h")]
+position = Vector2(-1216, -832)
+skip_to_index = -1
+
 [node name="Polygon2D" type="Polygon2D" parent="Map"]
 position = Vector2(-192, -328)
 scale = Vector2(1, 0.25)
@@ -790,7 +795,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99924, 40)
+position = Vector2(-7.99905, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -824,7 +829,7 @@ shape = SubResource("RectangleShape2D_5te02")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Map/LOSTurret2"]
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_6mels")]
-position = Vector2(-1222, -806)
+position = Vector2(-904, -752)
 collision_layer = 10
 
 [node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
@@ -998,6 +1003,14 @@ label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="Label13" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "In this room we would like you to demonstrate the functions of the other devices that were with you. Pickup the \"light key.\" [R>]"
+label_settings = SubResource("LabelSettings_g03lo")
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="ScreenEffectsManager" parent="CanvasLayer" instance=ExtResource("15_si1ye")]
 
 [node name="Clocktower" type="Sprite2D" parent="."]
@@ -1008,6 +1021,10 @@ texture = ExtResource("32_5lade")
 [node name="Start" type="Node2D" parent="."]
 position = Vector2(-6, -27)
 script = ExtResource("23_3s6ok")
+
+[node name="LightKeyItem" parent="." instance=ExtResource("34_1v3bv")]
+position = Vector2(-1304, -832)
+scale = Vector2(2, 2)
 
 [connection signal="door_open" from="Map/Door1" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [5]]
 [connection signal="door_open" from="Map/Door2" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [10]]
