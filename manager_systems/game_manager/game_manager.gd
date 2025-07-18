@@ -12,5 +12,6 @@ func _ready() -> void:
 
 func respawn_player():
 	var tween = create_tween()
-	tween.chain().tween_callback(func():player.reparent(scene))
+	for gadget in Globals.obtained_gadgets:
+		tween.chain().tween_callback(func(): GlobalEvents.request_pickup_gadget.emit(gadget))
 	tween.chain().tween_property(player, "global_position", checkpoint.global_position, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)

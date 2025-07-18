@@ -8,5 +8,6 @@ func _ready() -> void:
 	area_2d.body_entered.connect(teleport_player)
 
 func teleport_player(player):
-	GlobalEvents.request_pickup_gadget.emit(get_tree().get_nodes_in_group("Jetpack")[0])
+	for gadget in Globals.obtained_gadgets:
+		GlobalEvents.request_pickup_gadget.emit(gadget)
 	player.global_position = teleport_point.global_position
