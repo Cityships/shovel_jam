@@ -1,17 +1,17 @@
 extends CharacterBody2D
 
-var speed: float = 105.0
-var acceleration: float = 630.0
-var jump_velocity: float = -310.0
+@export var speed: float = 105.0
+@export var acceleration: float = 630.0
+@export var jump_velocity: float = -310.0
+
+
 var gravity := Vector2(0, 980)
 var input_direction := Vector2.ZERO
-
 var movement_restriction_count = 0
+var current_controls : int = -1 ##1 gadget options, 2 key options
 
 @onready var sprite = get_node("Sprite2D")
 @onready var gadget_area :Area2D = get_node("GadgetArea")
-var current_controls : int = -1 ##1 gadget options, 2 key options
-
 func _ready() -> void:
 	GlobalEvents.control_option_switch.connect(
 		func(value):
@@ -43,7 +43,7 @@ func move() -> void:
 
 func _set_sprite_direction() -> void:
 	if input_direction.x:
-		sprite.flip_h = input_direction.x == 1
+		sprite.flip_h = input_direction.x == -1
 		gadget_area.position.x = input_direction.x * 32
 	
 

@@ -53,11 +53,11 @@ signal flipped(dir: int)               ## Horizontal flip completed.
 @onready var wind_up : Timer = %WindUP       ## Timer node for wind‑up handling.
 
 # ───────── INTERNAL STATE (runtime only) ────────────────────────────────────
-var _move_dir        : int    = -1   ## Current facing / movement dir (`‑1`/`1`).
+var _move_dir        : int    = 1   ## Current facing / movement dir (`‑1`/`1`).
 var _turn_timer      : float  = 0.0  ## Counts up to `turn_delay` while turning.
 var _target_position : Vector2 = Vector2.ZERO ## Cached player position.
 var _windup_started  : bool   = false
-var _last_player_dir : int    = -1   ## Last known horizontal dir to the player.
+var _last_player_dir : int    = 1   ## Last known horizontal dir to the player.
 
 # ───────── STATE MACHINE DEFINITION ─────────────────────────────────────────
 ## Built‑in states exposed through the `State` enum.  When adding new states
@@ -154,6 +154,7 @@ func enter_state(new_state: int) -> void:
 			## Start the wind‑up coroutine *once*, not each physics frame.
 			if not _windup_started:
 				_windup_started = true
+				sprite.play("Attack")
 				call_deferred("_wind_up_logic")
 
 # ───────── EMP STUN LOGIC ───────────────────────────────────────────────────
@@ -206,7 +207,7 @@ func _flip_rays() -> void:
 	_update_vision_targets()          ## Keep vision rays in sync.
 	ray_front.force_raycast_update()
 	ray_down.force_raycast_update()
-	sprite.flip_h = _move_dir > 0
+	sprite.flip_h = _move_dir < 0
 
 func _should_turn() -> bool:
 	## Returns **true** when the enemy should reverse direction:

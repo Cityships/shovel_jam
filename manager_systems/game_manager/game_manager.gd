@@ -24,4 +24,3 @@ func respawn_player() -> void:
 	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	for gadget in Globals.obtained_gadgets:
 		tween.chain().tween_callback(func(): GlobalEvents.request_pickup_gadget.emit(gadget))
-
