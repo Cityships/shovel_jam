@@ -11,6 +11,9 @@ signal story_bot_skip_to_index
 signal player_death
 signal set_checkpoint
 
+signal key_obtained
+signal gadget_obtained
+
 signal control_option_switch
 var control_option : int = -1
 
