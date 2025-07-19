@@ -1264,6 +1264,7 @@ material = ExtResource("6_1pv21")
 texture = ExtResource("7_kj78h")
 region_enabled = true
 region_rect = Rect2(40, 24, 46, 88)
+script = ExtResource("8_1v3bv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door6/PathFollow2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_a55ot")
