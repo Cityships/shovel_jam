@@ -33,8 +33,9 @@ var gadget_in_use : bool:
 		gadget_in_use = value
 		if gadget_in_use:
 			player.movement_restriction_count = 1
+			player.sprite.play("Fly")
 			var temp = to_local(player.global_position)
-			remote_transform.position = round(temp.normalized()) * 32
+			remote_transform.position = round(temp.normalized()) * 12
 			if abs(remote_transform.position.y) == abs(remote_transform.position.x):
 				remote_transform.position.y = 0
 			if remote_transform.position.x > 0:
@@ -46,6 +47,7 @@ var gadget_in_use : bool:
 			remote_transform.update_position = true
 		else:
 			player.movement_restriction_count = 0
+			player.sprite.play("Idle")
 			remote_transform.update_position = false
 			player_area.set_deferred("disabled", true)
 			remote_transform.update_position = false
@@ -107,6 +109,7 @@ func force_recharge(value):
 			windup_progress_bar.modulate = Color.GREEN
 		else:
 			windup_progress_bar.modulate = Color.WHITE
+			key_right.set_visible(false)
 		if windup_progress_bar.value > 0:
 			out_of_power = false
 

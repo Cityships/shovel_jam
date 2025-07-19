@@ -34,13 +34,13 @@
 [ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="24_505b6"]
 [ext_resource type="Script" uid="uid://b36scf4n074ai" path="res://scenes/level00/hazard/hazard_area.gd" id="27_0sf4y"]
 [ext_resource type="Script" uid="uid://dwjv6qmxhlkuh" path="res://scenes/level00/doors/triple_door/triple_door.gd" id="28_bwgtc"]
-[ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/gadgets/jetpack/jetpack.tscn" id="29_0sf4y"]
 [ext_resource type="Script" uid="uid://yaf3aphqrxj4" path="res://scenes/level00/doors/triple_door/triple_door_lock.gd" id="29_23ve5"]
 [ext_resource type="Texture2D" uid="uid://c5dhdfjstxgtb" path="res://scenes/level00/clocktower.webp" id="32_5lade"]
 [ext_resource type="PackedScene" uid="uid://bjp4e0btlhpsa" path="res://scenes/level00/items/light_key_item.tscn" id="34_1v3bv"]
 [ext_resource type="PackedScene" uid="uid://dga7y3vw74cmx" path="res://scenes/enemy/clockwork/clockwork_enemy.tscn" id="35_s2o0g"]
 [ext_resource type="PackedScene" uid="uid://ccvaya45j8x0y" path="res://scenes/enemy/men_in_black/men_in_black.tscn" id="36_0sf4y"]
 [ext_resource type="PackedScene" uid="uid://dejnlebot27dd" path="res://UI/controls_display/controls_display.tscn" id="37_bj6hi"]
+[ext_resource type="PackedScene" uid="uid://d2q54j7jls2mw" path="res://scenes/gadgets/jetpack/jetpack_version_2.tscn" id="41_4fpck"]
 
 [sub_resource type="Curve2D" id="Curve2D_an840"]
 _data = {
@@ -1678,7 +1678,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99908, 40)
+position = Vector2(-7.99872, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -1723,16 +1723,13 @@ position = Vector2(-1546, -1135)
 [node name="MenInBlack" parent="Enemies" instance=ExtResource("36_0sf4y")]
 position = Vector2(-1328, -1268)
 
-[node name="Sprite2D" parent="." instance=ExtResource("2_6mels")]
-position = Vector2(32, 5)
-collision_layer = 10
+[node name="Jetpack" parent="." instance=ExtResource("41_4fpck")]
+position = Vector2(798, -23)
 
-[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
-position = Vector2(-4, -2)
-zoom = Vector2(2, 2)
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_6mels")]
 
-[node name="Jetpack" parent="." instance=ExtResource("29_0sf4y")]
-position = Vector2(799, -22)
+[node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
+zoom = Vector2(1.5, 1.5)
 
 [node name="EmpObject" parent="." instance=ExtResource("24_505b6")]
 position = Vector2(-784, -1256)
