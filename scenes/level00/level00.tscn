@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://bbpxit1isuy13"]
+[gd_scene load_steps=77 format=4 uid="uid://bbpxit1isuy13"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/resources/default_tileset.tres" id="1_m831i"]
 [ext_resource type="Script" uid="uid://di362p0l14ryw" path="res://scenes/level00/doors/triple_door/moving_platform_shield.gd" id="1_q30id"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dduacje26mt8b" path="res://manager_systems/screen_effect_manager/screen_effects_manager.tscn" id="15_si1ye"]
 [ext_resource type="Texture2D" uid="uid://hqmafcal53s3" path="res://scenes/level00/los_turret/turret_gun.png" id="16_ak84c"]
 [ext_resource type="Script" uid="uid://po87hcrrbmbv" path="res://scenes/level00/los_turret/los_turret.gd" id="16_la4if"]
+[ext_resource type="Script" uid="uid://bkdemv4m1pfwy" path="res://scenes/level00/checkpoint_area/emp_room_checkpoint.gd" id="17_4fpck"]
 [ext_resource type="AudioStream" uid="uid://b25n8207emop8" path="res://scenes/level00/los_turret/continuous laser start.ogg" id="17_rrkdo"]
 [ext_resource type="AudioStream" uid="uid://dmpxf67uxswd7" path="res://scenes/level00/los_turret/Continuous Laser loop.ogg" id="18_pg7fu"]
 [ext_resource type="AudioStream" uid="uid://cdkfo8jokggxe" path="res://scenes/level00/los_turret/Continuous laser end.ogg" id="19_3s6ok"]
@@ -39,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://bjp4e0btlhpsa" path="res://scenes/level00/items/light_key_item.tscn" id="34_1v3bv"]
 [ext_resource type="PackedScene" uid="uid://dga7y3vw74cmx" path="res://scenes/enemy/clockwork/clockwork_enemy.tscn" id="35_s2o0g"]
 [ext_resource type="PackedScene" uid="uid://ccvaya45j8x0y" path="res://scenes/enemy/men_in_black/men_in_black.tscn" id="36_0sf4y"]
+[ext_resource type="PackedScene" uid="uid://dejnlebot27dd" path="res://UI/controls_display/controls_display.tscn" id="37_bj6hi"]
 
 [sub_resource type="Curve2D" id="Curve2D_an840"]
 _data = {
@@ -968,6 +970,9 @@ size = Vector2(448, 304)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn2ov"]
 size = Vector2(85.3333, 138.667)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b0732"]
+size = Vector2(160, 192)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ak84c"]
 size = Vector2(352, 48)
 
@@ -1259,6 +1264,7 @@ material = ExtResource("6_1pv21")
 texture = ExtResource("7_kj78h")
 region_enabled = true
 region_rect = Rect2(40, 24, 46, 88)
+script = ExtResource("8_1v3bv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door6/PathFollow2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_a55ot")
@@ -1534,7 +1540,17 @@ shape = SubResource("RectangleShape2D_vn2ov")
 
 [node name="KeyArea5" parent="Map" instance=ExtResource("4_kj78h")]
 position = Vector2(-1216, -832)
-skip_to_index = -1
+skip_to_index = 13
+
+[node name="EmpArea" type="Area2D" parent="Map" node_paths=PackedStringArray("emp_node")]
+position = Vector2(-848, -1344)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("17_4fpck")
+emp_node = NodePath("../../EmpObject")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/EmpArea"]
+shape = SubResource("RectangleShape2D_b0732")
 
 [node name="Hazard1" type="Polygon2D" parent="Map"]
 position = Vector2(-1520, -720)
@@ -1662,7 +1678,10 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99973, 40)
+
+
+position = Vector2(-7.99915, 40)
+
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -1732,7 +1751,6 @@ position = Vector2(-112, -128)
 [node name="GameManager" parent="ManagerSystems" instance=ExtResource("13_la4if")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -1749,7 +1767,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(1.5, 1.5)
 script = ExtResource("8_g03lo")
-stop_indices = PackedInt32Array(4, 7, 8, 9, 10, 11, 12, 13)
+stop_indices = PackedInt32Array(4, 7, 8, 9, 10, 11, 12, 13, 15)
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/UI/TutorialBot"]
 layout_mode = 2
@@ -1767,7 +1785,6 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
 [node name="Label0" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
-visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "Hello and welcome to our facility
@@ -1841,7 +1858,6 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Label8" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
-visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "Press \"E\" to pickup any gadget in front of you. You will need it for the remainder of our study. Continue to the next room."
@@ -1877,6 +1893,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Label12" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "In this next room, we will be assessing the range of your key device. On the right wall there are three locks. Charge them."
@@ -1885,11 +1902,32 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Label13" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "We will be providing a second key for you for this next assessment. Press \"Q\" and \"2\" to access and use your light key. [R>]"
+label_settings = SubResource("LabelSettings_g03lo")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label14" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+text = "Spin the key while near chargeable objects. [R>]"
+label_settings = SubResource("LabelSettings_g03lo")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label15" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 label_settings = SubResource("LabelSettings_g03lo")
 horizontal_alignment = 1
 autowrap_mode = 3
+
+[node name="ControlsDisplay" parent="CanvasLayer/UI" instance=ExtResource("37_bj6hi")]
+layout_mode = 1
 
 [node name="ScreenEffectsManager" parent="CanvasLayer" instance=ExtResource("15_si1ye")]
 

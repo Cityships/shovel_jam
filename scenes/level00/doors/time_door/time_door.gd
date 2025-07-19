@@ -17,8 +17,7 @@ func _ready() -> void:
             close_door()
             door_locked = true
             if skip_to_index != -1:
-                GlobalEvents.story_bot_skip_to_index.emit(skip_to_index)
-            GlobalEvents.set_checkpoint.emit(self.global_position),
+                GlobalEvents.story_bot_skip_to_index.emit(skip_to_index),
     )
 
 func close_door():
