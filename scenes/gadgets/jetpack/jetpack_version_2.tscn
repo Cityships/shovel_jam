@@ -73,7 +73,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikti3"]
-size = Vector2(32, 40)
+size = Vector2(32, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yotyk"]
 
@@ -118,7 +118,7 @@ sprite_frames = SubResource("SpriteFrames_wem5j")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ikti3")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
@@ -128,9 +128,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
-offset_top = -16.0
+offset_top = -20.0
 offset_right = 32.0
-offset_bottom = 24.0
+offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/outline_size = 4
