@@ -5,22 +5,28 @@ extends Gadget
 @onready var raycast : RayCast2D = get_node("RayCast2D")
 @onready var windup_progress_bar : ProgressBar = get_node("ProgressBar")
 @onready var remote_transform : RemoteTransform2D = get_node("RemoteTransform2D")
+@onready var jetpack_sprite: Sprite2D = %JetpackSprite
+@onready var key_left: AnimatedSprite2D = %KeyLeft
+@onready var key_right: AnimatedSprite2D = %KeyRight
+@onready var stream: AnimatedSprite2D = %Stream
+@onready var audio_player : AudioStreamPlayer2D = get_node("AudioStreamPlayer2D")
+@onready var equip_audio_stream : AudioStreamPlayer2D = get_node("EquipAudioStream") 
+
+
 @export var discharge_rate : float = 20.0
 @export var starting_charge = 100.0
 @export var max_force_recharge_count : int = 1
-var forced_recharge_count : int = 0
-
 @export_group("Audio")
 @export var audio_playlist : AudioStreamPlaylist
-@onready var audio_player : AudioStreamPlayer2D = get_node("AudioStreamPlayer2D")
-@onready var equip_audio_stream : AudioStreamPlayer2D = get_node("EquipAudioStream") 
 @export var startup_delay : float = 2.5
+
+
+
 var startup_timer : Timer
 var input_hold_timer : Timer
 var out_of_power : bool = false
-
+var forced_recharge_count : int = 0
 var input_direction : Vector2
-
 var player : Node2D
 var gadget_in_use : bool:
 	set(value):
@@ -86,8 +92,10 @@ func recharge(value):
 		windup_progress_bar.value += value
 		if windup_progress_bar.value == windup_progress_bar.max_value:
 			windup_progress_bar.modulate = Color.GREEN
+			key_right.set_visible(false)
 		else:
 			windup_progress_bar.modulate = Color.WHITE
+			key_right.set_visible(true)
 	if windup_progress_bar.value > 0:
 		out_of_power = false
 
@@ -119,9 +127,11 @@ func _input(event: InputEvent) -> void:
 		gadget_in_use = true
 
 	if Input.is_action_just_released("ui_accept") and gadget_in_use:
+		
 		if audio_player.playing:
 			audio_player.stream = audio_playlist.get_list_stream(3)
 			audio_player.play()
+			
 		input_hold_timer.stop()
 		startup_timer.stop()
 		gadget_in_use = false
@@ -130,8 +140,9 @@ func _input(event: InputEvent) -> void:
 	input_direction.x = Input.get_axis("ui_left", "ui_right")
 	input_direction.y = Input.get_axis("ui_up", "ui_down")
 	if gadget_in_use and windup_progress_bar.value > 0:
-		
 		constant_force = input_direction * Vector2(0.25, 1.25)
+		if !input_direction.x and !input_direction.y  == 0:
+			stream.set_visible(true)
 
 		if constant_force != Vector2.ZERO and startup_timer.is_stopped() and input_hold_timer.is_stopped():
 			startup_timer.start()
@@ -146,3 +157,4 @@ func _input(event: InputEvent) -> void:
 
 	else:
 		constant_force = Vector2.ZERO
+		stream.set_visible(false)

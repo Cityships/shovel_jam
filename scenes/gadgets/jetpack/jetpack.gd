@@ -51,7 +51,6 @@ func _ready() -> void:
 	interactable_area.body_exited.connect(
 		func(value):
 			if hold_player and (global_position - player.global_position).length() > 32:
-				value.movement_restriction_count = 0
 				if player.get_parent() == self:
 					await get_tree().create_timer(0.5).timeout
 				player.reparent(get_parent())

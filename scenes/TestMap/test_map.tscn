@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://b0ktxfp2kloc5"]
+[gd_scene load_steps=11 format=4 uid="uid://b0ktxfp2kloc5"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/resources/default_tileset.tres" id="1_eg0c1"]
-[ext_resource type="PackedScene" uid="uid://dsotiedhoi7hi" path="res://scenes/gadgets/jetpack/jetpack.tscn" id="2_o6k2l"]
 [ext_resource type="PackedScene" uid="uid://dcvfajmk27hns" path="res://scenes/player_character/player_character.tscn" id="2_w7x2g"]
 [ext_resource type="PackedScene" uid="uid://c48jsiqrj4ve4" path="res://scenes/enemy/turret/turret.tscn" id="4_1n5w2"]
 [ext_resource type="PackedScene" uid="uid://dga7y3vw74cmx" path="res://scenes/enemy/clockwork/clockwork_enemy.tscn" id="6_61ery"]
-[ext_resource type="PackedScene" uid="uid://ccvaya45j8x0y" path="res://scenes/enemy/men_in_black/men_in_black.tscn" id="7_ys2ul"]
+[ext_resource type="PackedScene" uid="uid://d2q54j7jls2mw" path="res://scenes/gadgets/jetpack/jetpack_version_2.tscn" id="6_ys2ul"]
 [ext_resource type="PackedScene" uid="uid://312utib22mvo" path="res://manager_systems/quick_tip/quick_tip_manager.tscn" id="8_h7ndw"]
 [ext_resource type="PackedScene" uid="uid://demcpoicka6g6" path="res://manager_systems/gadget_manager/gadget_manager.tscn" id="9_61ery"]
 [ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="9_h7ndw"]
@@ -34,20 +33,11 @@ offset_top = 739.0
 offset_right = 1335.0
 offset_bottom = 762.0
 
-[node name="Jetpack" parent="Map" instance=ExtResource("2_o6k2l")]
-position = Vector2(559, 540)
-
 [node name="EmpObject" parent="Map" instance=ExtResource("9_h7ndw")]
 position = Vector2(493, 191)
 
 [node name="ClockworkEnemy" parent="Map" instance=ExtResource("6_61ery")]
 position = Vector2(196, 179)
-
-[node name="MenInBlack" parent="Map" instance=ExtResource("7_ys2ul")]
-position = Vector2(84, 192)
-
-[node name="ClockworkEnemy2" parent="Map" instance=ExtResource("6_61ery")]
-position = Vector2(274, 182)
 
 [node name="PlayerCharacter" parent="Map" instance=ExtResource("2_w7x2g")]
 position = Vector2(455, 515)
@@ -55,6 +45,9 @@ collision_layer = 10
 
 [node name="Camera2D" type="Camera2D" parent="Map/PlayerCharacter"]
 zoom = Vector2(2, 2)
+
+[node name="Jetpack" parent="Map" instance=ExtResource("6_ys2ul")]
+position = Vector2(690, 528)
 
 [node name="QuickTipManager" parent="." instance=ExtResource("8_h7ndw")]
 
@@ -69,3 +62,6 @@ position = Vector2(0, -6)
 
 [node name="EmpObject" parent="." instance=ExtResource("9_h7ndw")]
 position = Vector2(632, 488)
+
+[node name="ClockworkEnemy" parent="." instance=ExtResource("6_61ery")]
+position = Vector2(514, 514)

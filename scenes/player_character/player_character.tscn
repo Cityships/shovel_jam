@@ -1,8 +1,259 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcvfajmk27hns"]
+[gd_scene load_steps=56 format=3 uid="uid://dcvfajmk27hns"]
 
 [ext_resource type="Script" uid="uid://mln21dag3wyx" path="res://scenes/player_character/player_character.gd" id="1_84nxo"]
-[ext_resource type="SpriteFrames" uid="uid://bf6q7r4ng5qad" path="res://resources/default_animated_sprite.tres" id="2_7n4pp"]
+[ext_resource type="Texture2D" uid="uid://cfcavrhdkk8m5" path="res://assets/player/player aim small gun frame 1.png" id="2_4dl7b"]
+[ext_resource type="Texture2D" uid="uid://dqxkynnj22nev" path="res://assets/player/player idle frame 1.png" id="2_aome0"]
+[ext_resource type="Texture2D" uid="uid://cj0hgghhq7u76" path="res://assets/player/player fly frame 1.png" id="2_wi1ug"]
+[ext_resource type="Texture2D" uid="uid://dua2ale1wv1jg" path="res://assets/player/player idle frame 2.png" id="3_wi1ug"]
+[ext_resource type="Texture2D" uid="uid://dwejx63f85j1l" path="res://assets/player/player aim small gun frame 2.png" id="3_xhhjg"]
 [ext_resource type="PackedScene" uid="uid://b6kaaaqphs6mv" path="res://scenes/windup_gizmo/wind_up_gizmo.tscn" id="3_yia7k"]
+[ext_resource type="Texture2D" uid="uid://bke6rfkcbt7a6" path="res://assets/player/player jump frame 1.png" id="4_48j0p"]
+[ext_resource type="Texture2D" uid="uid://bn4dchucdyfuy" path="res://assets/player/player aim small gun frame 3.png" id="4_xn1p8"]
+[ext_resource type="Texture2D" uid="uid://cjryavgrh5ity" path="res://assets/player/player jump frame 2.png" id="5_h7pqg"]
+[ext_resource type="Texture2D" uid="uid://c2q54ewqhesdl" path="res://assets/player/player jump frame 3.png" id="6_e505g"]
+[ext_resource type="Texture2D" uid="uid://cl63pvn22n5qk" path="res://assets/player/player jump frame 4.png" id="7_kfvuf"]
+[ext_resource type="Texture2D" uid="uid://dva5gbkmem8md" path="res://assets/player/player jump frame 5.png" id="8_yvo42"]
+[ext_resource type="Texture2D" uid="uid://ii0saja0snw1" path="res://assets/player/player jump frame 6.png" id="9_41b32"]
+[ext_resource type="Texture2D" uid="uid://usr6ysxopfbt" path="res://assets/player/player jump frame 7.png" id="10_68eax"]
+[ext_resource type="Texture2D" uid="uid://tyjpxi2bljb5" path="res://assets/player/player run frame 1.png" id="15_ih8lm"]
+[ext_resource type="Texture2D" uid="uid://pc53vtvgu3n8" path="res://assets/player/player run frame 2.png" id="16_nsmdi"]
+[ext_resource type="Texture2D" uid="uid://0qtc2h3xsufp" path="res://assets/player/player run frame 3.png" id="17_ar4wa"]
+[ext_resource type="Texture2D" uid="uid://c2aw1bompq7b2" path="res://assets/player/player run frame 4.png" id="18_47k0c"]
+[ext_resource type="Texture2D" uid="uid://bnyh62slk4bis" path="res://assets/player/player run frame 5.png" id="19_4h0t5"]
+[ext_resource type="Texture2D" uid="uid://caqapk5qkkm27" path="res://assets/player/player run frame 6.png" id="20_eikwf"]
+[ext_resource type="Texture2D" uid="uid://biotnik3patjr" path="res://assets/player/player run frame 7.png" id="21_jbueu"]
+[ext_resource type="Texture2D" uid="uid://t85b7eul6jko" path="res://assets/player/player run frame 8.png" id="22_twvac"]
+[ext_resource type="Texture2D" uid="uid://cwrpudvjxyd4j" path="res://assets/player/player shoot small gun frame 1.png" id="23_jbueu"]
+[ext_resource type="Texture2D" uid="uid://bpmpuactv8mgy" path="res://assets/player/player shoot small gun frame 2.png" id="24_twvac"]
+[ext_resource type="Texture2D" uid="uid://dygfcxjcj8kke" path="res://assets/player/player shoot small gun frame 3.png" id="25_n7w6g"]
+[ext_resource type="Texture2D" uid="uid://b8tu7f0423rig" path="res://assets/player/player throw emp frame 1.png" id="26_u5u6d"]
+[ext_resource type="Texture2D" uid="uid://c7fae5k3070mq" path="res://assets/player/player throw emp frame 2.png" id="27_hykqn"]
+[ext_resource type="Texture2D" uid="uid://cpwpwhxrcdu84" path="res://assets/player/player throw emp frame 3.png" id="28_odcv1"]
+[ext_resource type="Texture2D" uid="uid://bd06xbhnhmsr0" path="res://assets/player/player throw emp frame 4.png" id="29_bd1gm"]
+[ext_resource type="Texture2D" uid="uid://dbgdd0bd28ft7" path="res://assets/player/player throw emp frame 5.png" id="30_qr51k"]
+[ext_resource type="Texture2D" uid="uid://yfan5vu3mlym" path="res://assets/player/player throw emp frame 6.png" id="31_20jt5"]
+[ext_resource type="Texture2D" uid="uid://xr7pc0i0j86s" path="res://assets/player/player wind emp frame 1.png" id="32_fj35w"]
+[ext_resource type="Texture2D" uid="uid://dhxnlq6n4qdo3" path="res://assets/player/player wind small gun frame 1.png" id="32_vi4y3"]
+[ext_resource type="Texture2D" uid="uid://ojyogm082eqe" path="res://assets/player/player wind small gun frame 2.png" id="33_veo54"]
+[ext_resource type="Texture2D" uid="uid://de1r5rruj7lo" path="res://assets/player/player wind emp frame 2.png" id="33_vmrx3"]
+[ext_resource type="Texture2D" uid="uid://cus2chdj6adrh" path="res://assets/player/player wind small gun frame 3.png" id="34_7fbb2"]
+[ext_resource type="Texture2D" uid="uid://cpbryuoyfa5yp" path="res://assets/player/player wind emp frame 3.png" id="34_kw1t0"]
+[ext_resource type="Texture2D" uid="uid://d0uue5l1v0hje" path="res://assets/player/player wind emp frame 4.png" id="35_a3ybh"]
+[ext_resource type="Texture2D" uid="uid://c780gnk2pfh86" path="res://assets/player/player wind small gun frame 4.png" id="35_crvbd"]
+[ext_resource type="Texture2D" uid="uid://bcubdr52v7f4d" path="res://assets/player/player wind small gun frame 5.png" id="36_lewof"]
+[ext_resource type="Texture2D" uid="uid://b6t0o2fic7dss" path="res://assets/player/player wind emp frame 5.png" id="36_onj1e"]
+[ext_resource type="Texture2D" uid="uid://qkcwfbjn777l" path="res://assets/player/player wind small gun frame 6.png" id="37_f6dul"]
+[ext_resource type="Texture2D" uid="uid://c3sefnhtsc3tm" path="res://assets/player/player wind emp frame 6.png" id="37_kbeko"]
+[ext_resource type="Texture2D" uid="uid://csor3rub2iyo7" path="res://assets/player/player wind small gun frame 7.png" id="38_nr8pg"]
+[ext_resource type="Texture2D" uid="uid://bilxmn7cvc4x1" path="res://assets/player/player wind emp frame 7.png" id="38_ri7eb"]
+[ext_resource type="Texture2D" uid="uid://ci4c77qcxhxhn" path="res://assets/player/player wind emp frame 8.png" id="39_hes8q"]
+[ext_resource type="Texture2D" uid="uid://dtjribojfkwgv" path="res://assets/player/player wind small gun frame 8.png" id="39_n57ks"]
+[ext_resource type="Texture2D" uid="uid://drq3sx1jnj13n" path="res://assets/player/player wind small gun frame 9.png" id="40_ah86t"]
+[ext_resource type="Texture2D" uid="uid://ho2rkwtu3ab8" path="res://assets/player/player wind emp frame 9.png" id="40_pdpnc"]
+[ext_resource type="Texture2D" uid="uid://cr7bqe0jnl6yc" path="res://assets/player/player wind emp frame 10.png" id="41_4gjjc"]
+[ext_resource type="Texture2D" uid="uid://thw2j85napx8" path="res://assets/player/player wind small gun frame 10.png" id="41_jko0v"]
+[ext_resource type="Texture2D" uid="uid://dwade3s30veb6" path="res://assets/player/player wind small gun frame 11.png" id="42_rytpk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uv2kv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4dl7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xhhjg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xn1p8")
+}],
+"loop": true,
+"name": &"Aim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wi1ug")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aome0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wi1ug")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_48j0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_h7pqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_e505g")
+}, {
+"duration": 2.0,
+"texture": ExtResource("7_kfvuf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yvo42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_41b32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_68eax")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_ih8lm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_nsmdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ar4wa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_47k0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_4h0t5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_eikwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_jbueu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_twvac")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_jbueu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_twvac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_n7w6g")
+}],
+"loop": true,
+"name": &"Shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_u5u6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_hykqn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_odcv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_bd1gm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_qr51k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_20jt5")
+}],
+"loop": true,
+"name": &"Throw",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_vi4y3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_veo54")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_7fbb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_crvbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_lewof")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_f6dul")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_nr8pg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_n57ks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_ah86t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_jko0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_rytpk")
+}],
+"loop": true,
+"name": &"WindGun",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("32_fj35w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_vmrx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_kw1t0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_a3ybh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_onj1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_kbeko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_ri7eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_hes8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_pdpnc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_4gjjc")
+}],
+"loop": true,
+"name": &"WindUp",
+"speed": 4.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7n4pp"]
 size = Vector2(32, 48)
@@ -17,10 +268,11 @@ polygon = PackedVector2Array(-0.5, -16.5, 0.5, -16.5, 2.5, -15.5, 3.5, -9.5, 4.5
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = ExtResource("2_7n4pp")
-animation = &"Idle"
+sprite_frames = SubResource("SpriteFrames_uv2kv")
+animation = &"Jump"
 autoplay = "Idle"
-frame_progress = 0.482933
+frame = 3
+frame_progress = 1.0
 
 [node name="WindUpGizmo" parent="." instance=ExtResource("3_yia7k")]
 visible = false

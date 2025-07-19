@@ -1678,7 +1678,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99915, 40)
+position = Vector2(-7.99908, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -1723,10 +1723,12 @@ position = Vector2(-1546, -1135)
 [node name="MenInBlack" parent="Enemies" instance=ExtResource("36_0sf4y")]
 position = Vector2(-1328, -1268)
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("2_6mels")]
+[node name="Sprite2D" parent="." instance=ExtResource("2_6mels")]
+position = Vector2(32, 5)
 collision_layer = 10
 
-[node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+position = Vector2(-4, -2)
 zoom = Vector2(2, 2)
 
 [node name="Jetpack" parent="." instance=ExtResource("29_0sf4y")]
