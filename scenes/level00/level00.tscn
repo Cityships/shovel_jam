@@ -1678,7 +1678,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99908, 40)
+position = Vector2(-7.9985, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -1936,6 +1936,9 @@ texture = ExtResource("32_5lade")
 [node name="LightKeyItem" parent="." instance=ExtResource("34_1v3bv")]
 position = Vector2(-1304, -832)
 scale = Vector2(2, 2)
+
+[node name="ClockworkEnemy" parent="." instance=ExtResource("35_s2o0g")]
+position = Vector2(-43, 3)
 
 [connection signal="door_open" from="Map/Door1" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [5]]
 [connection signal="door_open" from="Map/Door2" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [10]]
