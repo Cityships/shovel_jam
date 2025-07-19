@@ -899,7 +899,7 @@ _data = {
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ery"]
-size = Vector2(46, 64)
+size = Vector2(46, 72)
 
 [sub_resource type="Curve2D" id="Curve2D_rrkdo"]
 _data = {
@@ -1100,14 +1100,15 @@ region_enabled = true
 region_rect = Rect2(40, 24, 46, 80)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door1/PathFollow2D/AnimatableBody2D"]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_61ery")
 
 [node name="ProgressBar" type="ProgressBar" parent="Map/Door1/PathFollow2D/AnimatableBody2D"]
 custom_minimum_size = Vector2(32, 64)
 offset_left = -16.0
 offset_top = -32.0
-offset_right = 4.0
-offset_bottom = 32.0
+offset_right = 16.0
+offset_bottom = 40.0
 fill_mode = 3
 show_percentage = false
 
@@ -1678,7 +1679,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.9985, 40)
+position = Vector2(-7.9982, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -1718,7 +1719,13 @@ script = ExtResource("23_3s6ok")
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="ClockworkEnemy" parent="Enemies" instance=ExtResource("35_s2o0g")]
-position = Vector2(-1546, -1135)
+position = Vector2(-1587, -1115)
+
+[node name="ClockworkEnemy2" parent="Enemies" instance=ExtResource("35_s2o0g")]
+position = Vector2(-1615, -726)
+
+[node name="ClockworkEnemy3" parent="Enemies" instance=ExtResource("35_s2o0g")]
+position = Vector2(-1190, -1129)
 
 [node name="MenInBlack" parent="Enemies" instance=ExtResource("36_0sf4y")]
 position = Vector2(-1328, -1268)
@@ -1936,9 +1943,6 @@ texture = ExtResource("32_5lade")
 [node name="LightKeyItem" parent="." instance=ExtResource("34_1v3bv")]
 position = Vector2(-1304, -832)
 scale = Vector2(2, 2)
-
-[node name="ClockworkEnemy" parent="." instance=ExtResource("35_s2o0g")]
-position = Vector2(-43, 3)
 
 [connection signal="door_open" from="Map/Door1" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [5]]
 [connection signal="door_open" from="Map/Door2" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [10]]
