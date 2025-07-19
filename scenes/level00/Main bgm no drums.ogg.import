@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dgenhh6e3dvlw"
+path="res://.godot/imported/Main bgm no drums.ogg-90919f808c7a71cd2fee139960cf9808.oggvorbisstr"
+
+[deps]
+
+source_file="res://scenes/level00/Main bgm no drums.ogg"
+dest_files=["res://.godot/imported/Main bgm no drums.ogg-90919f808c7a71cd2fee139960cf9808.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
