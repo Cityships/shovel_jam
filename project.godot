@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shovel_jam"
-run/main_scene="uid://b0ktxfp2kloc5"
+run/main_scene="uid://bbpxit1isuy13"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://c8v7yjmtjfbi1"
 
@@ -99,3 +99,4 @@ acknowledge_text={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
