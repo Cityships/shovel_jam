@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://bbpxit1isuy13"]
+[gd_scene load_steps=79 format=4 uid="uid://bbpxit1isuy13"]
 
 [ext_resource type="Script" uid="uid://27ipp5cn4mlx" path="res://scenes/level00/bgm.gd" id="1_b0732"]
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/resources/default_tileset.tres" id="1_m831i"]
@@ -1210,7 +1210,7 @@ rotates = false
 loop = false
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="Map/Door4/PathFollow2D"]
-collision_layer = 5
+collision_layer = 21
 sync_to_physics = false
 script = ExtResource("5_11fvo")
 electronicly_locked = true
@@ -1220,6 +1220,7 @@ material = ExtResource("6_1pv21")
 texture = ExtResource("7_kj78h")
 region_enabled = true
 region_rect = Rect2(40, 0, 46, 128)
+script = ExtResource("8_1v3bv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door4/PathFollow2D/AnimatableBody2D"]
 shape = SubResource("RectangleShape2D_0w5ss")
@@ -1683,7 +1684,7 @@ offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
 material = SubResource("ShaderMaterial_lfc8c")
-position = Vector2(-7.9964, 40)
+position = Vector2(-7.99637, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -1949,10 +1950,8 @@ position = Vector2(-1304, -824)
 scale = Vector2(2, 2)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("41_4fpck")]
-position = Vector2(-1206, -797)
 
 [node name="Sprite2D#Camera2D" type="Camera2D" parent="PlayerCharacter"]
-position = Vector2(1200, 770)
 zoom = Vector2(2, 2)
 
 [connection signal="door_open" from="Map/Door1" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [5]]

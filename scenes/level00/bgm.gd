@@ -40,7 +40,14 @@ func _ready() -> void:
 	_player_backing = _add_player(ST_BACKING)
 	_player_drums   = _add_player(ST_DRUMS)
 	_player_melody  = _add_player(ST_MELODY)
+	_set_stems_volume(-80)#
 	_start_all()
+	_fade_to(_player_backing, default_volume_db, 1)#
+	GlobalEvents.gadget_obtained.connect(
+		func(value):
+			if value.name == "EmpObject":
+				_fade_to(_player_drums, default_volume_db, 1)
+	)
 
 # ────────────────────────────────────────────────────────────────────────────
 # ── PUBLIC API ──
