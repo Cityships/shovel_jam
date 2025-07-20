@@ -1662,7 +1662,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99799, 40)
+position = Vector2(-7.99747, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -1673,6 +1673,11 @@ unique_name_in_owner = true
 position = Vector2(32, 3)
 target_position = Vector2(500, 0)
 collision_mask = 9
+
+[node name="Tracer" type="Line2D" parent="Map/LOSTurret2/VisualTreeRoot/LaserRaycast"]
+points = PackedVector2Array(0, 0, 200, 0)
+width = 1.0
+default_color = Color(1, 0, 0, 0.780392)
 
 [node name="LaserLine" type="Line2D" parent="Map/LOSTurret2/VisualTreeRoot"]
 unique_name_in_owner = true
@@ -1714,10 +1719,11 @@ position = Vector2(-1190, -1129)
 position = Vector2(-1328, -1268)
 
 [node name="EmpObject" parent="." instance=ExtResource("24_505b6")]
-position = Vector2(-784, -1256)
+position = Vector2(-795, -1256)
 
 [node name="Jetpack" parent="." instance=ExtResource("33_4fpck")]
 position = Vector2(798, -21)
+starting_charge = 0.0
 
 [node name="ManagerSystems" type="Node" parent="."]
 
@@ -1837,6 +1843,7 @@ horizontal_alignment = 1
 autowrap_mode = 3
 
 [node name="Label8" type="Label" parent="CanvasLayer/UI/TutorialBot/PanelContainer/TextLines"]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 text = "Press \"E\" to pickup any gadget in front of you. You will need it for the remainder of our study. Continue to the next room."
@@ -1916,7 +1923,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("32_5lade")
 
 [node name="LightKeyItem" parent="." instance=ExtResource("34_1v3bv")]
-position = Vector2(-1304, -832)
+position = Vector2(-1304, -824)
 scale = Vector2(2, 2)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("41_4fpck")]
