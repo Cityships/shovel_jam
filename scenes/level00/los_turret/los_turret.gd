@@ -5,6 +5,7 @@ signal emp_disabled
 enum State {CHARGE, SHOOT, RELOAD}
 
 @onready var laser_line : Line2D = %LaserLine
+var tracer : Line2D
 @onready var detection_ray : RayCast2D = %LaserRaycast
 @onready var danger_area : Area2D = get_node("DangerArea")
 @onready var turret_gun_remote_transform : RemoteTransform2D = get_node("RemoteTransform2D")
@@ -25,6 +26,7 @@ var player_on_danger_area : bool
 @export_enum("face_left", "face_right") var flip_h = 1
 
 func _ready() -> void:
+	tracer = detection_ray.get_node("Tracer")
 	var refs = get_tree().get_nodes_in_group("Player")
 	player_target = refs[0]
 	danger_area.body_exited.connect(func(value): if value == player_target: player_on_danger_area = false)
@@ -41,6 +43,7 @@ func _process(delta: float) -> void:
 		if detection_ray.get_collider() == player_target:
 			GlobalEvents.player_death.emit()
 			detection_ray.collide_with_bodies = false
+	tracer.set_point_position(1, detection_ray.to_local(detection_ray.get_collision_point()))
 
 func check_los():
 	detection_ray.collide_with_bodies = true

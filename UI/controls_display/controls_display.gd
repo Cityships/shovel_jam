@@ -32,6 +32,7 @@ func _ready() -> void:
 		func():
 			if Globals.obtained_keys.has(2):
 				key_options.get_node("Label2").visible = true
+			instruction_text.text = ""
 			instruction_text.text = str(instruction_text.text, "Press Q and 2 to switch the light key. Charge nearby objects with the light key. After spinning the light key will remotely trigger objects")
 	)
 

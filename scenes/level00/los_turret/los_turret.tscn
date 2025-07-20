@@ -74,6 +74,11 @@ position = Vector2(32, 3)
 target_position = Vector2(500, 0)
 collision_mask = 9
 
+[node name="Tracer" type="Line2D" parent="VisualTreeRoot/LaserRaycast"]
+points = PackedVector2Array(0, 0, 500, 0)
+width = 1.0
+default_color = Color(1, 0, 0, 0.670588)
+
 [node name="LaserLine" type="Line2D" parent="VisualTreeRoot"]
 unique_name_in_owner = true
 z_index = 1
