@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmx3dr7adcfwq"
+path="res://.godot/imported/BGM backing.ogg-fa30dec4a98ad92dc07e6d959f82752e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/ogg/BGM backing.ogg"
+dest_files=["res://.godot/imported/BGM backing.ogg-fa30dec4a98ad92dc07e6d959f82752e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

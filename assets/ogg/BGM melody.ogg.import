@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://60bcj0617133"
+path="res://.godot/imported/BGM melody.ogg-76cec5f3a371f16dbaad5c4a801cde88.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/ogg/BGM melody.ogg"
+dest_files=["res://.godot/imported/BGM melody.ogg-76cec5f3a371f16dbaad5c4a801cde88.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

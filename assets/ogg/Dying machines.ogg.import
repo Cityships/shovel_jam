@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bycc57w56e8a4"
+path="res://.godot/imported/Dying machines.ogg-b3a7d9ed45fe7749e09e99b0fa602b05.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/ogg/Dying machines.ogg"
+dest_files=["res://.godot/imported/Dying machines.ogg-b3a7d9ed45fe7749e09e99b0fa602b05.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
