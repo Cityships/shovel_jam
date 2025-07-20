@@ -85,7 +85,6 @@ func _process(delta: float) -> void:
 			last_mouse_velocity = 0
 			try_recharge.emit(rotation_ticks * 30 / 360.0)
 			rotation_ticks = 0
-			print(delayed_recharge_list)
 			for body : Node2D in delayed_recharge_list:
 				if body.has_method("recharge"):
 					body.recharge(delayed_recharge_rotations * charge_per_rotation)
@@ -150,7 +149,6 @@ func _input(_event: InputEvent) -> void:
 				if key_type == KeyType.LIGHT:
 					delayed_recharge_list.append(body)
 					delayed_recharge_rotations = rotation_ticks * 30 / 360.0
-					print(delayed_recharge_rotations)
 		if key_type == KeyType.RETAIN:
 			try_recharge.emit(rotation_ticks * 30 / 360.0)	
 			rotation_ticks = 0
