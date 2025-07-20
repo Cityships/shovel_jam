@@ -1683,7 +1683,7 @@ offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
 material = SubResource("ShaderMaterial_lfc8c")
-position = Vector2(-7.99722, 40)
+position = Vector2(-7.9964, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -1731,14 +1731,14 @@ script = ExtResource("23_3s6ok")
 [node name="ClockworkEnemy" parent="Enemies" instance=ExtResource("35_s2o0g")]
 position = Vector2(-1587, -1115)
 
-[node name="ClockworkEnemy2" parent="Enemies" instance=ExtResource("35_s2o0g")]
-position = Vector2(-1615, -726)
-
 [node name="ClockworkEnemy3" parent="Enemies" instance=ExtResource("35_s2o0g")]
 position = Vector2(-1190, -1129)
 
 [node name="MenInBlack" parent="Enemies" instance=ExtResource("36_0sf4y")]
 position = Vector2(-1328, -1268)
+
+[node name="MenInBlack2" parent="Enemies" instance=ExtResource("36_0sf4y")]
+position = Vector2(-1421, -729)
 
 [node name="EmpObject" parent="." instance=ExtResource("24_505b6")]
 position = Vector2(-795, -1256)
@@ -1949,9 +1949,10 @@ position = Vector2(-1304, -824)
 scale = Vector2(2, 2)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("41_4fpck")]
+position = Vector2(-1206, -797)
 
 [node name="Sprite2D#Camera2D" type="Camera2D" parent="PlayerCharacter"]
-position = Vector2(-4, -2)
+position = Vector2(1200, 770)
 zoom = Vector2(2, 2)
 
 [connection signal="door_open" from="Map/Door1" to="CanvasLayer/UI/TutorialBot" method="skip_to_text" binds= [5]]

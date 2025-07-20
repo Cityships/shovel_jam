@@ -8,4 +8,5 @@ script = ExtResource("1_3yb6u")
 animxzated_sprite = ExtResource("2_eydpc")
 
 [node name="Muzzle" type="Node2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(11, -13)

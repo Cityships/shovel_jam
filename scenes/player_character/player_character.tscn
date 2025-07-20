@@ -269,10 +269,8 @@ polygon = PackedVector2Array(-0.5, -16.5, 0.5, -16.5, 2.5, -15.5, 3.5, -9.5, 4.5
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_uv2kv")
-animation = &"Jump"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="WindUpGizmo" parent="." instance=ExtResource("3_yia7k")]
 visible = false
