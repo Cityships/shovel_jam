@@ -65,6 +65,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("1_4k7e0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_yqp5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d057c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pw0xy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_an0ki")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("12_oj88q")
 }, {
 "duration": 1.0,

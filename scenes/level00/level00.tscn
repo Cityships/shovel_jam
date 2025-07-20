@@ -36,6 +36,7 @@
 [ext_resource type="Script" uid="uid://dwjv6qmxhlkuh" path="res://scenes/level00/doors/triple_door/triple_door.gd" id="28_bwgtc"]
 [ext_resource type="Script" uid="uid://yaf3aphqrxj4" path="res://scenes/level00/doors/triple_door/triple_door_lock.gd" id="29_23ve5"]
 [ext_resource type="Texture2D" uid="uid://c5dhdfjstxgtb" path="res://scenes/level00/clocktower.webp" id="32_5lade"]
+[ext_resource type="PackedScene" uid="uid://d2q54j7jls2mw" path="res://scenes/gadgets/jetpack/jetpack_version_2.tscn" id="33_4fpck"]
 [ext_resource type="PackedScene" uid="uid://bjp4e0btlhpsa" path="res://scenes/level00/items/light_key_item.tscn" id="34_1v3bv"]
 [ext_resource type="PackedScene" uid="uid://dga7y3vw74cmx" path="res://scenes/enemy/clockwork/clockwork_enemy.tscn" id="35_s2o0g"]
 [ext_resource type="PackedScene" uid="uid://ccvaya45j8x0y" path="res://scenes/enemy/men_in_black/men_in_black.tscn" id="36_0sf4y"]
@@ -899,7 +900,7 @@ _data = {
 point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61ery"]
-size = Vector2(46, 64)
+size = Vector2(46, 72)
 
 [sub_resource type="Curve2D" id="Curve2D_rrkdo"]
 _data = {
@@ -1100,14 +1101,15 @@ region_enabled = true
 region_rect = Rect2(40, 24, 46, 80)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Door1/PathFollow2D/AnimatableBody2D"]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_61ery")
 
 [node name="ProgressBar" type="ProgressBar" parent="Map/Door1/PathFollow2D/AnimatableBody2D"]
 custom_minimum_size = Vector2(32, 64)
 offset_left = -16.0
 offset_top = -32.0
-offset_right = 4.0
-offset_bottom = 32.0
+offset_right = 16.0
+offset_bottom = 40.0
 fill_mode = 3
 show_percentage = false
 
@@ -1678,7 +1680,7 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99872, 40)
+position = Vector2(-7.99814, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -1718,7 +1720,13 @@ script = ExtResource("23_3s6ok")
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="ClockworkEnemy" parent="Enemies" instance=ExtResource("35_s2o0g")]
-position = Vector2(-1546, -1135)
+position = Vector2(-1587, -1115)
+
+[node name="ClockworkEnemy2" parent="Enemies" instance=ExtResource("35_s2o0g")]
+position = Vector2(-1615, -726)
+
+[node name="ClockworkEnemy3" parent="Enemies" instance=ExtResource("35_s2o0g")]
+position = Vector2(-1190, -1129)
 
 [node name="MenInBlack" parent="Enemies" instance=ExtResource("36_0sf4y")]
 position = Vector2(-1328, -1268)
@@ -1726,13 +1734,15 @@ position = Vector2(-1328, -1268)
 [node name="Jetpack" parent="." instance=ExtResource("41_4fpck")]
 position = Vector2(798, -23)
 
-[node name="PlayerCharacter" parent="." instance=ExtResource("2_6mels")]
-
-[node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
-zoom = Vector2(1.5, 1.5)
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+position = Vector2(-4, -2)
+zoom = Vector2(2, 2)
 
 [node name="EmpObject" parent="." instance=ExtResource("24_505b6")]
 position = Vector2(-784, -1256)
+
+[node name="Jetpack" parent="." instance=ExtResource("33_4fpck")]
+position = Vector2(798, -21)
 
 [node name="ManagerSystems" type="Node" parent="."]
 
