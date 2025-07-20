@@ -19,6 +19,7 @@ var tracer : Line2D
 
 var player_target = null
 var last_target_position : Vector2
+var disabled : bool = false
 
 var laser_firing : bool
 var player_on_danger_area : bool
@@ -32,6 +33,13 @@ func _ready() -> void:
 	danger_area.body_exited.connect(func(value): if value == player_target: player_on_danger_area = false)
 	danger_area.body_entered.connect(func(value): if value == player_target: player_on_danger_area = true)
 	cycle_timer.timeout.connect(check_los)
+	emp_disabled.connect(
+		func(value):
+			disabled = true
+			var tween = create_tween()
+			tween.tween_interval(value)
+			tween.chain().tween_callback(func():disabled = false),
+		)
 
 func _process(delta: float) -> void:
 	if !player_on_danger_area:
@@ -46,6 +54,8 @@ func _process(delta: float) -> void:
 	tracer.set_point_position(1, detection_ray.to_local(detection_ray.get_collision_point()))
 
 func check_los():
+	if disabled:
+		return
 	detection_ray.collide_with_bodies = true
 	if !cooldown_timer.is_stopped():
 		return

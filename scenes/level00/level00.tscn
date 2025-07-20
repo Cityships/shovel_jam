@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://bbpxit1isuy13"]
+[gd_scene load_steps=78 format=4 uid="uid://bbpxit1isuy13"]
 
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/resources/default_tileset.tres" id="1_m831i"]
 [ext_resource type="Script" uid="uid://di362p0l14ryw" path="res://scenes/level00/doors/triple_door/moving_platform_shield.gd" id="1_q30id"]
@@ -31,7 +31,9 @@
 [ext_resource type="Script" uid="uid://ciixynqe2whmh" path="res://scenes/level00/start/start.gd" id="23_3s6ok"]
 [ext_resource type="Script" uid="uid://bce7sk8abb5od" path="res://scenes/level00/doors/story_door/story_door.gd" id="23_vn2ov"]
 [ext_resource type="PackedScene" uid="uid://chtrhnqgbwnwi" path="res://scenes/gadgets/emp_object/emp_object.tscn" id="24_505b6"]
+[ext_resource type="Shader" uid="uid://hf3ps7in7kiy" path="res://enemy/resource/composite_material.gdshader" id="26_b0732"]
 [ext_resource type="Script" uid="uid://dwjv6qmxhlkuh" path="res://scenes/level00/doors/triple_door/triple_door.gd" id="28_bwgtc"]
+[ext_resource type="Script" uid="uid://dvk5hyisu5q4a" path="res://scenes/level00/los_turret/los_turret_visual_tree.gd" id="28_jd2rx"]
 [ext_resource type="Script" uid="uid://yaf3aphqrxj4" path="res://scenes/level00/doors/triple_door/triple_door_lock.gd" id="29_23ve5"]
 [ext_resource type="Texture2D" uid="uid://c5dhdfjstxgtb" path="res://scenes/level00/clocktower.webp" id="32_5lade"]
 [ext_resource type="PackedScene" uid="uid://d2q54j7jls2mw" path="res://scenes/gadgets/jetpack/jetpack_version_2.tscn" id="33_4fpck"]
@@ -982,6 +984,18 @@ stream_0 = ExtResource("17_rrkdo")
 stream_1 = ExtResource("18_pg7fu")
 stream_2 = ExtResource("19_3s6ok")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lfc8c"]
+shader = ExtResource("26_b0732")
+shader_parameter/fill_color = Color(1, 1, 1, 1)
+shader_parameter/fill_enabled = false
+shader_parameter/grayscale_enabled = false
+shader_parameter/weighted = true
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_d3l2q"]
 animations = [{
 "frames": [{
@@ -1023,7 +1037,6 @@ tile_map_data = PackedByteArray("AACY/8P/AQABAAEAAACY/8T/AQABAAEAAACZ/8P/AQABAAE
 tile_set = SubResource("TileSet_bj6hi")
 
 [node name="MovingPlatform" type="Path2D" parent="Map"]
-visible = false
 position = Vector2(88, -728)
 curve = SubResource("Curve2D_an840")
 
@@ -1638,6 +1651,8 @@ charge_duration = 2.1
 position = Vector2(392, -1224)
 rotation = 3.14159
 scale = Vector2(1, -1)
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("16_la4if")
 charge_duration = 2.3
 fire_duration = 1.5
@@ -1663,11 +1678,13 @@ texture = ExtResource("14_b7lq2")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
-position = Vector2(-7.99744, 40)
+material = SubResource("ShaderMaterial_lfc8c")
+position = Vector2(-7.99722, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
 offset = Vector2(-13.5, -11.5)
+script = ExtResource("28_jd2rx")
 
 [node name="LaserRaycast" type="RayCast2D" parent="Map/LOSTurret2/VisualTreeRoot"]
 unique_name_in_owner = true
