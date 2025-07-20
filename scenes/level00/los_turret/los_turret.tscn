@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://beubd7m68a4bv"]
+[gd_scene load_steps=15 format=3 uid="uid://beubd7m68a4bv"]
 
 [ext_resource type="Script" uid="uid://po87hcrrbmbv" path="res://scenes/level00/los_turret/los_turret.gd" id="1_wbv1t"]
 [ext_resource type="AudioStream" uid="uid://b25n8207emop8" path="res://scenes/level00/los_turret/continuous laser start.ogg" id="2_xspaq"]
 [ext_resource type="AudioStream" uid="uid://dmpxf67uxswd7" path="res://scenes/level00/los_turret/Continuous Laser loop.ogg" id="3_xmnp6"]
 [ext_resource type="AudioStream" uid="uid://cdkfo8jokggxe" path="res://scenes/level00/los_turret/Continuous laser end.ogg" id="4_b45n4"]
 [ext_resource type="Texture2D" uid="uid://bh1quj72s8v7r" path="res://scenes/level00/los_turret/turret_base.png" id="5_hmwnt"]
+[ext_resource type="Shader" uid="uid://hf3ps7in7kiy" path="res://enemy/resource/composite_material.gdshader" id="6_xmnp6"]
 [ext_resource type="Texture2D" uid="uid://hqmafcal53s3" path="res://scenes/level00/los_turret/turret_gun.png" id="6_yha6o"]
+[ext_resource type="Script" uid="uid://dvk5hyisu5q4a" path="res://scenes/level00/los_turret/los_turret_visual_tree.gd" id="7_xspaq"]
 
 [sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_rjlbt"]
 loop = false
@@ -13,6 +15,18 @@ stream_count = 3
 stream_0 = ExtResource("2_xspaq")
 stream_1 = ExtResource("3_xmnp6")
 stream_2 = ExtResource("4_b45n4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b45n4"]
+shader = ExtResource("6_xmnp6")
+shader_parameter/fill_color = Color(1, 1, 1, 1)
+shader_parameter/fill_enabled = false
+shader_parameter/grayscale_enabled = false
+shader_parameter/weighted = true
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d3l2q"]
 animations = [{
@@ -38,6 +52,8 @@ size = Vector2(1216, 358)
 size = Vector2(104, 58)
 
 [node name="LOSTurret" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_wbv1t")
 charge_duration = 1.8
 audio_playlist = SubResource("AudioStreamPlaylist_rjlbt")
@@ -62,17 +78,24 @@ texture = ExtResource("5_hmwnt")
 offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_b45n4")
 position = Vector2(-8, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
 offset = Vector2(-13.5, -11.5)
+script = ExtResource("7_xspaq")
 
 [node name="LaserRaycast" type="RayCast2D" parent="VisualTreeRoot"]
 unique_name_in_owner = true
 position = Vector2(32, 3)
 target_position = Vector2(500, 0)
 collision_mask = 9
+
+[node name="Tracer" type="Line2D" parent="VisualTreeRoot/LaserRaycast"]
+points = PackedVector2Array(0, 0, 500, 0)
+width = 1.0
+default_color = Color(1, 0, 0, 0.670588)
 
 [node name="LaserLine" type="Line2D" parent="VisualTreeRoot"]
 unique_name_in_owner = true

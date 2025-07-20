@@ -143,17 +143,17 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
-position = Vector2(-32, 8)
+position = Vector2(-20, 8)
 shape = SubResource("RectangleShape2D_yotyk")
 debug_color = Color(1, 1, 1, 0.42)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractableArea"]
-position = Vector2(32, 8)
+position = Vector2(21, 8)
 shape = SubResource("RectangleShape2D_yotyk")
 debug_color = Color(1, 1, 1, 0.42)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="InteractableArea"]
-position = Vector2(0, -32)
+position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_yotyk")
 debug_color = Color(1, 1, 1, 0.42)
 

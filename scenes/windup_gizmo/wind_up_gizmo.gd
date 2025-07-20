@@ -90,26 +90,27 @@ func _process(delta: float) -> void:
 					body.recharge(delayed_recharge_rotations * charge_per_rotation)
 					if body.has_signal("auto_trigger"):
 						body.auto_trigger.emit()
+			delayed_recharge_list.clear()
 		last_mouse_velocity = lerp(last_mouse_velocity, 0.0, delta)
 		turn_key.rotation += delta * last_mouse_velocity
 		
 
 func _input(_event: InputEvent) -> void:
 
-	if Input.is_key_pressed(KEY_1) and current_controls == 1 and !mouse_over:
+	if Input.is_key_pressed(KEY_1) and current_controls == 1:
 		key_type = KeyType.STANDARD
 		key_type_changed.emit()
-	elif Input.is_key_pressed(KEY_2) and current_controls == 1 and !mouse_over:
+	elif Input.is_key_pressed(KEY_2) and current_controls == 1:
 		if Globals.obtained_keys.has(2):
 			key_type = KeyType.LIGHT
 			key_type_changed.emit()
-	elif Input.is_key_pressed(KEY_3) and current_controls == 1 and !mouse_over:
+	elif Input.is_key_pressed(KEY_3) and current_controls == 1:
 		if Globals.obtained_keys.has(3):
 			key_type = KeyType.RETAIN
 			key_type_changed.emit()
 
-	if key_type == KeyType.LIGHT and last_mouse_velocity != 0:
-		return
+	#if key_type == KeyType.LIGHT and last_mouse_velocity != 0:
+	#	return
 
 	if key_type == KeyType.RETAIN and recharge_area.get_overlapping_bodies().size() == 0 and recharge_area.get_overlapping_areas().size() == 0:
 		return
@@ -152,8 +153,9 @@ func _input(_event: InputEvent) -> void:
 			try_recharge.emit(rotation_ticks * 30 / 360.0)	
 			rotation_ticks = 0
 			
-	if Input.is_action_just_released("left_mouse_button") and mouse_over:
+	if Input.is_action_just_released("left_mouse_button"):
 		mouse_over = false
+		standard_key_stored_energy = 0
 		
 func recharge(rotations : float):
 	var bodies = recharge_area.get_overlapping_bodies()

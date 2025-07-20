@@ -72,7 +72,6 @@ enum State { IDLE, MOVE, STUNNED, CHASE, ATTACK, WIND_UP }
 @onready var ray_down     : RayCast2D = %RayDown    ## Ledge sensor (down‑front).
 @onready var sprite       : AnimatedSprite2D = %VisualTreeRoot ## Main visuals.
 @onready var debug        : Label = %Debug           ## On‑screen debug label.
-@onready var melee_hit_box: Area2D = %MeleeHitBox
 @onready var wind_up : Timer = %WindUP       ## Timer node for wind‑up handling.
 # ───────────────────────────── LIFECYCLE CALLBACKS ──────────────────────────
 func _ready() -> void:
@@ -115,7 +114,7 @@ func _process_state(delta: float) -> void:
 				enter_state(State.MOVE)
 
 		State.ATTACK:
-			velocity = Vector2.ZERO  ## Animation or hit‑box handles damage.
+			pass
 
 		State.WIND_UP:
 			velocity = Vector2.ZERO  ## Waiting to transition to ATTACK / MOVE.
