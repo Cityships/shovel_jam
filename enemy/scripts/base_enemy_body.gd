@@ -73,6 +73,8 @@ enum State { IDLE, MOVE, STUNNED, CHASE, ATTACK, WIND_UP }
 @onready var sprite       : AnimatedSprite2D = %VisualTreeRoot ## Main visuals.
 @onready var debug        : Label = %Debug           ## On‑screen debug label.
 @onready var wind_up : Timer = %WindUP       ## Timer node for wind‑up handling.
+@onready var collider := %"CollisionShape2D".shape as RectangleShape2D
+@onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
 # ───────────────────────────── LIFECYCLE CALLBACKS ──────────────────────────
 func _ready() -> void:
 	## Connect signals that originate *outside* this script.

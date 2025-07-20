@@ -26,7 +26,7 @@ extends BaseEnemyManager
 
 const SHOOT_ATTACK = preload("res://scenes/enemy/base/shoot_attack.tscn")
 
-@onready var muzzle: Node2D = $Muzzle
+@onready var muzzle: Node2D = %Muzzle
 @onready var laser_pivot: Node2D
 @onready var ray: RayCast2D
 @onready var beam: Line2D
@@ -66,15 +66,16 @@ func _ready() -> void:
 	
 	if base_enemy_body:
 		laser_pivot = SHOOT_ATTACK.instantiate()
+		base_enemy_body.add_child(laser_pivot) 
 		laser_pivot.position = muzzle.position 
-		base_enemy_body.add_child(laser_pivot)
-
-		ray  = laser_pivot.ray
-		beam = laser_pivot.beam
+		base_enemy_body.collider.size = Vector2(17, 34) 
+		ray  = laser_pivot.get_node("%Ray")
+		beam = laser_pivot.get_node("%Beam")
 		base_enemy_body.attack_range = 150
 		base_enemy_body.state_changed.connect(_on_state_changed)
 		base_enemy_body.set_resources(animxzated_sprite)
 		base_enemy_body.enter_state(base_enemy_body.State.MOVE)
+
 
 
 
@@ -119,8 +120,10 @@ func shoot_laser() -> void:
 	if ray.is_colliding():
 		hit_pos = ray.get_collision_point()
 		
+		
 	else:
 		hit_pos = aim_end
+		print(hit_pos)
 
 	# Draw the beam.
 	beam.global_position = ray.global_position
