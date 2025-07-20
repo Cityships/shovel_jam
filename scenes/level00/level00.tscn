@@ -1,5 +1,6 @@
 [gd_scene load_steps=78 format=4 uid="uid://bbpxit1isuy13"]
 
+[ext_resource type="Script" uid="uid://27ipp5cn4mlx" path="res://scenes/level00/bgm.gd" id="1_b0732"]
 [ext_resource type="TileSet" uid="uid://c8nrnjf8fsfw0" path="res://map/resources/default_tileset.tres" id="1_m831i"]
 [ext_resource type="Script" uid="uid://di362p0l14ryw" path="res://scenes/level00/doors/triple_door/moving_platform_shield.gd" id="1_q30id"]
 [ext_resource type="PackedScene" uid="uid://312utib22mvo" path="res://manager_systems/quick_tip/quick_tip_manager.tscn" id="3_lhswg"]
@@ -1023,6 +1024,9 @@ size = Vector2(104, 58)
 font_size = 12
 
 [node name="Level00" type="Node2D"]
+
+[node name="BGM" type="Node" parent="."]
+script = ExtResource("1_b0732")
 
 [node name="Map" type="Node2D" parent="."]
 
