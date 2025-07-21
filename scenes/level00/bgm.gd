@@ -49,6 +49,7 @@ func _ready() -> void:
 				_fade_to(_player_drums, default_volume_db, 1)
 	)
 
+
 # ────────────────────────────────────────────────────────────────────────────
 # ── PUBLIC API ──
 
@@ -79,7 +80,7 @@ func play_alternate_track() -> void:
 func _add_player(stream: AudioStream) -> AudioStreamPlayer:
 	var p := AudioStreamPlayer.new()
 	p.stream = stream
-	p.bus = "Music" 
+	p.bus = "Master" 
 	p.volume_db = default_volume_db
 	p.autoplay = false
 	add_child(p)
