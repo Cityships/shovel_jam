@@ -1684,7 +1684,7 @@ offset = Vector2(0, 2)
 
 [node name="VisualTreeRoot" type="AnimatedSprite2D" parent="Map/LOSTurret2"]
 material = SubResource("ShaderMaterial_lfc8c")
-position = Vector2(-7.99634, 40)
+position = Vector2(-7.99631, 40)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_d3l2q")
 centered = false
@@ -1950,7 +1950,6 @@ position = Vector2(-1304, -824)
 scale = Vector2(2, 2)
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("41_4fpck")]
-position = Vector2(-1024, -544)
 
 [node name="Sprite2D#Camera2D" type="Camera2D" parent="PlayerCharacter"]
 zoom = Vector2(2, 2)
